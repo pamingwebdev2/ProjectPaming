@@ -1,0 +1,104 @@
+<html>
+
+    <head>
+
+        <title> I-Read Log Book</title>
+
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <style>
+            * {
+                font-family: 'Montserrat', sans-serif;
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                min-height: 100vh;
+                background-color: rgb(202, 173, 134);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            h1 {
+                color: rgb(36, 31, 24);
+                margin-top: 100px;
+            }
+
+            form {
+                margin-top: 50px;
+                background-color: #fff;
+                box-shadow: -3px 6px 4px #222;
+            }
+
+            form input {
+                width: 250px;
+                height: 40px;
+                border: none;
+                outline: none;
+                padding: 0 5px;
+                font-size: 14px;
+              
+            }
+
+            #Remarks1, #Genre1{
+                width: 180px;
+                height: 40px;
+                border: none;
+                outline: none;
+                padding: 0 5px;
+              
+            }
+
+            #Remarks1{
+                text-align: center;
+            }
+
+            form button {
+                width: 50px;
+                height: 40px;
+                border: none;
+                background:rgb(124, 67, 27);
+                color: white;
+                outline: none;
+                cursor: pointer;
+            }
+            
+
+        </style>
+
+    </head>
+
+    <body>
+
+        <h1>I-Read Log Book</h1>
+
+        <form action="" id="form-fields">
+
+            <input type="text" name="Author" id="Author1" required placeholder="Who is the author?">
+            <input type="text" name="Book" id="Book1" placeholder="What is the title?" required>
+            <input type="text" name="Genre" id="Genre1" placeholder="What is the genre?" required>
+            <input type="text" name="Remarks" id="Remarks1" placeholder="Remarks" required>
+
+
+            <button type="submit" class="btn-list" id="btnSave">
+                <i class="fa fa-plus" aria-hidden="true"></i>
+            </button>
+
+
+        </form>
+
+        <div class="book-list">
+            <table id="booklist">
+            	<tr>
+            	</tr>
+            </table>
+        </div>
+
+
+    </body>
+
+    </html>
