@@ -5,7 +5,7 @@
         <title> I-Read Log Book</title>
 
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+       <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
 
         <style>
             * {
@@ -28,23 +28,63 @@
                 margin-top: 100px;
             }
 
-            form {
+            form{
                 margin-top: 50px;
                 background-color: #fff;
                 box-shadow: -3px 6px 4px #222;
             }
 
-            form input {
+            form input{
                 width: 250px;
                 height: 40px;
                 border: none;
                 outline: none;
-                padding: 0 5px;
+                padding: 5px;
                 font-size: 14px;
               
             }
 
-            #Remarks1, #Genre1{
+            table{
+            	margin-top: 80px;
+            	box-shadow: -3px 6px 4px #222;
+            }
+
+            table tr{
+            	width: 250px;
+                height: 40px;
+                border: none;
+                outline: none;
+                padding: 5px;
+                font-size: 14px;
+                text-align: center;
+                background-color: white;
+            }
+
+            table th{
+            	width: 250px;
+                height: 40px;
+                border: none;
+                outline: none;
+                padding: 5px;
+                font-size: 14px;
+                text-align: center;
+                background-color:rgb(124, 67, 27);
+                color: white;
+            }
+
+            #remove{
+            	width: 50px;
+                height: 40px;
+                border: none;
+                background-color: red;
+                color: white;
+                outline: none;
+                cursor: pointer;
+                font-weight: bolder;
+                font-weight: bolder;
+            }
+
+            #RemarksEntry, #GenreEntry{
                 width: 180px;
                 height: 40px;
                 border: none;
@@ -53,11 +93,11 @@
               
             }
 
-            #Remarks1{
+            #RemarksEntry{
                 text-align: center;
             }
 
-            form button {
+            form .button {
                 width: 50px;
                 height: 40px;
                 border: none;
@@ -65,6 +105,7 @@
                 color: white;
                 outline: none;
                 cursor: pointer;
+                font-weight: bolder;
             }
             
 
@@ -76,27 +117,42 @@
 
         <h1>I-Read Log Book</h1>
 
-        <form action="" id="form-fields">
+        <form method="POST" id="fields">
 
-            <input type="text" name="Author" id="Author1" required placeholder="Who is the author?">
-            <input type="text" name="Book" id="Book1" placeholder="What is the title?" required>
-            <input type="text" name="Genre" id="Genre1" placeholder="What is the genre?" required>
-            <input type="text" name="Remarks" id="Remarks1" placeholder="Remarks" required>
+            <input type="text" name="AuthorEntry" id="AuthorEntry" required placeholder="Who is the author?">
+            <input type="text" name="BookEntry" id="BookEntry" placeholder="What is the title?" required>
+            <input type="text" name="GenreEntry" id="GenreEntry" placeholder="What is the genre?" required>
+            <input type="text" name="RemarksEntry" id="RemarksEntry" placeholder="Remarks" required>
+
+            <input type="submit" name="btn-list" id="btnSave" value="+" class="button">
 
 
-            <button type="submit" class="btn-list" id="btnSave">
+           <!-- <button type="submit" class="btn-list" id="btnSave">
                 <i class="fa fa-plus" aria-hidden="true"></i>
-            </button>
+            </button> -->
 
+            {% csrf_token %}
 
         </form>
-
-        <div class="book-list">
-            <table id="booklist">
+       
+            <table id="booklist" name='booklist'>
             	<tr>
+            		<th>Book Author</th>
+            		<th>Book Title</th>
+            		<th>Book Genre</th>
+            		<th>Remarks</th>
+
             	</tr>
+            	<tr>
+            		<td>{{NewAuthor}}</td>
+            		<td>{{NewBook}}</td>
+            		<td>{{NewGenre}}</td>
+            		<td>{{NewRemarks}}</td>
+            		<td id="remove">X</td>
+            	</tr>
+
             </table>
-        </div>
+   
 
 
     </body>
