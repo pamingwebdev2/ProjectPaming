@@ -9,8 +9,8 @@ class PageTest (unittest.TestCase):
 	def setUp(self):
 		self.browser = webdriver.Firefox()
 
-	#def tearDown(self):
-	#	self.browser.quit()
+	def tearDown(self):
+		self.browser.quit()
 
 	def check_rows_in_booklist(self, row_text):
 		table = self.browser.find_element_by_id('booklist')
