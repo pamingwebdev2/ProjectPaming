@@ -9,8 +9,13 @@ class PageTest (unittest.TestCase):
 	def setUp(self):
 		self.browser = webdriver.Firefox()
 
-	def tearDown(self):
-		self.browser.quit()
+	#def tearDown(self):
+	#	self.browser.quit()
+
+	def check_rows_in_booklist(self, row_text):
+		table = self.browser.find_element_by_id('booklist')
+		rows = table.find_elements_by_tag_name('tr')
+		self.assertIn(row_text, [row.text for row in rows])
 
 	def test_start_list_and_retrieve_it(self):
 		self.browser.get('http://localhost:8000')
@@ -57,6 +62,8 @@ class PageTest (unittest.TestCase):
 		btnSave.click()
 		time.sleep(2)
 
+		self.check_rows_in_booklist('1: Mitch Albom Tuesdays With Morrie Biographical Fiction Done X')
+
 #another input
 
 		inAuthor = self.browser.find_element_by_id('AuthorEntry')
@@ -87,6 +94,8 @@ class PageTest (unittest.TestCase):
 		btnSave.click()
 		time.sleep(2)
 
+		self.check_rows_in_booklist("2: Deb Caletti Stay Adult Fiction Borrowed X")
+
 		'''time.sleep(2)
 		inputAuthor1.send_keys('Mitch Albom')
 		time.sleep(2)
@@ -101,10 +110,10 @@ class PageTest (unittest.TestCase):
 
 #table updates
 
-		table = self.browser.find_element_by_id('booklist')
-		rows = table.find_elements_by_tag_name('tr') 
-		self.assertIn('1: Mitch Albom Tuesdays With Morrie Biographical Fiction Done X', [row.text for row in rows])
-		self.assertIn('2: Deb Caletti Stay Adult Fiction Borrowed X', [row.text for row in rows])
+		#table = self.browser.find_element_by_id('booklist')
+		#rows = table.find_elements_by_tag_name('tr') 
+		#self.assertIn('1: Mitch Albom Tuesdays With Morrie Biographical Fiction Done X', [row.text for row in rows])
+		#self.assertIn('2: Deb Caletti Stay Adult Fiction Borrowed X', [row.text for row in rows])
 		#self.assertIn('1: Mitch Albom Tuesdays With Morrie Biographical Fiction Done X', [row.text for row in rows])
 
 
