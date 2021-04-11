@@ -17,28 +17,95 @@ class PageTest (unittest.TestCase):
 		self.assertIn('I-Read Log Book', self.browser.title)
 		headerText = self.browser.find_element_by_tag_name('h1').text
 		self.assertIn('I-Read Log Book', headerText)
-		inputAuthor = self.browser.find_element_by_id('AuthorEntry')
-		inputBook = self.browser.find_element_by_id('BookEntry')
-		inputGenre = self.browser.find_element_by_id('GenreEntry')
-		inputRemarks = self.browser.find_element_by_id('RemarksEntry')
+		
+		inputAuthor1 = self.browser.find_element_by_id('AuthorEntry')
+		inputBook1 = self.browser.find_element_by_id('BookEntry')
+		inputGenre1 = self.browser.find_element_by_id('GenreEntry')
+		inputRemarks1 = self.browser.find_element_by_id('RemarksEntry')
 		btnSave = self.browser.find_element_by_id('btnSave')
-		self.assertEqual(inputAuthor.get_attribute('placeholder'),'Who is the author?')
-		self.assertEqual(inputBook.get_attribute('placeholder'),'What is the title?')
-		self.assertEqual(inputGenre.get_attribute('placeholder'),'What is the genre?')
-		self.assertEqual(inputRemarks.get_attribute('placeholder'),'Remarks')
+		
+		self.assertEqual(inputAuthor1.get_attribute('placeholder'),'Who is the author?')
+		self.assertEqual(inputBook1.get_attribute('placeholder'),'What is the title?')
+		self.assertEqual(inputGenre1.get_attribute('placeholder'),'What is the genre?')
+		self.assertEqual(inputRemarks1.get_attribute('placeholder'),'Remarks')
+		
 		time.sleep(2)
-		inputAuthor.send_keys('Mitch Albom')
+		inAuthor = self.browser.find_element_by_id('AuthorEntry')
+		inAuthor.click()
+		time.sleep(1)
+		inAuthor.send_keys('Mitch Albom')
+		time.sleep(1)
+
+		inBook = self.browser.find_element_by_id('BookEntry')
+		inBook.click()
+		inBook.send_keys('Tuesdays With Morrie')
+		time.sleep(1)
+
+		inGenre = self.browser.find_element_by_id('GenreEntry')
+		inGenre.click()
+		time.sleep(1)
+		inGenre.send_keys('Biographical Fiction')
+		time.sleep(1)
+
+		inRemarks = self.browser.find_element_by_id('RemarksEntry')
+		inRemarks.click()
+		time.sleep(1)
+		inRemarks.send_keys('Done')
+		time.sleep(1)
+
+		btnSave = self.browser.find_element_by_id('btnSave')
+		btnSave.click()
 		time.sleep(2)
-		inputBook.send_keys('Tuesdays With Morrie')
+
+#another input
+
+		inAuthor = self.browser.find_element_by_id('AuthorEntry')
+		inAuthor.click()
+		time.sleep(1)
+		inAuthor.send_keys('Deb Caletti')
+		time.sleep(1)
+
+		inBook = self.browser.find_element_by_id('BookEntry')
+		inBook.click()
+		time.sleep(1)
+		inBook.send_keys('Stay')
+		time.sleep(1)
+
+		inGenre = self.browser.find_element_by_id('GenreEntry')
+		inGenre.click()
+		time.sleep(1)
+		inGenre.send_keys('Adult Fiction')
+		time.sleep(1)
+
+		inRemarks = self.browser.find_element_by_id('RemarksEntry')
+		inRemarks.click()
+		time.sleep(1)
+		inRemarks.send_keys('Borrowed')
+		time.sleep(1)
+
+		btnSave = self.browser.find_element_by_id('btnSave')
+		btnSave.click()
 		time.sleep(2)
-		inputGenre.send_keys('Biographical Fiction')
+
+		'''time.sleep(2)
+		inputAuthor1.send_keys('Mitch Albom')
 		time.sleep(2)
-		inputRemarks.send_keys('Done')
+		inputBook1.send_keys('Tuesdays With Morrie')
+		time.sleep(2)
+		inputGenre1.send_keys('Biographical Fiction')
+		time.sleep(2)
+		inputRemarks1.send_keys('Done')
 		time.sleep(2)
 		btnSave.click()
-		time.sleep(1)
+		time.sleep(1)'''
+
+#table updates
+
 		table = self.browser.find_element_by_id('booklist')
-		rows = table.find_element_by_tag_name('tr') 
+		rows = table.find_elements_by_tag_name('tr') 
+		self.assertIn('1: Mitch Albom Tuesdays With Morrie Biographical Fiction Done X', [row.text for row in rows])
+		self.assertIn('2: Deb Caletti Stay Adult Fiction Borrowed X', [row.text for row in rows])
+		#self.assertIn('1: Mitch Albom Tuesdays With Morrie Biographical Fiction Done X', [row.text for row in rows])
 
 
 if __name__ == '__main__':
