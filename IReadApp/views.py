@@ -1,15 +1,39 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from django.shortcuts import render, redirect
+#from django.http import HttpResponse
+from IReadApp.models import Item
 
-
+'''LogPage = None'''
 
 def LogPage(request):
+
+	'''pass'''
+	#return HttpResponse('<html><title> I-Read Log Book </title><body><h1>I-Read Log Book</h1><form action="" id="form-fields"><input type="text" name="Author" id="Author1" required placeholder="Who is the author?"><input type="text" name="Book" id="Book1" placeholder="What is the title?" required><button type="submit" class="btn-list" id="btnSave"></button></form></body></html>')
+
 	#if request.method == 'POST':
 	#	return HttpResponse(request.POST['AuthorEntry'])
 	#return render(request,"logpage.html")
-	return render(request,'logpage.html',{'NewAuthor': request.POST.get('AuthorEntry'), 'NewBook': request.POST.get('BookEntry'), 'NewGenre': request.POST.get('GenreEntry'), 'NewRemarks': request.POST.get('RemarksEntry',''),})
+	#return render(request,'logpage.html',{'NewAuthor': request.POST.get('AuthorEntry'), 'NewBook': request.POST.get('BookEntry'), 'NewGenre': request.POST.get('GenreEntry'), 'NewRemarks': request.POST.get('RemarksEntry',''),})
+	
+	#item1 = Item()
+	#item1.binfo = request.POST.get('AuthorEntry', '')
+	#item1.save()
+	#return render(request,'logpage.html', {'NewAuthor':request.POST.get('AuthorEntry',''),})
 
+	#return render (request,'logpage.html',{'NewAuthor': item1.text,})
 
+	#if request.method == 'POST':
+	#	newItem = request.POST['AuthorEntry']
+	#	Item.objects.create(binfo=newItem)		#dito yung last na gumana
+	#else:
+	#	newItem = ''
+	#return render (request, 'logpage.html',{'NewAuthor':newItem,})
+
+	if request.method == 'POST':
+		Item.objects.create(binfo=request.POST['AuthorEntry']) #eto yung refactored pero di na nagrun
+		return redirect('/')
+	infos = Item.objects.all()
+	return render (request, 'logpage.html', {'NewAuthor': infos})
+	#return render (request, 'logpage.html')
 
 
 # Create your views here.

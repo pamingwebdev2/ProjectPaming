@@ -7,7 +7,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400&display=swap" rel="stylesheet">
        <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
 
-        <style>
+      <style>
             * {
                 font-family: 'Montserrat', sans-serif;
                 margin: 0;
@@ -58,6 +58,11 @@
                 font-size: 14px;
                 text-align: center;
                 background-color: white;
+            }
+
+            #authorid{
+                text-align: left;
+                padding-left: 10px;
             }
 
             table th{
@@ -143,14 +148,18 @@
             		<th>Remarks</th>
 
             	</tr>
-            	<tr>
-            		<!--<td>1: {{NewAuthor}}</td>-->
-                    <td>{{NewAuthor}}</td>
+                {% for item in NewAuthor%}
+                <tr>
+                    <td id="authorid">{{forloop.counter}}.  {{item.binfo}}</td>
+                </tr>
+                {% endfor%}
+            	<!--<tr>
+                    <td>1: {{NewAuthor}}</td>
             		<td>{{NewBook}}</td>
             		<td>{{NewGenre}}</td>
             		<td>{{NewRemarks}}</td>
             		<td id="remove"><span>X</span></td>
-            	</tr>
+            	</tr>-->
 
             </table>
    
