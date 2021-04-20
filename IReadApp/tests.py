@@ -5,6 +5,7 @@ from django.http import HttpRequest
 """
 from IReadApp.models import Item #formodelsORM
 
+
 class LogPageTest(TestCase):
 
 	#def test_logpage_returns_correct_view(self):

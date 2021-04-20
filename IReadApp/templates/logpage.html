@@ -7,138 +7,671 @@
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400&display=swap" rel="stylesheet">
        <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
 
-      <style>
-            * {
-                font-family: 'Montserrat', sans-serif;
-                margin: 0;
-                padding: 0;
-                box-sizing: border-box;
+       <style type="text/css">
+        @import 'https://fonts.googleapis.com/css?family=Montserrat:300, 400, 700&display=swap';
+        @import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Gentium+Book+Basic&display=swap');
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            height: 100%;
+            font-size: 10px;
+            font-family: 'Montserrat', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body{
+            height: 100%;
+
+            background-color: #36402b;
+            background-size: cover;
+            background-attachment: fixed;
+
+        }
+
+        /* Navigation */
+
+        .navbar{
+            color: white;
+            text-decoration: none;
+            margin-top: 20px;
+
+        }
+
+        .logoname{
+            display: inline-block;
+            box-sizing: border-box;
+
+
+        }
+        .home {
+            text-decoration: none;
+            color: white;
+            padding-left: 0;
+
+        }
+        #logo {
+            margin-left: 30px;
+            padding-top: 2px;
+            float: left;
+        }
+
+        #cgcf {
+            margin-top: 25px;
+            font-size: 2.7rem;
+            line-height: 30px;
+            font-weight: 550;
+            padding: 0;
+            margin-left: 0;
+            font-family:'Montserrat', sans-serif;
+        }
+
+        #rll{
+            font-size: 1.7rem;
+            line-height: 30px;
+            font-weight: 550;
+            padding: 0;
+            margin-left: 0;
+            font-family:'Montserrat', sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+
+        .navoption {
+            float: right;
+            box-sizing: border-box;
+            margin-left: 30px;
+            margin-top: 40px;
+            font-size: 1.7rem;
+            margin-right: 40px;
+
+        }
+        .option{
+            color: white;
+            padding-left: 15px;
+            padding-right: 20px;
+            text-decoration: none;
+
+        }
+
+        .option:hover{
+            text-decoration-line: line-through;
+        }
+        .option:active{
+            color: black;
+        }
+        /* End of Navigation */
+
+        /* Title */
+        .TAO{
+            min-height: 60vh;
+        }
+
+        .borrow{
+            margin-top: 100px;
+            padding-top: 70px;
+        }
+
+        .sub, #log{
+            color:#e8ebe9;
+            text-align: center;
+            font-size: 5rem;
+            letter-spacing: -2px;
+            font-weight: lighter;
+            padding-bottom: 30px;
+            font-family:'Gentium Book Basic', serif;
+        }
+        .title{
+            color: #c9a100;
+            text-align: center;
+            font-size: 13rem;
+            letter-spacing: -4px;
+            font-family:'Gentium Book Basic', serif;
+            font-weight: lighter;
+
+        }
+
+        /* End of Title */
+
+        /* borrow info */
+
+
+        .User-Info{
+            padding-top: 30px;
+            align-items: center;
+            text-align: center;
+        }
+
+        .User-Info label{
+            color: white;
+            text-align: center;
+            font-family:'Montserrat', sans-serif;
+            font-size: 23px;
+            font-weight: bold;
+            margin-bottom: 0px;
+        }
+
+        .User-Info input{
+            color: #2c302e;
+            height: 40px;
+            width: 500px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            margin-top: 10px;
+            outline: none;
+            font-size: 16px;
+            font-family:'Montserrat', sans-serif;
+            transition: .3s ease;
+            border-style: none;
+            text-align: center;
+        }
+
+        .notice{
+            color: white;
+            text-align: center;
+            font-family:'Montserrat', sans-serif;
+            font-size: 16px;
+            padding-bottom: 20px;
+        }
+
+        .User-Info input:focus{
+            border-style: solid;
+            border-width: 2px;
+            border-color: rgb(33, 36, 22);
+        }
+
+        .User-Info input:hover{
+            width: 520px;
+            box-shadow: -3px 6px 4px #222;
+        }
+
+        /* end of borrower info */
+
+        /* book info */
+        .Book-Info {
+            min-height: 45vh;
+            /* background-color: rgb(202, 173, 134); */
+            /* display: flex; */
+            flex-direction: column;
+            align-items: center;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+       /* h1 {
+            color:#e8ebe9;
+            padding-top: 10px;
+            padding-bottom: 20px;
+            font-size: 5rem;
+            font-family:'Gentium Book Basic', serif;
+            font-weight: lighter;
+            letter-spacing: -2px;
+        }*/
+
+        .Book-Info input {
+            background-color: #fff;
+            box-shadow: -3px 6px 4px #222;
+            align-items: center;
+            margin: 25px 10px 20px 10px;
+            width: 350px;
+            height: 45px;
+            border: none;
+            outline: none;
+            padding: 0 5px;
+            font-size: 16px;
+            border-radius: 5px;
+            font-family:'Montserrat', sans-serif;
+            text-align: center;
+        }
+
+        .Book-Info input::placeholder{
+            font-family:'Montserrat', sans-serif;
+            font-size: 17px;
+            text-align: center;
+        }
+        .Book-Info input:focus{
+            border-style: solid;
+            border-width: 2px;
+            border-color: rgb(33, 36, 22);
+            transition: .3s ease;
+        }
+        .Book-Info input:hover::placeholder{
+            transition: .5s ease;
+            letter-spacing: 2px;
+        }
+
+        #Genre1:focus{
+            border-style: solid;
+            border-width: 2px;
+            border-color: rgb(33, 36, 22);
+            transition: .3s ease;
+        }
+
+        .Book-Info .button {
+            width: 200px;
+            height: 50px;
+            border: none;
+            background:rgb(124, 67, 27);
+            color: white;
+            outline: none;
+            cursor: pointer;
+            font-size: 20px;
+            font-family:'Montserrat', sans-serif;
+            border-style: none;
+        }
+
+        .Book-Info .button:hover{
+            background:rgb(126, 80, 48);
+            box-shadow: none;
+            transition: .8s ease;
+        }
+
+        .Book-Info .button:active{
+            background:rgb(63, 49, 39);
+            transition: .8s ease;
+            border-style: none;
+        }
+
+        #rules{
+            width: 200px;
+            height: 50px;
+            border: none;
+            background:rgb(124, 67, 27);
+            color: white;
+            outline: none;
+            cursor: pointer;
+            font-size: 20px;
+            font-family:'Montserrat', sans-serif;
+            border-style: none;
+            box-shadow: -3px 6px 4px #222;
+            border-radius: 5px;
+        }
+
+        #rules:hover{
+            background:rgb(126, 80, 48);
+            box-shadow: none;
+            transition: .8s ease;
+        }
+
+        #rules:active{
+            background:rgb(63, 49, 39);
+            transition: .8s ease;
+            border-style: none;
+        }
+        /* end of book info */
+
+        .chapter{
+            background-color: #e9dcd3;
+            padding-top: 50px;
+        }
+
+        .verse2{
+            color: #444c38;
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: bold;
+            padding-top: 40px;
+            padding-bottom: 10px;
+            text-align: right;
+            padding: 50px 100px 3px 0px;
+        }
+
+        .verse1{
+            color: #444c38;
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-align: left;
+            padding: 10px 0px 3px 100px
+            
+        }
+
+        .text2{
+            text-align: right;
+            color: #444c38;
+            font-size: 2.7rem;
+            padding: 3px 100px 70px 0px;
+            font-family: 'Permanent Marker', cursive;
+            /* text-decoration-line: underline; */
+        }
+
+        .text1{
+            color: #444c38;
+            font-size: 2.7rem;
+            padding: 3px 0px 70px 100px;
+            font-family: 'Permanent Marker', cursive;
+
+        }
+        /* End of Chapter */
+
+        /* Main */
+        .main{
+            background-image: url(../images/Book3.jpg);
+            background-size: cover;
+            height: 70vh;
+            background-attachment: fixed;
+        }
+
+        .mainver{
+            
+            font-weight: bold;
+            margin-left: auto;
+            margin-right: auto;
+
+        }
+
+        .mainver p{
+            color: whitesmoke;
+            text-align: center;
+            font-size: 3rem;
+            padding-top: 15vh;
+            line-height: 50px;
+            font-family:'Montserrat', sans-serif;
+            font-weight: bolder;
+            letter-spacing: 1px;
+          
+        }
+
+        #cor{
+            padding-top: 10px;
+        }
+
+        /*  End of main */
+
+        /* Logbook history and status */
+        .logstat{
+            align-items: center;
+            margin-left: auto;
+            margin-right: auto;
+            min-height: 50vh;
+        }
+
+        .logstat p{
+            color:#e8ebe9;
+            padding-top: 40px;
+            padding-bottom: 20px;
+            font-size: 5rem;
+            font-family:'Gentium Book Basic', serif;
+            font-weight: lighter;
+            letter-spacing: -2px;
+            text-align: center;
+
+        }
+        table{
+            box-shadow: -3px 6px 4px #222;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        th{
+            background-color:rgb(124, 67, 27);
+            align-items: center;
+            margin: 25px 10px 20px 10px;
+            height: 45px;
+            border: none;
+            outline: none;
+            padding: 0 5px;
+            font-size: 18px;
+            /* border-radius: 5px; */
+            color: white;
+            font-family:'Montserrat', sans-serif;
+            text-align: center;
+            width: 230px;
+        }
+
+        td{
+            /*background-color:rgb(226, 201, 183);*/
+            background-color: white;
+            align-items: center;
+            margin: 25px 10px 20px 10px;
+            height: 45px;
+            border: none;
+            outline: none;
+            padding: 0 5px;
+            font-size: 15px;
+            /* border-radius: 5px; */
+            color: black;
+            font-family:'Montserrat', sans-serif;
+            /*font-weight: lighter;*/
+            text-align: center;
+            width: 230px;
+
+        }
+
+        #authorid{
+            text-align: left;
+        }
+
+       /* #return, #view{
+            width: 75px;
+            height: 30px;
+            cursor: pointer;
+            align-items: right;
+            font-family:'Montserrat', sans-serif;
+            font-weight: lighter;
+            background-color:rgb(124, 67, 27);
+            color: white;
+            font-size: 15px;
+            border-style: none;
+            border-radius: 5px;
+            margin: 0 5px;
+
+        }
+
+        #view{
+            background-color:rgb(117, 20, 20);
+        }
+
+        #return:hover{
+            border-style: inset;
+            border-color: rgb(63, 49, 39);
+            transition: .3s ease-in;
+        }
+
+        #view:hover{
+            border-style: inset;
+            border-color: rgb(63, 39, 39);
+            transition: .3s ease-in;
+        }
+*/
+        /* logbook history and status */
+
+        /* Footer */
+        footer {
+            font-size: 1.3rem;
+            padding-top: 15px;
+            padding-bottom: 10px;
+            position: relative;
+            width: 100%;
+            left: 0;
+            bottom: 0;
+            background-color: rgb(37, 37, 37);
+            color: white;
+            text-align: center;
             }
 
-            body {
-                min-height: 100vh;
-                background-color: rgb(202, 173, 134);
+            .connect{
+                font-weight: bold;
+                font-size: 1.6rem;
+            }
+
+            .icons{
                 display: flex;
-                flex-direction: column;
-                align-items: center;
+                justify-content: center;
+                margin-top: 5px;
+                margin-bottom: 0;
+                padding-bottom: 0;
+
             }
 
-            h1 {
-                color: rgb(36, 31, 24);
-                margin-top: 100px;
+            .fb{
+                margin-left: 3px;
+                margin-right: 7px;
+                filter: grayscale(1);
+                transition: .3s ease filter;
             }
 
-            form{
-                margin-top: 50px;
-                background-color: #fff;
-                box-shadow: -3px 6px 4px #222;
+            .insta{
+                margin-left: 3px;
+                margin-right: 7px;
+                filter: grayscale(1);
+                transition: .3s ease filter;
             }
 
-            form input{
-                width: 250px;
-                height: 40px;
-                border: none;
-                outline: none;
-                padding: 5px;
-                font-size: 14px;
-              
+            .mail{
+                margin-left: 3px;
+                margin-right: 7px;
+                filter: grayscale(1);
+                transition: .3s ease filter;
             }
 
-            table{
-            	margin-top: 80px;
-            	box-shadow: -3px 6px 4px #222;
+            .mail:hover{
+                filter: grayscale(0);
             }
 
-            table tr{
-            	width: 250px;
-                height: 40px;
-                border: none;
-                outline: none;
-                padding: 5px;
-                font-size: 14px;
+            .fb:hover{
+                    filter: grayscale(0);
+            }
+
+            .insta:hover{
+                    filter: grayscale(0);
+            }
+
+            #verse {
+                font-size: 1.4rem;
+                padding-top: 5px;
+                padding-bottom: 2px;
+                margin-bottom: 1px;
+            }
+
+            #copy{
+                padding-bottom: 10px;
+            }
+            .navoptionfoot {
                 text-align: center;
-                background-color: white;
+                font-size: 1.7rem;
+                padding-top: 20px;
+                padding-bottom: 10px;
+            
             }
-
-            #authorid{
-                text-align: left;
-                padding-left: 10px;
-            }
-
-            table th{
-            	width: 250px;
-                height: 40px;
-                border: none;
-                outline: none;
-                padding: 5px;
-                font-size: 14px;
-                text-align: center;
-                background-color:rgb(124, 67, 27);
-                color: white;
-            }
-
-            #remove{
-            	width: 50px;
-                height: 40px;
-                border: none;
-                background-color: red;
-                color: white;
-                outline: none;
-                cursor: pointer;
-                font-weight: bolder;
-                font-weight: bolder;
-            }
-
-            #RemarksEntry, #GenreEntry{
-                width: 180px;
-                height: 40px;
-                border: none;
-                outline: none;
-                padding: 0 5px;
-              
-            }
-
-            #RemarksEntry{
-                text-align: center;
-            }
-
-            form .button {
-                width: 50px;
-                height: 40px;
-                border: none;
-                background:rgb(124, 67, 27);
-                color: white;
-                outline: none;
-                cursor: pointer;
-                font-weight: bolder;
+            .optionf{
+                color: grey;
+                padding-left: 15px;
+                padding-right: 20px;
+                text-decoration: none;
+            
             }
             
+            .optionf:hover{
+                /* text-decoration: underline; */
+                color: white;
+                transition: .5s ease;
+                font-size: 1.9rem;
+            }
+            .optionf:active{
+                color: black;
+            }
+            /* End of Footer */
 
-        </style>
+       </style>
+
+
 
     </head>
 
     <body>
 
-        <h1>I-Read Log Book</h1>
+         <div class="navbar">
 
-        <form method="POST" id="fields">
+                <div class="logoname"> 
+                    <a href=""></a><img src="../images/COLORED.png" alt="" width="100" height="100" id="logo">
+                    <a href="" class="home">
+                        <pre id="cgcf">I-Read Book Hub
+        <span id="rll">read, love and learn</span> 
+        </pre> 
+                    </a>     
+                </div>
 
-            <input type="text" name="AuthorEntry" id="AuthorEntry" required placeholder="Who is the author?">
-            <input type="text" name="BookEntry" id="BookEntry" placeholder="What is the title?" required>
-            <input type="text" name="GenreEntry" id="GenreEntry" placeholder="What is the genre?" required>
-            <input type="text" name="RemarksEntry" id="RemarksEntry" placeholder="Remarks" required>
+                <div class="navoption">
 
-            <input type="submit" name="btn-list" id="btnSave" value="+" class="button">
+                    <a href="" class="option">About</a>
+                    <a href="" class="option">Borrow</a>
+                    <a href="" class="option">Look</a>
+                    <a href="" class="option">Review</a>
 
+                </div>
+            </div>
 
-           <!-- <button type="submit" class="btn-list" id="btnSave">
-                <i class="fa fa-plus" aria-hidden="true"></i>
-            </button> -->
+                <!-- End of Nav Bar -->
 
-            {% csrf_token %}
+                <!-- Title -->
+        <div>
+        <div class="TAO" id="TAO">
+            <div class="borrow" id="borrow">
 
-        </form>
+                 <h1 class="title">BORROW a BOOK</h1>
+
+                    <p class="sub">BORROW FORM</p>
+            </div>
+
+                <div class="User-Info">
+
+                <form method="POST" id="fields">
+                <label for="NameEntry">Name</label> <br>
+                <input type="text" name="NameEntry" id="NameEntry" class="NameEntry" ><br>
+
+                <label for="NumberEntry">Number</label><br>
+                <input type="tel" name="NumberEntry" id="NumberEntry" class="NumberEntry" maxlength="11"><br>
+                
+                <label for="UserNEntry">Username</label><br>
+                <input type="email" name="UserNEntry" id="UserNEntry" class="UserNentry"><br>
+                
+                <label for="CodeEntry">Book Code</label><br>
+                <input type="text" name="CodeEntry" id="CodeEntry" class="CodeEntry"><br>
+
+                </div>
+
+                <br><br><br>
+                
+                <p id="log">I- READ LOG BOOK</p>
+
+                <div class="Book-Info">
+             
+                <input type="text" name="AuthorEntry" id="AuthorEntry" required placeholder="Who is the author?">
+                <input type="text" name="BookEntry" id="BookEntry" placeholder="What is the title?" required>
+                <input type="text" name="GenreEntry" id="GenreEntry" placeholder="What is the genre?" required>
+                <input type="text" name="RemarksEntry" id="RemarksEntry" placeholder="Remarks" required>
+
+                <br>
+
+                <a href=""><button name="rules" id="rules" value="rules">Book-ing Rules</button></a>
+                <input type="submit" name="btn-list" id="btnSave" value="Confirm" class="button">
+
+                </div>
+                
+                {% csrf_token %}
+
+            </form>
+
+            <div class="notice">
+
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima voluptatem hic quam <br>
+                    non inventore excepturi molestias ad ratione itaque!</p>
+                    
+                 </div>
+            
+        </div>
+
+        <div class="logstat">
+
        
             <table id="booklist" name='booklist'>
             	<tr>
@@ -150,7 +683,7 @@
             	</tr>
                 {% for item in NewAuthor%}
                 <tr>
-                    <td id="authorid">{{forloop.counter}}.  {{item.binfo}}</td>
+                    <td id="authorid">{{forloop.counter}}. {{item.binfo}}</td>
                 </tr>
                 {% endfor%}
             	<!--<tr>
@@ -162,6 +695,78 @@
             	</tr>-->
 
             </table>
+
+        </div>
+
+
+
+
+            <div class="chapter">
+
+            <div class="deut">
+
+                <p class="verse1">
+                    "Books are good company, in sad times and happy times, <br>
+                    for books are people – people who have managed to <br>
+                    stay alive by hiding between the covers of a book.”<br>
+                </p>
+                <p class="text1"> – E.B. White</p>
+
+            </div>
+            <div class="mala">
+
+                <p class="verse2">
+                    “In the case of good books, the point is <br>
+                     not to see how many of them you can get through, <br>
+                     but rather how many can get through to you.”
+                </p>
+                <p class="text2">- Mortimer J. Adler</p>
+
+            </div>
+            
+        </div>
+
+        <!-- End of Verses -->
+
+        <!-- Main Verse -->
+        <div class="main">
+            <div class="mainver">
+
+                <p>“That perfect tranquility of life, which is <br>
+                    nowhere to be found but in retreat, <br>
+                    a faithful friend and a good library.” <br></p>
+                <p id="cor">– Aphra Behn</p>
+
+            </div>
+        </div>
+
+        <footer class="container">
+
+            <p class="connect"> Continue to follow us in your social media accounts.</p>
+
+            <div class="icons">
+
+                <a href=""> <img class="fb" src="../images/facebook-new.png" alt="" width="30" height="30"></a>
+                <a href=""> <img class="insta" src="../images/insta.png" alt="" width="30" height="30"></a>
+                <a href=""> <img class="mail" src="../images/email.png" alt="" width="30" height="30"></a>
+
+            </div>
+
+            <p id="verse">“Books are a uniquely portable magic.” – Stephen King</p>
+            <p id="copy">Copyright &copy; 2021 I-Read Book Hub.</p>
+
+            <div class="navoptionfoot">
+
+                <a href="" class="optionf">About</a>
+                <a href="" class="optionf">Borrow</a>
+                <a href="" class="optionf">Look</a>
+                <a href="" class="optionf">Review</a>
+
+            </div>
+        </footer>
+        <!-- End of footer -->
+    </body>
+
    
 
 
