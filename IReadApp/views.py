@@ -29,11 +29,16 @@ def LogPage(request):
 	#return render (request, 'logpage.html',{'NewAuthor':newItem,})
 
 	if request.method == 'POST':
-		Item.objects.create(binfo=request.POST['AuthorEntry']) #eto yung refactored pero di na nagrun
-		return redirect('/')
+		Item.objects.create(binfo=request.POST['CodeEntry']) #eto yung refactored pero di na nagrun
+		#return redirect('/')
+		return redirect('/IReadApp/viewlist_url/')
 	infos = Item.objects.all()
-	return render (request, 'logpage.html', {'NewAuthor': infos})
+	return render (request, 'logpage.html', {'NewCode': infos})
 	#return render (request, 'logpage.html')
+
+def viewList(request):
+	infos = Item.objects.all()
+	return render (request, 'logpage.html', {'NewCode': infos})
 
 
 # Create your views here.

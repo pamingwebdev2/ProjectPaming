@@ -3,6 +3,7 @@ from IReadApp import views
 
 urlpatterns = [
     url(r'^$', views.LogPage, name='logpage'),
+    url(r'^IReadApp/viewlist_url/$', views.viewList, name='viewlist'),
 ]
 
 """ProjectPaming URL Configuration

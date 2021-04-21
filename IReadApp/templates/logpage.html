@@ -393,6 +393,7 @@
             margin-left: auto;
             margin-right: auto;
             min-height: 50vh;
+            padding-bottom: 70px;
         }
 
         .logstat p{
@@ -410,6 +411,7 @@
             box-shadow: -3px 6px 4px #222;
             margin-left: auto;
             margin-right: auto;
+
         }
         th{
             background-color:rgb(124, 67, 27);
@@ -450,13 +452,13 @@
             text-align: left;
         }
 
-       /* #return, #view{
+        #return, #view{
             width: 75px;
             height: 30px;
             cursor: pointer;
             align-items: right;
             font-family:'Montserrat', sans-serif;
-            font-weight: lighter;
+            /*font-weight: lighter;*/
             background-color:rgb(124, 67, 27);
             color: white;
             font-size: 15px;
@@ -473,15 +475,32 @@
         #return:hover{
             border-style: inset;
             border-color: rgb(63, 49, 39);
-            transition: .3s ease-in;
+            transition: .3s ease;
         }
 
         #view:hover{
             border-style: inset;
             border-color: rgb(63, 39, 39);
+            transition: .3s ease;
+        }
+
+        #remove{
+            background-color:red;
+            font-size: 16px;
+            width: 30px;
+            height: 30px;
+           /* border-radius: 50px;*/
+            color: white;
+            cursor: pointer;
+        }
+
+        #remove:hover{
+            
+            background-color:#380000;
             transition: .3s ease-in;
         }
-*/
+        }
+
         /* logbook history and status */
 
         /* Footer */
@@ -594,8 +613,8 @@
                 <div class="logoname"> 
                     <a href=""></a><img src="../images/COLORED.png" alt="" width="100" height="100" id="logo">
                     <a href="" class="home">
-                        <pre id="cgcf">I-Read Book Hub
-        <span id="rll">read, love and learn</span> 
+                    <pre id="cgcf"> I-Read Book Hub
+<span id="rll"> read, love and learn</span> 
         </pre> 
                     </a>     
                 </div>
@@ -606,6 +625,7 @@
                     <a href="" class="option">Borrow</a>
                     <a href="" class="option">Look</a>
                     <a href="" class="option">Review</a>
+                    <a href="" class="option">Profile</a>
 
                 </div>
             </div>
@@ -624,18 +644,25 @@
 
                 <div class="User-Info">
 
-                <form method="POST" id="fields">
+                <form method="POST" id="fields" action="/">
                 <label for="NameEntry">Name</label> <br>
                 <input type="text" name="NameEntry" id="NameEntry" class="NameEntry" ><br>
 
                 <label for="NumberEntry">Number</label><br>
                 <input type="tel" name="NumberEntry" id="NumberEntry" class="NumberEntry" maxlength="11"><br>
                 
-                <label for="UserNEntry">Username</label><br>
-                <input type="email" name="UserNEntry" id="UserNEntry" class="UserNentry"><br>
+                <!-- <label for="UserNEntry">Username</label><br>
+                <input type="email" name="UserNEntry" id="UserNEntry" class="UserNentry"><br> -->
+               <!--  <label for="DateEntry">Book-ing Date</label><br>
+                <input type="text" name="DateEntry" id="DateEntry" class="DateEntry" placeholder="month/day/year" -->>
                 
-                <label for="CodeEntry">Book Code</label><br>
-                <input type="text" name="CodeEntry" id="CodeEntry" class="CodeEntry"><br>
+                <label for="BIDEntry">Borrower ID</label><br>
+                <input type="text" name="BIDEntry" id="BIDEntry" placeholder="User-IRD-ID" ><br>
+
+                <label for="SchoolEntry">School Affiliation</label><br>
+                <input type="text" name="SchoolEntry" id="SchoolEntry" placeholder ><br>
+
+
 
                 </div>
 
@@ -647,9 +674,10 @@
              
                 <input type="text" name="AuthorEntry" id="AuthorEntry" required placeholder="Who is the author?">
                 <input type="text" name="BookEntry" id="BookEntry" placeholder="What is the title?" required>
+                <br> <br>
                 <input type="text" name="GenreEntry" id="GenreEntry" placeholder="What is the genre?" required>
-                <input type="text" name="RemarksEntry" id="RemarksEntry" placeholder="Remarks" required>
-
+                <input type="text" name="CodeEntry" id="CodeEntry" placeholder="IRD-Book-#" required>
+                
                 <br>
 
                 <a href=""><button name="rules" id="rules" value="rules">Book-ing Rules</button></a>
@@ -675,15 +703,25 @@
        
             <table id="booklist" name='booklist'>
             	<tr>
+
+                    <th>Book Code</th>
             		<th>Book Author</th>
             		<th>Book Title</th>
             		<th>Book Genre</th>
-            		<th>Remarks</th>
-
+                    <th>B-Status</th>
+            		
             	</tr>
-                {% for item in NewAuthor%}
+                {% for item in NewCode%}
                 <tr>
                     <td id="authorid">{{forloop.counter}}. {{item.binfo}}</td>
+                    <td>{{NewAuthor}}</td>
+                    <td>{{NewTitle}}</td>
+                    <td>{{NewGenre}}</td>
+                    <td>
+                        <a href=""><button name="view" id="view" value="view">View</button></a>
+                        <a href=""><button name="return" id="return" value="return">Return</button></a>
+                    <td id="remove" class=""><span>X</span></td> 
+                    </td>
                 </tr>
                 {% endfor%}
             	<!--<tr>
@@ -761,15 +799,16 @@
                 <a href="" class="optionf">Borrow</a>
                 <a href="" class="optionf">Look</a>
                 <a href="" class="optionf">Review</a>
+                <a href="" class="option">Profile</a>
 
             </div>
         </footer>
         <!-- End of footer -->
-    </body>
-
-   
 
 
     </body>
+
+
+
 
     </html>
