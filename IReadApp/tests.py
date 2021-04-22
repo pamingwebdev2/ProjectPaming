@@ -16,11 +16,11 @@ class LogPageTest(TestCase):
 		response = self.client.get ('/')
 		self.assertTemplateUsed(response,'logpage.html')
 
-	def test_saves_only_with_content(self): #def test_only_saves_items_if_necessary(self):
-		self.client.get('/')
-		self.assertEqual(Item.objects.count(), 0)	
+	# def test_saves_only_with_content(self): #def test_only_saves_items_if_necessary(self):
+	# 	self.client.get('/')
+	# 	self.assertEqual(Item.objects.count(), 0)	
 
-	def test_saving_POST(self): #def test_save_POST_request(self):
+	'''def test_saving_POST(self): #def test_save_POST_request(self):
 		#response = self.client.post('/', data={'AuthorEntry': 'NewAuthor',})
 		response = self.client.post('/', data={'CodeEntry': 'NewCode'})
 
@@ -37,14 +37,14 @@ class LogPageTest(TestCase):
 	def test_if_redirecting_when_POST(self): #def test_redirects_POST_request(self):
 		response = self.client.post('/', data={'CodeEntry': 'NewCode',})
 		self.assertEqual(response.status_code, 302) #eto yung bagong insert
-		self.assertEqual(response['location'],'/IReadApp/viewlist_url/')
+		self.assertEqual(response['location'],'/IReadApp/viewlist_url/')'''
 
-	def test_display_input(self): #def test_template_displays_list(self):
-		Item.objects.create(binfo='Book Info 1')
-		Item.objects.create(binfo='Book Info 2')
-		response = self.client.get('/')
-		self.assertIn('Book Info 1', response.content.decode())
-		self.assertIn('Book Info 2', response.content.decode())
+	# def test_display_input(self): #def test_template_displays_list(self):
+	# 	Item.objects.create(binfo='Book Info 1')
+	# 	Item.objects.create(binfo='Book Info 2')
+	# 	response = self.client.get('/')
+	# 	self.assertIn('Book Info 1', response.content.decode())
+	# 	self.assertIn('Book Info 2', response.content.decode())
 
 
 #for ORM test
@@ -93,9 +93,25 @@ class ViewTest(TestCase):
 		self.assertContains(response,'Manzanilla')
 		self.assertContains(response,'INHS')
 
+	def test_output_view_uses_log_page_list(self):
+		response = self.client.get('/IReadApp/viewlist_url/')
+		self.assertTemplateUsed(response, 'loglistpage.html')
 
 
+class CreationofListTest(TestCase):
+	def test_saving_POST(self):
+		# response = self.client.post('/', data={'CodeEntry': 'NewCode'})
+		response = self.client.post('/IReadApp/newlist_url', data={'CodeEntry': 'NewCode'})
+		self.assertEqual(Item.objects.count(), 1)
+		newItem = Item.objects.first()
+		self.assertEqual(newItem.binfo, 'NewCode')
 
+	def test_if_redirecting_when_POST(self): 
+		# response = self.client.post('/', data={'CodeEntry': 'NewCode',})
+		response = self.client.post('/IReadApp/newlist_url', data={'CodeEntry': 'NewCode'})
+		# self.assertEqual(response.status_code, 302)
+		# self.assertEqual(response['location'],'/IReadApp/viewlist_url/')
+		self.assertRedirects(response, '/IReadApp/viewlist_url/')
 
 
 

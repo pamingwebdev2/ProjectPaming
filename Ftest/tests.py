@@ -6,6 +6,7 @@ import unittest
 from selenium.webdriver.common.keys import Keys
 import time
 from django.test import LiveServerTestCase
+from selenium.common.exceptions import WebDriverException
 
 
 cWait = 3
@@ -14,8 +15,8 @@ class PageTest (LiveServerTestCase):
 	def setUp(self):
 		self.browser = webdriver.Firefox()
 
-	#def tearDown(self):
-		#self.browser.quit()
+	def tearDown(self):
+		self.browser.quit()
 
 	'''def test_browser_title(self):
 		self.browser.get('http://localhost:8000')
@@ -227,7 +228,7 @@ class PageTest (LiveServerTestCase):
 
 		self.browser.get(self.live_server_url)
 		logpagebody = self.browser.find_element_by_tag_name('body').text
-		#self.assertNotIn('1. IRD-Book-2 View Return X', logpagebody) #dito ako nagerror kaya di napasok si book 2
+		self.assertNotIn('1. IRD-Book-2 View Return X', logpagebody) #dito ako nagerror kaya di napasok si book 2
 
 		time.sleep(.1)
 		inAuthor = self.browser.find_element_by_id('AuthorEntry')
@@ -258,8 +259,8 @@ class PageTest (LiveServerTestCase):
 		self.assertRegex(userbook2_url, '/IReadApp/.+')
 		self.assertNotEqual(viewlist_url, userbook2_url)
 		logpagebody = self.browser.find_element_by_tag_name('body').text
-		self.assertNotIn('1. IRD-Book-2 View Return X', logpagebody) #eto kinomment ni sir
-		self.assertIn('1. IRD-Book-10 View Return X', logpagebody)
+		self.assertNotIn('IRD-Book-2 View Return X', logpagebody) #eto kinomment ni sir
+		self.assertIn('IRD-Book-10 View Return X', logpagebody)
 
 
 
