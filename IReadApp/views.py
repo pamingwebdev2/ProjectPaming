@@ -36,7 +36,7 @@ def LogPage(request):
 	return render (request, 'logpage.html', {'NewCode': infos})
 	#return render (request, 'logpage.html')
 
-def viewList(request):
+def ViewList(request):
 	infos = Item.objects.all()
 	return render (request, 'logpage.html', {'NewCode': infos})
 

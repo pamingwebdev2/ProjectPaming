@@ -72,26 +72,26 @@ class ORMTest (TestCase):
 class ViewTest(TestCase):
 	def test_output_everything(self): #displayall
 		Item.objects.create(binfo = 'Jas Tuzon')
-		# Item.objects.create(binfo = '09091432441')
-		# Item.objects.create(binfo = 'Tuzon-IRD-002')
-		# Item.objects.create(binfo = 'UPHSDM')
+		Item.objects.create(binfo = '09091432441')
+		Item.objects.create(binfo = 'Tuzon-IRD-002')
+		Item.objects.create(binfo = 'UPHSDM')
 
 		Item.objects.create(binfo= 'Milleth Manzanilla')
-		# Item.objects.create(binfo = '09098765432')
-		# Item.objects.create(binfo= 'Manzanilla-IRD-003')
-		# Item.objects.create(binfo = 'INHS')
+		Item.objects.create(binfo = '09098765432')
+		Item.objects.create(binfo= 'Manzanilla-IRD-003')
+		Item.objects.create(binfo = 'INHS')
 
-		response = self.client.get('IReadApp/viewlist_url/')
+		response = self.client.get('/IReadApp/viewlist_url/')
 		
 		self.assertContains(response,'Jas Tuzon')
-		# self.assertContains(response,'09091432441')
-		# self.assertContains(response,'Tuzon-IRD-002')
-		# self.assertContains(response,'UPHSDM')
+		self.assertContains(response,'09091432441')
+		self.assertContains(response,'Tuzon-IRD-002')
+		self.assertContains(response,'UPHSDM')
 
 		self.assertContains(response,'Milleth Manzanilla')
-		# self.assertContains(response,'09098765432')
-		# self.assertContains(response,'Manzanilla')
-		# self.assertContains(response,'INHS')
+		self.assertContains(response,'09098765432')
+		self.assertContains(response,'Manzanilla')
+		self.assertContains(response,'INHS')
 
 
 
