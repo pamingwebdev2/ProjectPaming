@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 #from django.http import HttpResponse
-from IReadApp.models import Item
+from IReadApp.models import Item, Author
 
 '''LogPage = None'''
 
@@ -38,10 +38,12 @@ def LogPage(request):
 
 def ViewList(request):
 	infos = Item.objects.all()
-	return render (request, 'loglistpage.html', {'NewCode': infos})
+	auths = Author.objects.all() #regression, server 505
+	return render (request, 'loglistpage.html', {'NewCode': infos, 'NewAuthor': auths, 'NewTitle': auths, 'NewGenre': auths})
 
 def NewList(request):
 	Item.objects.create(binfo=request.POST['CodeEntry'])
+	Author.objects.create(bauth=request.POST['AuthorEntry'], btitle=request.POST['BookEntry'], bgenre=request.POST['GenreEntry'])
 	return redirect('/IReadApp/viewlist_url/')
 
 

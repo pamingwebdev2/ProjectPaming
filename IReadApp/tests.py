@@ -3,7 +3,7 @@ from django.test import TestCase
 from IReadApp.views import LogPage
 from django.http import HttpRequest
 """
-from IReadApp.models import Item, Author #formodelsORM
+from IReadApp.models import Item, Author #formodelsORM #regression na naman hayup
 
 
 class LogPageTest(TestCase):
@@ -53,7 +53,7 @@ class ORMTest (TestCase):
 
 	def test_and_retrieve(self): #def test_saving_retrieving_list(self):
 		infoItem1 = Item()
-		infoAuthor1 = Author ()
+		infoAuthor1 = Author()
 		infoItem1.binfo = 'Book Code 1'
 		infoAuthor1.bauth = 'Author 1'
 		infoAuthor1.btitle = 'Title 1'
@@ -62,7 +62,7 @@ class ORMTest (TestCase):
 		infoAuthor1.save()
 		
 		infoItem2 = Item()
-		infoAuthor2 = Author ()
+		infoAuthor2 = Author()
 		infoItem2.binfo = 'Book Code 2'
 		infoAuthor2.bauth = 'Author 2'
 		infoAuthor2.btitle = 'Title 2'
@@ -127,14 +127,20 @@ class ViewTest(TestCase):
 class CreationofListTest(TestCase):
 	def test_saving_POST(self):
 		# response = self.client.post('/', data={'CodeEntry': 'NewCode'})
-		response = self.client.post('/IReadApp/newlist_url', data={'CodeEntry': 'NewCode'})
+		response = self.client.post('/IReadApp/newlist_url', Code={'CodeEntry': 'NewCode'}, Author={'AuthorEntry': 'NewAuthor'}, Title={'BookEntry': 'NewTitle'}, Genre={'GenreEntry': 'NewGenre'})
 		self.assertEqual(Item.objects.count(), 1)
+		self.assertEqual(Author.objects.count(),1)
 		newItem = Item.objects.first()
+		newAuthor = Author.objects.first()
 		self.assertEqual(newItem.binfo, 'NewCode')
+		self.assertEqual(newAuthor.bauth, 'NewAuthor')
+		self.assertEqual(newAuthor.btitle, 'NewTitle')
+		self.assertEqual(newAuthor.bgenre, 'NewGenre')
+
 
 	def test_if_redirecting_when_POST(self): 
 		# response = self.client.post('/', data={'CodeEntry': 'NewCode',})
-		response = self.client.post('/IReadApp/newlist_url', data={'CodeEntry': 'NewCode'})
+		response = self.client.post('/IReadApp/newlist_url', Code={'CodeEntry': 'NewCode'}, Author={'AuthorEntry': 'NewAuthor'}, Title={'BookEntry': 'NewTitle'}, Genre={'GenreEntry': 'NewGenre'})
 		# self.assertEqual(response.status_code, 302)
 		# self.assertEqual(response['location'],'/IReadApp/viewlist_url/')
 		self.assertRedirects(response, '/IReadApp/viewlist_url/')

@@ -644,7 +644,7 @@
 
                 <div class="User-Info">
 
-                <form method="POST" id="fields" action="/IReadApp/newlist_url/"> <!--Before addingthis i already have regression after putting i dont have na-->
+                <form method="POST" id="fields" action="/IReadApp/newlist_url"> <!--Before addingthis i already have regression after putting i dont have na-->
                 <label for="NameEntry">Name</label> <br>
                 <input type="text" name="NameEntry" id="NameEntry" class="NameEntry" ><br>
 
@@ -714,7 +714,7 @@
                 {% for item in NewCode%}
                 <tr>
                     <td id="authorid">{{forloop.counter}}. {{item.binfo}}</td>
-                    <td>{{NewAuthor}}</td>
+                    <td>{{forloop.counter}}{{NewAuthor}}</td>
                     <td>{{NewTitle}}</td>
                     <td>{{NewGenre}}</td>
                     <td>

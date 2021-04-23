@@ -644,7 +644,7 @@
 
                 <div class="User-Info">
 
-                <form method="POST" id="fields" action="/IReadApp/newlist_url/">
+                <form method="POST" id="fields" action="/IReadApp/newlist_url">
                 <label for="NameEntry">Name</label> <br>
                 <input type="text" name="NameEntry" id="NameEntry" class="NameEntry" ><br>
 
@@ -701,7 +701,7 @@
         <div class="logstat">
 
        
-            <table id="booklist" name='booklist'>
+            <table id="booklist" name='booklist' class="booklist">
             	<tr>
 
                     <th>Book Code</th>
@@ -714,9 +714,9 @@
                 {% for item in NewCode%}
                 <tr>
                     <td id="authorid">{{forloop.counter}}. {{item.binfo}}</td>
-                    <td>{{NewAuthor}}</td>
-                    <td>{{NewTitle}}</td>
-                    <td>{{NewGenre}}</td>
+                    <td>{{forloop.counter}}{{author.bauth}}</td>
+                    <td>{{author.btitle}}</td>
+                    <td>{{author.bgenre}}</td>
                     <td>
                         <a href=""><button name="view" id="view" value="view">View</button></a>
                         <a href=""><button name="return" id="return" value="return">Return</button></a>

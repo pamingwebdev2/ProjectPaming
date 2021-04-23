@@ -15,8 +15,8 @@ class PageTest (LiveServerTestCase):
 	def setUp(self):
 		self.browser = webdriver.Firefox()
 
-	# def tearDown(self):
-	# 	self.browser.quit()
+	def tearDown(self):
+		self.browser.quit()
 
 	'''def test_browser_title(self):
 		self.browser.get('http://localhost:8000')
@@ -117,7 +117,8 @@ class PageTest (LiveServerTestCase):
 		btnSave.click()
 
 		#self.check_rows_in_booklist('1. Mitch Albom') #(Tuesdays With Morrie Biographical Fiction Done X')
-		self.wait_rows_in_booklist('1. IRD-Book-1 View Return X')
+		#self.wait_rows_in_booklist('1. IRD-Book-1 View Return X')
+		self.wait_rows_in_booklist('1. IRD-Book-1 Mitch Albom Tuesdays With Morrie Biographical Fiction View Return X')
 #another input
 
 		'''time.sleep(1)
@@ -170,7 +171,7 @@ class PageTest (LiveServerTestCase):
 		btnSave.click()
 
 		#self.check_rows_in_booklist("2. Deb Caletti") #Stay Adult Fiction Borrowed X
-		self.wait_rows_in_booklist("2. IRD-Book-9 View Return X")
+		self.wait_rows_in_booklist("2. IRD-Book-9 Deb Caletti Stay Adult Fiction View Return X")
 		'''time.sleep(2)
 		inputAuthor1.send_keys('Mitch Albom')
 		time.sleep(2)
@@ -218,7 +219,7 @@ class PageTest (LiveServerTestCase):
 		btnSave = self.browser.find_element_by_id('btnSave')
 		btnSave.click()
 		
-		self.wait_rows_in_booklist ('1. IRD-Book-2 View Return X')
+		self.wait_rows_in_booklist('1. IRD-Book-2 Tarryn Fisher The Opportunist Contemporary Fiction View Return X')
 		viewlist_url = self.browser.current_url
 		self.assertRegex(viewlist_url, '/IReadApp/.+')
 
@@ -228,7 +229,7 @@ class PageTest (LiveServerTestCase):
 
 		self.browser.get(self.live_server_url)
 		logpagebody = self.browser.find_element_by_tag_name('body').text
-		self.assertNotIn('1. IRD-Book-2 View Return X', logpagebody) #dito ako nagerror kaya di napasok si book 2
+		self.assertNotIn('1. IRD-Book-2 Tarryn Fisher The Opportunist Contemporary Fiction View Return X', logpagebody) #dito ako nagerror kaya di napasok si book 2
 
 		time.sleep(.1)
 		inAuthor = self.browser.find_element_by_id('AuthorEntry')
@@ -254,13 +255,13 @@ class PageTest (LiveServerTestCase):
 		btnSave = self.browser.find_element_by_id('btnSave')
 		btnSave.click()
 
-		self.wait_rows_in_booklist ('1. IRD-Book-10 View Return X')
+		self.wait_rows_in_booklist ('1. IRD-Book-10 Nicholas Sparks The NoteBook Adult Fiction View Return X')
 		userbook2_url = self.browser.current_url
 		self.assertRegex(userbook2_url, '/IReadApp/.+')
 		self.assertNotEqual(viewlist_url, userbook2_url)
 		logpagebody = self.browser.find_element_by_tag_name('body').text
-		self.assertNotIn('IRD-Book-2 View Return X', logpagebody) #eto kinomment ni sir
-		self.assertIn('IRD-Book-10 View Return X', logpagebody)
+		self.assertNotIn('IRD-Book-2 Tarryn Fisher The Opportunist Contemporary Fiction View Return X', logpagebody) #eto kinomment ni sir
+		self.assertIn('IRD-Book-10 Nicholas Sparks The NoteBook Adult FictionView Return X', logpagebody)
 
 
 
