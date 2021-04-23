@@ -4,6 +4,11 @@ class Item(models.Model):
 	#pass
 	binfo = models.TextField(default="")
 
+class Author(models.Model):
+	#pass
+	bauth = models.TextField(default="")
+	btitle = models.TextField(default="")
+	bgenre = models.TextField(default="")
 
 
 

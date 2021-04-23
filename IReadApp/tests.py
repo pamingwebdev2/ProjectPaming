@@ -3,7 +3,7 @@ from django.test import TestCase
 from IReadApp.views import LogPage
 from django.http import HttpRequest
 """
-from IReadApp.models import Item #formodelsORM
+from IReadApp.models import Item, Author #formodelsORM
 
 
 class LogPageTest(TestCase):
@@ -53,21 +53,47 @@ class ORMTest (TestCase):
 
 	def test_and_retrieve(self): #def test_saving_retrieving_list(self):
 		infoItem1 = Item()
-		infoItem1.binfo = 'BkInfo one'
+		infoAuthor1 = Author ()
+		infoItem1.binfo = 'Book Code 1'
+		infoAuthor1.bauth = 'Author 1'
+		infoAuthor1.btitle = 'Title 1'
+		infoAuthor1.bgenre = 'Genre 1'
 		infoItem1.save()
+		infoAuthor1.save()
 		
 		infoItem2 = Item()
-		infoItem2.binfo = 'BkInfo two'
+		infoAuthor2 = Author ()
+		infoItem2.binfo = 'Book Code 2'
+		infoAuthor2.bauth = 'Author 2'
+		infoAuthor2.btitle = 'Title 2'
+		infoAuthor2.bgenre = 'Genre 2'
 		infoItem2.save()
+		infoAuthor2.save()
+		infoAuthor2.save()
+		
 		
 		savedInfos = Item.objects.all()
+		savedAuthors = Author.objects.all()
 		self.assertEqual(savedInfos.count(), 2)
+		self.assertEqual(savedAuthors.count(), 2)
 
 		savedInfo1 = savedInfos[0]
 		savedInfo2 = savedInfos[1]
 
-		self.assertEqual(savedInfo1.binfo, 'BkInfo one')
-		self.assertEqual(savedInfo2.binfo, 'BkInfo two')
+		savedAuthor1= savedAuthors[0]
+		savedAuthor2= savedAuthors[1]
+
+		self.assertEqual(savedInfo1.binfo, 'Book Code 1')
+		self.assertEqual(savedInfo2.binfo, 'Book Code 2')
+
+		self.assertEqual(savedAuthor1.bauth, 'Author 1')
+		self.assertEqual(savedAuthor2.bauth, 'Author 2')
+
+		self.assertEqual(savedAuthor1.btitle, 'Title 1')
+		self.assertEqual(savedAuthor2.btitle, 'Title 2')
+
+		self.assertEqual(savedAuthor1.bgenre, 'Genre 1')
+		self.assertEqual(savedAuthor2.bgenre, 'Genre 2')
 
 class ViewTest(TestCase):
 	def test_output_everything(self): #displayall
