@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 #from django.http import HttpResponse
-from IReadApp.models import Item, Author
+from IReadApp.models import Item
 
 '''LogPage = None'''
 
@@ -29,21 +29,21 @@ def LogPage(request):
 	#return render (request, 'logpage.html',{'NewAuthor':newItem,})
 
 	# if request.method == 'POST':
-	# 	Item.objects.create(binfo=request.POST['CodeEntry']) #eto yung refactored pero di na nagrun
+	# 	Item.objects.create(binfo=request.POST['CodeEntry'], bauth=request.POST['AuthorEntry'], btitle=request.POST['BookEntry'], bgenre=request.POST['GenreEntry']) #eto yung refactored pero di na nagrun
 	# 	#return redirect('/')
 	# 	return redirect('/IReadApp/viewlist_url/') #nung tinanggalko to nagerror sila mitch # ihave regresion si sir wala
-	#infos = Item.objects.all()
+	# #infos = Item.objects.all()
 	#return render (request, 'logpage.html', {'NewCode': infos})
 	return render (request, 'logpage.html')
 
 def ViewList(request):
 	infos = Item.objects.all()
-	auths = Author.objects.all() #regression, server 505
-	return render (request, 'loglistpage.html', {'NewCode': infos, 'NewAuthor': auths, 'NewTitle': auths, 'NewGenre': auths})
+	#auths = Author.objects.all() #regression, server 505
+	return render (request, 'loglistpage.html', {'NewCode': infos, 'NewAuthor': infos,'NewTitle': infos, 'NewGenre': infos})
 
 def NewList(request):
-	Item.objects.create(binfo=request.POST['CodeEntry'])
-	Author.objects.create(bauth=request.POST['AuthorEntry'], btitle=request.POST['BookEntry'], bgenre=request.POST['GenreEntry'])
+	Item.objects.create(binfo=request.POST['CodeEntry'], bauth=request.POST['AuthorEntry'], btitle=request.POST['BookEntry'], bgenre=request.POST['GenreEntry']) #dito nanggagaling error sa test, norml pa functional ko 
+	#Author.objects.create(, btitle=request.POST['BookEntry'],)# bgenre=request.POST['GenreEntry'])
 	return redirect('/IReadApp/viewlist_url/')
 
 

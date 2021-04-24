@@ -3,7 +3,7 @@ from django.test import TestCase
 from IReadApp.views import LogPage
 from django.http import HttpRequest
 """
-from IReadApp.models import Item, Author #formodelsORM #regression na naman hayup
+from IReadApp.models import Item #formodelsORM #regression na naman hayup
 
 
 class LogPageTest(TestCase):
@@ -40,12 +40,31 @@ class LogPageTest(TestCase):
 		self.assertEqual(response['location'],'/IReadApp/viewlist_url/')'''
 
 	# def test_display_input(self): #def test_template_displays_list(self):
-	# 	Item.objects.create(binfo='Book Info 1')
-	# 	Item.objects.create(binfo='Book Info 2')
-	# 	response = self.client.get('/')
-	# 	self.assertIn('Book Info 1', response.content.decode())
-	# 	self.assertIn('Book Info 2', response.content.decode())
+	# 	Item.objects.create(binfo='Book Code 1')
+	# 	Item.objects.create(binfo='Book Code 2')
 
+	# 	Item.objects.create(bauth='Author 1')
+	# 	Item.objects.create(bauth='Author 2')
+
+	# 	Item.objects.create(btitle='Title 1')
+	# 	Item.objects.create(btitle='Title 2')
+
+	# 	Item.objects.create(bgenre='Genre 1')
+	# 	Item.objects.create(bgenre='Genre 2')
+
+	# 	response = self.client.get('/')
+
+	# 	self.assertIn('Book Code 1', response.content.decode())
+	# 	self.assertIn('Book Code 2', response.content.decode())
+
+	# 	self.assertIn('Author 1', response.content.decode())
+	# 	self.assertIn('Author 2', response.content.decode())
+
+	# 	self.assertIn('Title 1', response.content.decode())
+	# 	self.assertIn('Title 2', response.content.decode())
+
+	# 	self.assertIn('Genre 1', response.content.decode())
+	# 	self.assertIn('Genre 2', response.content.decode())
 
 #for ORM test
 
@@ -53,71 +72,69 @@ class ORMTest (TestCase):
 
 	def test_and_retrieve(self): #def test_saving_retrieving_list(self):
 		infoItem1 = Item()
-		infoAuthor1 = Author()
+		#infoAuthor1 = Author()
 		infoItem1.binfo = 'Book Code 1'
-		infoAuthor1.bauth = 'Author 1'
-		infoAuthor1.btitle = 'Title 1'
-		infoAuthor1.bgenre = 'Genre 1'
+		infoItem1.bauth = 'Author 1'
+		infoItem1.btitle = 'Title 1'
+		infoItem1.bgenre = 'Genre 1'
 		infoItem1.save()
-		infoAuthor1.save()
+	#	infoAuthor1.save()
 		
 		infoItem2 = Item()
-		infoAuthor2 = Author()
+		#infoAuthor2 = Author()
 		infoItem2.binfo = 'Book Code 2'
-		infoAuthor2.bauth = 'Author 2'
-		infoAuthor2.btitle = 'Title 2'
-		infoAuthor2.bgenre = 'Genre 2'
+		infoItem2.bauth = 'Author 2'
+		infoItem2.btitle = 'Title 2'
+		infoItem2.bgenre = 'Genre 2'
 		infoItem2.save()
-		infoAuthor2.save()
-		infoAuthor2.save()
+		# infoAuthor2.save()
+		# infoAuthor2.save()
 		
 		
 		savedInfos = Item.objects.all()
-		savedAuthors = Author.objects.all()
+		#savedAuthors = Author.objects.all()
 		self.assertEqual(savedInfos.count(), 2)
-		self.assertEqual(savedAuthors.count(), 2)
+		#self.assertEqual(savedAuthors.count(), 2)
 
 		savedInfo1 = savedInfos[0]
 		savedInfo2 = savedInfos[1]
 
-		savedAuthor1= savedAuthors[0]
-		savedAuthor2= savedAuthors[1]
+		# savedAuthor1= savedAuthors[0]
+		# savedAuthor2= savedAuthors[1]
 
 		self.assertEqual(savedInfo1.binfo, 'Book Code 1')
+		self.assertEqual(savedInfo1.bauth, 'Author 1')
+		self.assertEqual(savedInfo1.btitle, 'Title 1')
+		self.assertEqual(savedInfo1.bgenre, 'Genre 1')
+
 		self.assertEqual(savedInfo2.binfo, 'Book Code 2')
-
-		self.assertEqual(savedAuthor1.bauth, 'Author 1')
-		self.assertEqual(savedAuthor2.bauth, 'Author 2')
-
-		self.assertEqual(savedAuthor1.btitle, 'Title 1')
-		self.assertEqual(savedAuthor2.btitle, 'Title 2')
-
-		self.assertEqual(savedAuthor1.bgenre, 'Genre 1')
-		self.assertEqual(savedAuthor2.bgenre, 'Genre 2')
+		self.assertEqual(savedInfo2.bauth, 'Author 2')	
+		self.assertEqual(savedInfo2.btitle, 'Title 2')
+		self.assertEqual(savedInfo2.bgenre, 'Genre 2')
 
 class ViewTest(TestCase):
 	def test_output_everything(self): #displayall
 		Item.objects.create(binfo = 'Jas Tuzon')
-		Item.objects.create(binfo = '09091432441')
-		Item.objects.create(binfo = 'Tuzon-IRD-002')
-		Item.objects.create(binfo = 'UPHSDM')
+		# Item.objects.create(binfo = '09091432441')
+		# Item.objects.create(binfo = 'Tuzon-IRD-002')
+		# Item.objects.create(binfo = 'UPHSDM')
 
 		Item.objects.create(binfo= 'Milleth Manzanilla')
-		Item.objects.create(binfo = '09098765432')
-		Item.objects.create(binfo= 'Manzanilla-IRD-003')
-		Item.objects.create(binfo = 'INHS')
+		# Item.objects.create(binfo = '09098765432')
+		# Item.objects.create(binfo= 'Manzanilla-IRD-003')
+		# Item.objects.create(binfo = 'INHS')
 
 		response = self.client.get('/IReadApp/viewlist_url/')
 		
 		self.assertContains(response,'Jas Tuzon')
-		self.assertContains(response,'09091432441')
-		self.assertContains(response,'Tuzon-IRD-002')
-		self.assertContains(response,'UPHSDM')
+		# self.assertContains(response,'09091432441')
+		# self.assertContains(response,'Tuzon-IRD-002')
+		# self.assertContains(response,'UPHSDM')
 
 		self.assertContains(response,'Milleth Manzanilla')
-		self.assertContains(response,'09098765432')
-		self.assertContains(response,'Manzanilla')
-		self.assertContains(response,'INHS')
+		# self.assertContains(response,'09098765432')
+		# self.assertContains(response,'Manzanilla')
+		# self.assertContains(response,'INHS')
 
 	def test_output_view_uses_log_page_list(self):
 		response = self.client.get('/IReadApp/viewlist_url/')
@@ -127,20 +144,21 @@ class ViewTest(TestCase):
 class CreationofListTest(TestCase):
 	def test_saving_POST(self):
 		# response = self.client.post('/', data={'CodeEntry': 'NewCode'})
-		response = self.client.post('/IReadApp/newlist_url', Code={'CodeEntry': 'NewCode'}, Author={'AuthorEntry': 'NewAuthor'}, Title={'BookEntry': 'NewTitle'}, Genre={'GenreEntry': 'NewGenre'})
+		response = self.client.post('/IReadApp/newlist_url', Infos={'CodeEntry': 'NewCode', 'AuthorEntry': 'NewAuthor', 'BookEntry': 'NewTitle', 'GenreEntry': 'NewGenre'})# Author={'AuthorEntry': 'NewAuthor'},Title={'BookEntry': 'NewTitle'}, Genre={'GenreEntry': 'NewGenre'})
 		self.assertEqual(Item.objects.count(), 1)
-		self.assertEqual(Author.objects.count(),1)
+		#self.assertEqual(Author.objects.count(),1)
 		newItem = Item.objects.first()
-		newAuthor = Author.objects.first()
+		#newAuthor = Author.objects.first()
 		self.assertEqual(newItem.binfo, 'NewCode')
-		self.assertEqual(newAuthor.bauth, 'NewAuthor')
+		self.assertEqual(newItem.bauth, 'NewAuthor')
 		self.assertEqual(newAuthor.btitle, 'NewTitle')
 		self.assertEqual(newAuthor.bgenre, 'NewGenre')
 
 
 	def test_if_redirecting_when_POST(self): 
-		# response = self.client.post('/', data={'CodeEntry': 'NewCode',})
-		response = self.client.post('/IReadApp/newlist_url', Code={'CodeEntry': 'NewCode'}, Author={'AuthorEntry': 'NewAuthor'}, Title={'BookEntry': 'NewTitle'}, Genre={'GenreEntry': 'NewGenre'})
+		#response = self.client.post('/IReadApp/newlist_url', Infos={'CodeEntry': 'NewCode','AuthorEntry': 'NewAuthor', 'BookEntry': 'NewTitle', 'GenreEntry': 'NewGenre'})  #'AuthorEntry': 'NewAuthor', 'BookEntry': 'NewTitle', 'GenreEntry': 'NewGenre'})
+		#response = self.client.post('/IReadApp/newlist_url', binfo={'CodeEntry': 'NewCode'}, bauth={'AuthorEntry': 'NewAuthor'}, btitle={'BookEntry': 'NewTitle'}, bgenre={'GenreEntry': 'NewGenre'})
+		response = self.client.post('/IReadApp/newlist_url', Infos={'CodeEntry': 'NewCode', 'AuthorEntry': 'NewAuthor', 'BookEntry': 'NewTitle', 'GenreEntry': 'NewGenre'})
 		# self.assertEqual(response.status_code, 302)
 		# self.assertEqual(response['location'],'/IReadApp/viewlist_url/')
 		self.assertRedirects(response, '/IReadApp/viewlist_url/')

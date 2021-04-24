@@ -714,9 +714,9 @@
                 {% for item in NewCode%}
                 <tr>
                     <td id="authorid">{{forloop.counter}}. {{item.binfo}}</td>
-                    <td>{{forloop.counter}}{{NewAuthor}}</td>
-                    <td>{{NewTitle}}</td>
-                    <td>{{NewGenre}}</td>
+                    <td>{{item.bauth}}</td>
+                    <td>{{item.btitle}}</td>
+                    <td>{{item.bgenre}}</td>
                     <td>
                         <a href=""><button name="view" id="view" value="view">View</button></a>
                         <a href=""><button name="return" id="return" value="return">Return</button></a>
