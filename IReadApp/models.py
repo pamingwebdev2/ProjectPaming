@@ -7,7 +7,4 @@ class Item(models.Model):
 	btitle = models.TextField(default="")
 	bgenre = models.TextField(default="")
 
-
-
-
 # Create your models here.

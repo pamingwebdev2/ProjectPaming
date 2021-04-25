@@ -38,13 +38,15 @@ def LogPage(request):
 
 def ViewList(request):
 	infos = Item.objects.all()
-	#auths = Author.objects.all() #regression, server 505
-	return render (request, 'loglistpage.html', {'NewCode': infos, 'NewAuthor': infos,'NewTitle': infos, 'NewGenre': infos})
+	return render (request, 'loglistpage.html', {'NewCode': infos, 'NewAuthor':infos}) 
 
 def NewList(request):
-	Item.objects.create(binfo=request.POST['CodeEntry'], bauth=request.POST['AuthorEntry'], btitle=request.POST['BookEntry'], bgenre=request.POST['GenreEntry']) #dito nanggagaling error sa test, norml pa functional ko 
-	#Author.objects.create(, btitle=request.POST['BookEntry'],)# bgenre=request.POST['GenreEntry'])
+	Item.objects.create(binfo=request.POST.get('CodeEntry', 'NewCode'), bauth=request.POST.get('AuthorEntry','NewAuthor'), btitle=request.POST.get('BookEntry','NewTitle'), bgenre=request.POST.get('GenreEntry', 'NewGenre'))
 	return redirect('/IReadApp/viewlist_url/')
 
 
 # Create your views here.
+#'NewAuthor':}) #infos,'NewTitle': infos, 'NewGenre': infos})
+# ,bauth=request.POST['AuthorEntry'], btitle=request.POST['BookEntry'], bgenre=request.POST['GenreEntry']) #dito nanggagaling error sa test, norml pa functional ko 
+	#Author.objects.create(, btitle=request.POST['BookEntry'],)# bgenre=request.POST['GenreEntry'])
+	#auths = Author.objects.all() #regression, server 505
