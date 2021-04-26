@@ -42,7 +42,7 @@ def ViewList (request, MainID):
 	infos = Item.objects.filter(MainID = mId)
 	return render (request, 'loglistpage.html', {'NewCode': infos})
 
-def NewList(request, MainID):
+def NewList(request):
 	NewBorrower = Borrower.objects.create()
 	Item.objects.create(MainID=NewBorrower, binfo=request.POST['CodeEntry'])
 	#return redirect('/IReadApp/viewlist_url/')
