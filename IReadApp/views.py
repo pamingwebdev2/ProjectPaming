@@ -28,14 +28,19 @@ def LogPage(request):
 	#	newItem = ''
 	#return render (request, 'logpage.html',{'NewAuthor':newItem,})
 
-	if request.method == 'POST':
-		Item.objects.create(binfo=request.POST['CodeEntry']) #bauth=request.POST['AuthorEntry'], btitle=request.POST['BookEntry'], bgenre=request.POST['GenreEntry']) #eto yung refactored pero di na nagrun
-		#return redirect('/')
-		return redirect('/IReadApp/viewlist_url/') #nung tinanggalko to nagerror sila mitch # ihave regresion si sir wala
-	infos = Item.objects.all()
-	return render (request, 'logpage.html', {'NewCode': infos})
-	#eturn render (request, 'logpage.html')
+	# if request.method == 'POST':
+	# 	Item.objects.create(binfo=request.POST['CodeEntry']) #bauth=request.POST['AuthorEntry'], btitle=request.POST['BookEntry'], bgenre=request.POST['GenreEntry']) #eto yung refactored pero di na nagrun
+	# 	#return redirect('/')
+	# 	return redirect('/IReadApp/viewlist_url/') #nung tinanggalko to nagerror sila mitch # ihave regresion si sir wala
+	#infos = Item.objects.all()
+	return render (request, 'logpage.html') #, {'NewCode': infos})
+	#return render (request, 'logpage.html')
 
 def ViewList (request):
 	infos = Item.objects.all()
-	return render (request, 'logpage.html', {'NewCode': infos})
+	return render (request, 'loglistpage.html', {'NewCode': infos})
+
+def NewList(request):
+	Item.objects.create(binfo=request.POST['CodeEntry'])
+	return redirect('/IReadApp/viewlist_url/')
+ 

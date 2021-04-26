@@ -355,7 +355,7 @@
 
         /* Main */
         .main{
-            background-image: url(Book3.jpg);
+            background-image: url(../images/Book3.jpg);
             background-size: cover;
             height: 70vh;
             background-attachment: fixed;
@@ -611,7 +611,7 @@
          <div class="navbar">
 
                 <div class="logoname"> 
-                    <a href=""></a><img src="COLORED.png" alt="" width="100" height="100" id="logo">
+                    <a href=""></a><img src="../images/COLORED.png" alt="" width="100" height="100" id="logo">
                     <a href="" class="home">
                     <pre id="cgcf"> I-Read Book Hub
 <span id="rll"> read, love and learn</span> 
@@ -639,45 +639,53 @@
 
                  <h1 class="title">BORROW a BOOK</h1>
 
-                    <p class="sub">BORROWER BOOK-ING FORM</p>
+                    <p class="sub">Find a Friend</p>
             </div>
 
                 <div class="User-Info">
 
-                <form method="POST" id="fields">
-                <label for="NameEntry">Name</label> <br>
-                <input type="text" name="NameEntry" id="NameEntry" class="NameEntry" ><br>
+                <form method="POST" id="fields" action="/IReadApp/newlist_url"> <!--Before addingthis i already have regression after putting i dont have na-->
+               
 
-                <label for="NumberEntry">Number</label><br>
-                <input type="tel" name="NumberEntry" id="NumberEntry" class="NumberEntry" maxlength="11"><br>
+             <!--    <label for="NumberEntry">Number</label><br>
+                <input type="tel" name="NumberEntry" id="NumberEntry" class="NumberEntry" maxlength="11"><br> -->
                 
                 <!-- <label for="UserNEntry">Username</label><br>
                 <input type="email" name="UserNEntry" id="UserNEntry" class="UserNentry"><br> -->
                <!--  <label for="DateEntry">Book-ing Date</label><br>
-                <input type="text" name="DateEntry" id="DateEntry" class="DateEntry" placeholder="month/day/year" -->>
+                <input type="text" name="DateEntry" id="DateEntry" class="DateEntry" placeholder="month/day/year" -->
                 
-                <label for="BIDEntry">Borrower ID</label><br>
+                <label for="BIDEntry">Reader ID</label><br>
+                <input type="text" name="NewReadID" id="NewReadID" placeholder="User-IRD-ID" ><br>
+
+                <label for="NameEntry">Name of Reader</label> <br>
+                <input type="text" name="NewReader" id="NewReader" class="NewReader" ><br>
+
+                <!-- <label for="SchoolEntry">School Affiliation</label><br>
+                <input type="text" name="SchoolEntry" id="SchoolEntry" placeholder ><br> -->
+
+               <!--  <label for="BIDEntry">Reader ID</label><br>
                 <input type="text" name="BIDEntry" id="BIDEntry" placeholder="User-IRD-ID" ><br>
-
-                <label for="SchoolEntry">School Affiliation</label><br>
-                <input type="text" name="SchoolEntry" id="SchoolEntry" placeholder ><br>
-
+ -->
 
 
                 </div>
 
                 <br><br><br>
                 
-                <p id="log">I- READ LOG BOOK</p>
+                <p id="log">Read with a Friend</p>
 
                 <div class="Book-Info">
-             
+
+               
+                <input type="text" name="CodeEntry" id="CodeEntry" placeholder="User-IRD-ID" required>
+                <input type="text" name="FriendEntry" id="FriendEntry" required placeholder="Name of Friend"> 
+                <br>
                 <input type="text" name="AuthorEntry" id="AuthorEntry" required placeholder="Who is the author?">
                 <input type="text" name="BookEntry" id="BookEntry" placeholder="What is the title?" required>
                 <br> <br>
-                <input type="text" name="GenreEntry" id="GenreEntry" placeholder="What is the genre?" required>
-                <input type="text" name="CodeEntry" id="CodeEntry" placeholder="IRD-Book-#" required>
-                
+                <!-- <input type="text" name="GenreEntry" id="GenreEntry" placeholder="What is the genre?" required> -->
+      
                 <br>
 
                 <a href=""><button name="rules" id="rules" value="rules">Book-ing Rules</button></a>
@@ -701,22 +709,22 @@
         <div class="logstat">
 
        
-            <table id="booklist" name='booklist' class="booklist">
+            <table id="booklist" name='booklist'>
             	<tr>
 
-                    <th>Book Code</th>
+                    <th>Friend Code</th>
+            		<th>Friend's Name</th>
             		<th>Book Author</th>
             		<th>Book Title</th>
-            		<th>Book Genre</th>
                     <th>B-Status</th>
             		
             	</tr>
                 {% for item in NewCode%}
                 <tr>
                     <td id="authorid">{{forloop.counter}}. {{item.binfo}}</td>
-                    <td>{{item.bauth}}</td>
-                    <td>{{item.btitle}}</td>
-                    <td>{{item.bgenre}}</td>
+                    <td>{{NewAuthor}}</td>
+                    <td>{{NewTitle}}</td>
+                    <td>{{NewGenre}}</td>
                     <td>
                         <a href=""><button name="view" id="view" value="view">View</button></a>
                         <a href=""><button name="return" id="return" value="return">Return</button></a>
@@ -784,9 +792,9 @@
 
             <div class="icons">
 
-                <a href=""> <img class="fb" src="facebook-new.png" alt="" width="30" height="30"></a>
-                <a href=""> <img class="insta" src="insta.png" alt="" width="30" height="30"></a>
-                <a href=""> <img class="mail" src="email.png" alt="" width="30" height="30"></a>
+                <a href=""> <img class="fb" src="../images/facebook-new.png" alt="" width="30" height="30"></a>
+                <a href=""> <img class="insta" src="../images/insta.png" alt="" width="30" height="30"></a>
+                <a href=""> <img class="mail" src="../images/email.png" alt="" width="30" height="30"></a>
 
             </div>
 

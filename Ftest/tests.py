@@ -216,7 +216,6 @@ class PageTest (LiveServerTestCase):
 		btnSave = self.browser.find_element_by_id('btnSave')
 		btnSave.click()
 		self.wait_rows_in_booklist("1. Currie-IRD-003 View Return X")
-
 		viewlist_url = self.browser.current_url
 		self.assertRegex(viewlist_url, '/IReadApp/.+')
 
@@ -249,14 +248,14 @@ class PageTest (LiveServerTestCase):
 
 		btnSave = self.browser.find_element_by_id('btnSave')
 		btnSave.click()
-		self.wait_rows_in_booklist("2. Newton-IRD-005 View Return X")
+		self.wait_rows_in_booklist("1. Newton-IRD-005 View Return X")
 
 		user2_url =self.browser.current_url
 		self.assertRegex(user2_url, '/IReadApp/.+')
 		self.assertNotEqual(viewlist_url, user2_url)
 		pageBody = self.browser.find_element_by_tag_name('body').text
-		self.assertNotIn("1. Currie-IRD-003 View Return X", pageBody)
-		self.assertIn("2. Newton-IRD-005 View Return X", pageBody)
+		self.assertNotIn(" Currie-IRD-003 View Return X", pageBody)
+		self.assertIn(" Newton-IRD-005 View Return X", pageBody)
 
 
 

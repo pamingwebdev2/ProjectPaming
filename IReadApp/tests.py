@@ -16,36 +16,37 @@ class LogPageTest(TestCase):
 		response = self.client.get ('/')
 		self.assertTemplateUsed(response,'logpage.html')
 
-	def test_saves_only_with_content(self): #def test_only_saves_items_if_necessary(self):
-		self.client.get('/')
-		self.assertEqual(Item.objects.count(), 0)	
+	# def test_saves_only_with_content(self): #def test_only_saves_items_if_necessary(self):
+	# 	self.client.get('/')
+	# 	self.assertEqual(Item.objects.count(), 0)	
 
-	def test_saving_POST(self): #def test_save_POST_request(self):
-		#response = self.client.post('/', data={'AuthorEntry': 'NewAuthor',})
-		response = self.client.post('/', data={'CodeEntry': 'NewCode'})
+	# def test_saving_POST(self): #def test_save_POST_request(self):
+	# 	#response = self.client.post('/', data={'AuthorEntry': 'NewAuthor',})
+	# 	response = self.client.post('/', data={'CodeEntry': 'NewCode'})
 
-		#self.assertIn('NewAuthor', response.content.decode())
-		#self.assertTemplateUsed(response,'logpage.html')
+	# 	#self.assertIn('NewAuthor', response.content.decode())
+	# 	#self.assertTemplateUsed(response,'logpage.html')
 
-		self.assertEqual(Item.objects.count(), 1)
-		newItem = Item.objects.first()
-		self.assertEqual(newItem.binfo, 'NewCode')
+	# 	self.assertEqual(Item.objects.count(), 1)
+	# 	newItem = Item.objects.first()
+	# 	self.assertEqual(newItem.binfo, 'NewCode')
 
 		#self.assertEqual(response.status_code, 302) #eto yung bagong insert
 		#self.assertEqual(response['location'],'/')
 
-	def test_if_redirecting_when_POST(self): #def test_redirects_POST_request(self):
-		response = self.client.post('/', data={'CodeEntry': 'NewCode',})
-		self.assertEqual(response.status_code, 302) #eto yung bagong insert
-		#self.assertEqual(response['location'],'/')
-		self.assertEqual(response['location'],'/IReadApp/viewlist_url/')
+	# def test_if_redirecting_when_POST(self): #def test_redirects_POST_request(self):
+	# 	response = self.client.post('/', data={'CodeEntry': 'NewCode',})
+	# 	self.assertEqual(response.status_code, 302) #eto yung bagong insert
+	# 	#self.assertEqual(response['location'],'/')
+	# 	self.assertEqual(response['location'],'/IReadApp/viewlist_url/')
 
-	def test_display_input(self): #def test_template_displays_list(self):
-		Item.objects.create(binfo='Book Code 1')
-		Item.objects.create(binfo='Book Code 2')
-		response = self.client.get('/')
-		self.assertIn('Book Code 1', response.content.decode())
-		self.assertIn('Book Code 2', response.content.decode())
+	# def test_display_input(self): #def test_template_displays_list(self):
+	# 	Item.objects.create(binfo='Book Code 1')
+	# 	Item.objects.create(binfo='Book Code 2')
+	# 	response = self.client.get('/')
+	# 	self.assertIn('Book Code 1', response.content.decode())
+	# 	self.assertIn('Book Code 2', response.content.decode())
+
 
 	# # 	Item.objects.create(bauth='Author 1')
 	# # 	Item.objects.create(bauth='Author 2')
@@ -122,8 +123,30 @@ class ViewingTest(TestCase):
 		self.assertContains(response,'Milleth Manzanilla')
 		self.assertContains(response,'JM Tuzon')
 
+	def test_list_in_loglistpage(self):
+		response = self.client.get('/IReadApp/viewlist_url/')
+		self.assertTemplateUsed(response, 'loglistpage.html')
+
+class CreateLogListTest(TestCase):
+
+	def test_saving_POST(self): #def test_save_POST_request(self):
+		#response = self.client.post('/', data={'AuthorEntry': 'NewAuthor',})
+		response = self.client.post('/IReadApp/newlist_url', data={'CodeEntry': 'NewCode'})
+
+		#self.assertIn('NewAuthor', response.content.decode())
+		#self.assertTemplateUsed(response,'logpage.html')
+
+		self.assertEqual(Item.objects.count(), 1)
+		newItem = Item.objects.first()
+		self.assertEqual(newItem.binfo, 'NewCode')
 
 
+	def test_if_redirecting_when_POST(self): #def test_redirects_POST_request(self):
+		response = self.client.post('/IReadApp/newlist_url', data={'CodeEntry': 'NewCode',})
+		#self.assertEqual(response.status_code, 302) #eto yung bagong insert
+		#self.assertEqual(response['location'],'/')
+		#self.assertEqual(response['location'],'/IReadApp/viewlist_url/')
+		self.assertRedirects(response,'/IReadApp/viewlist_url/')
 
 
 
