@@ -30,8 +30,12 @@ def LogPage(request):
 
 	if request.method == 'POST':
 		Item.objects.create(binfo=request.POST['CodeEntry']) #bauth=request.POST['AuthorEntry'], btitle=request.POST['BookEntry'], bgenre=request.POST['GenreEntry']) #eto yung refactored pero di na nagrun
-		return redirect('/')
-		#return redirect('/IReadApp/viewlist_url/') #nung tinanggalko to nagerror sila mitch # ihave regresion si sir wala
+		#return redirect('/')
+		return redirect('/IReadApp/viewlist_url/') #nung tinanggalko to nagerror sila mitch # ihave regresion si sir wala
 	infos = Item.objects.all()
 	return render (request, 'logpage.html', {'NewCode': infos})
 	#eturn render (request, 'logpage.html')
+
+def ViewList (request):
+	infos = Item.objects.all()
+	return render (request, 'logpage.html', {'NewCode': infos})

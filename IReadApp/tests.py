@@ -37,7 +37,8 @@ class LogPageTest(TestCase):
 	def test_if_redirecting_when_POST(self): #def test_redirects_POST_request(self):
 		response = self.client.post('/', data={'CodeEntry': 'NewCode',})
 		self.assertEqual(response.status_code, 302) #eto yung bagong insert
-		self.assertEqual(response['location'],'/')
+		#self.assertEqual(response['location'],'/')
+		self.assertEqual(response['location'],'/IReadApp/viewlist_url/')
 
 	def test_display_input(self): #def test_template_displays_list(self):
 		Item.objects.create(binfo='Book Code 1')
@@ -110,7 +111,16 @@ class ORMTest (TestCase):
 		# # self.assertEqual(savedInfo2.btitle, 'Title 2')
 		# self.assertEqual(savedInfo2.bgenre, 'Genre 2')
 
+class ViewingTest(TestCase):		
 
+	def test_display_all(self): #def test_template_displays_list(self):
+		# Item.objects.create(Borrower='Milleth Manzanilla')
+		# Item.objects.create(Borrower='JM Tuzon')
+		Item.objects.create(binfo='Milleth Manzanilla')
+		Item.objects.create(binfo='JM Tuzon')
+		response = self.client.get('/IReadApp/viewlist_url/')
+		self.assertContains(response,'Milleth Manzanilla')
+		self.assertContains(response,'JM Tuzon')
 
 
 
