@@ -3,7 +3,7 @@ from django.test import TestCase
 from IReadApp.views import LogPage
 from django.http import HttpRequest
 """
-from IReadApp.models import Item #formodelsORM #regression na naman hayup
+from IReadApp.models import Item, Borrower#formodelsORM #regression na naman hayup
 
 
 class LogPageTest(TestCase):
@@ -71,60 +71,59 @@ class LogPageTest(TestCase):
 class ORMTest (TestCase):
 
 	def test_and_retrieve(self): #def test_saving_retrieving_list(self):
+		NewBorrower = Borrower()
+		NewBorrower.save()
 		infoItem1 = Item()
-		#infoAuthor1 = Author()
-		infoItem1.binfo = 'Book Code 1'
-		# infoItem1.bauth = 'Author 1'
-		# infoItem1.btitle = 'Title 1'
-		# infoItem1.bgenre = 'Genre 1'
+		infoItem1.binfo = 'Reader Code 1'
+		infoItem1.MainID = NewBorrower
 		infoItem1.save()
-	#	infoAuthor1.save()
 		
 		infoItem2 = Item()
-		#infoAuthor2 = Author()
-		infoItem2.binfo = 'Book Code 2'
-		# infoItem2.bauth = 'Author 2'
-		# infoItem2.btitle = 'Title 2'
-		# infoItem2.bgenre = 'Genre 2'
+		infoItem2.MainID = NewBorrower
+		infoItem2.binfo = 'Reader Code 2'
 		infoItem2.save()
-		# infoAuthor2.save()
-		# infoAuthor2.save()
-		
 		
 		savedInfos = Item.objects.all()
-		#savedAuthors = Author.objects.all()
+		savedBorrowers = Borrower.objects.first()
 		self.assertEqual(savedInfos.count(), 2)
-		#self.assertEqual(savedAuthors.count(), 2)
-
+		self.assertEqual(savedBorrowers, NewBorrower)
 		savedInfo1 = savedInfos[0]
 		savedInfo2 = savedInfos[1]
+		self.assertEqual(savedInfo1.binfo, 'Reader Code 1')
+		self.assertEqual(savedInfo2.binfo, 'Reader Code 2')
+		self.assertEqual(savedInfo1.MainID, NewBorrower)
+		self.assertEqual(savedInfo2.MainID, NewBorrower)
 
-		# savedAuthor1= savedAuthors[0]
-		# savedAuthor2= savedAuthors[1]
-
-		self.assertEqual(savedInfo1.binfo, 'Book Code 1')
-		# self.assertEqual(savedInfo1.bauth, 'Author 1')
-		# self.assertEqual(savedInfo1.btitle, 'Title 1')
-		# self.assertEqual(savedInfo1.bgenre, 'Genre 1')
-
-		self.assertEqual(savedInfo2.binfo, 'Book Code 2')
-		# self.assertEqual(savedInfo2.bauth, 'Author 2')	
-		# # self.assertEqual(savedInfo2.btitle, 'Title 2')
-		# self.assertEqual(savedInfo2.bgenre, 'Genre 2')
 
 class ViewingTest(TestCase):		
 
-	def test_display_all(self): #def test_template_displays_list(self):
+	def test_display_for_each_borrower(self): #def test_template_displays_list(self):
 		# Item.objects.create(Borrower='Milleth Manzanilla')
 		# Item.objects.create(Borrower='JM Tuzon')
-		Item.objects.create(binfo='Milleth Manzanilla')
-		Item.objects.create(binfo='JM Tuzon')
-		response = self.client.get('/IReadApp/viewlist_url/')
-		self.assertContains(response,'Milleth Manzanilla')
-		self.assertContains(response,'JM Tuzon')
+		NewBorrower = Borrower.objects.create()
+		Item.objects.create(MainID= NewBorrower, binfo='Manzanilla-IRD-004')
+		Item.objects.create(MainID = NewBorrower, binfo='Tuzon-IRD-007')
+		response = self.client.get(f'/IReadApp/{NewBorrower.id}/')
+		#response = self.client.get('/IReadApp/viewlist_url/')
+		self.assertContains(response,'Manzanilla-IRD-004')
+		self.assertContains(response,'Tuzon-IRD-007')
+		self.assertNotContains(response, 'Dinapo-IRD-111')
+		self.assertNotContains(response, 'Teves-IRD-101')
+
+		NewBorrower_2 = Borrower.objects.create()
+		Item.objects.create(MainID= NewBorrower_2, binfo='Dinapo-IRD-111')
+		Item.objects.create(MainID = NewBorrower_2, binfo='Teves-IRD-101')
+		response = self.client.get(f'/IReadApp/{NewBorrower_2.id}/')
+		self.assertContains(response, 'Dinapo-IRD-111')
+		self.assertContains(response, 'Teves-IRD-101')
+		self.assertNotContains(response,'Manzanilla-IRD-004')
+		self.assertNotContains(response,'Tuzon-IRD-007')
+
 
 	def test_list_in_loglistpage(self):
-		response = self.client.get('/IReadApp/viewlist_url/')
+		NewBorrower = Borrower.objects.create()
+		response = self.client.get(f'/IReadApp/{NewBorrower.id}/')
+		# response = self.client.get('/IReadApp/viewlist_url/')
 		self.assertTemplateUsed(response, 'loglistpage.html')
 
 class CreateLogListTest(TestCase):
@@ -132,9 +131,6 @@ class CreateLogListTest(TestCase):
 	def test_saving_POST(self): #def test_save_POST_request(self):
 		#response = self.client.post('/', data={'AuthorEntry': 'NewAuthor',})
 		response = self.client.post('/IReadApp/newlist_url', data={'CodeEntry': 'NewCode'})
-
-		#self.assertIn('NewAuthor', response.content.decode())
-		#self.assertTemplateUsed(response,'logpage.html')
 
 		self.assertEqual(Item.objects.count(), 1)
 		newItem = Item.objects.first()
@@ -146,7 +142,31 @@ class CreateLogListTest(TestCase):
 		#self.assertEqual(response.status_code, 302) #eto yung bagong insert
 		#self.assertEqual(response['location'],'/')
 		#self.assertEqual(response['location'],'/IReadApp/viewlist_url/')
-		self.assertRedirects(response,'/IReadApp/viewlist_url/')
+		newLog = Borrower.objects.first()
+		self.assertRedirects(response,f'/IReadApp/{newLog.id}/')
+
+class AddlogTest(TestCase):
+	def test_add_another_post_existing(self):
+		DummyLog1 = Borrower.objects.create()
+		DummyLog2 = Borrower.objects.create()
+		existingLog = Borrower.objects.create()
+		self.client.post(f'IReadApp/{existingLog.id}/addItem', data={'CodeEntry': 'NewCode',})
+		self.assertEqual(Item.objects.count(),1)
+		newItem =Item.objects.first()
+		self.assertEqual(newItem.binfo,'New Log for existing')
+		self.assertEqual(newItem.MainID, existingLog)
+
+	def test_redirects_to_log_view(self):
+		DummyLog1 = Borrower.objects.create()
+		DummyLog2 = Borrower.objects.create()
+		DummyLog3 = Borrower.objects.create()
+		existingLog = Borrower.objects.create()
+		response = self.client.post(f'IReadApp/{existingLog.id}/addItem', data={'CodeEntry': 'NewCode',})
+		self.assertRedirects(response, f'IReadApp/{existingLog.id}/')
+
+
+
+
 
 
 

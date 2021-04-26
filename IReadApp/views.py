@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 #from django.http import HttpResponse
-from IReadApp.models import Item
+from IReadApp.models import Item, Borrower
 
 '''LogPage = None'''
 
@@ -36,11 +36,14 @@ def LogPage(request):
 	return render (request, 'logpage.html') #, {'NewCode': infos})
 	#return render (request, 'logpage.html')
 
-def ViewList (request):
-	infos = Item.objects.all()
+def ViewList (request, MainID):
+	mId = Borrower.objects.get(id=MainID)
+	#infos = Item.objects.all()
+	infos = Item.objects.filter(MainID = mId)
 	return render (request, 'loglistpage.html', {'NewCode': infos})
 
-def NewList(request):
-	Item.objects.create(binfo=request.POST['CodeEntry'])
-	return redirect('/IReadApp/viewlist_url/')
- 
+def NewList(request, MainID):
+	NewBorrower = Borrower.objects.create()
+	Item.objects.create(MainID=NewBorrower, binfo=request.POST['CodeEntry'])
+	#return redirect('/IReadApp/viewlist_url/')
+	return redirect(f'/IReadApp/{NewBorrower.id}/')
