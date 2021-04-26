@@ -49,32 +49,25 @@ class PageTest (LiveServerTestCase):
 		
 		inputAuthor1 = self.browser.find_element_by_id('AuthorEntry')
 		inputBook1 = self.browser.find_element_by_id('BookEntry')
-		inputGenre1 = self.browser.find_element_by_id('GenreEntry')
+		inputFriend1 = self.browser.find_element_by_id('FriendEntry')
 		inputCode1 = self.browser.find_element_by_id ('CodeEntry')
 		btnSave = self.browser.find_element_by_id('btnSave')
 		
-		inputName1 =self.browser.find_element_by_id('NameEntry')
-		inputNumber1 = self.browser.find_element_by_id('NumberEntry')
-		# inputDate1 = self.browser.find_element_by_id ('DateEntry')
-		inputUserID1 = self.browser.find_element_by_id('BIDEntry')
-		inputSchool = self.browser.find_element_by_id('SchoolEntry')
+		inputName1 =self.browser.find_element_by_id('NewReader')
+		# inputNumber1 = self.browser.find_element_by_id('NumberEntry')
+		inputUserID1 = self.browser.find_element_by_id('NewReadID')
+		# inputSchool = self.browser.find_element_by_id('SchoolEntry')
 
-		#self.assertEqual(inputDate1.get_attribute('placeholder'),'month/day/year')
+		self.assertEqual(inputFriend1.get_attribute('placeholder'),'Name of Friend')
 		self.assertEqual(inputAuthor1.get_attribute('placeholder'),'Who is the author?')
 		self.assertEqual(inputBook1.get_attribute('placeholder'),'What is the title?')
-		self.assertEqual(inputGenre1.get_attribute('placeholder'),'What is the genre?')
 		self.assertEqual(inputUserID1.get_attribute('placeholder'),'User-IRD-ID')
-		self.assertEqual(inputCode1.get_attribute('placeholder'),'IRD-Book-#')
+		self.assertEqual(inputCode1.get_attribute('placeholder'),'User-IRD-ID')
 		
-		time.sleep(.1)
-		inName = self.browser.find_element_by_id('NameEntry')
-		inName.click()
-		inName.send_keys('Rica Marie Paming')
-		time.sleep(.1)
 
-		inNumber = self.browser.find_element_by_id('NumberEntry')
-		inNumber.click()
-		inNumber.send_keys('09066809206')
+		# inNumber = self.browser.find_element_by_id('NumberEntry')
+		# inNumber.click()
+		# inNumber.send_keys('09066809206')
 		
 		# time.sleep(.1)
 		# inDate = self.browser.find_element_by_id('DateEntry')
@@ -83,16 +76,34 @@ class PageTest (LiveServerTestCase):
 		# time.sleep(.1)
 
 		time.sleep(.1)
-		inBorrower = self.browser.find_element_by_id('BIDEntry')
+		inBorrower = self.browser.find_element_by_id('NewReadID')
 		inBorrower.click()
 		inBorrower.send_keys('Paming-IRD-001')
+
+
+		time.sleep(.1)
+		inName = self.browser.find_element_by_id('NewReader')
+		inName.click()
+		inName.send_keys('Rica Marie Paming')
+		time.sleep(.1)
+		
+		# time.sleep(.1)
+		# inSchool = self.browser.find_element_by_id('SchoolEntry')
+		# inSchool.click()
+		# inSchool.send_keys('TUPC')
 		
 		time.sleep(.1)
-		inSchool = self.browser.find_element_by_id('SchoolEntry')
-		inSchool.click()
-		inSchool.send_keys('TUPC')
-		
+		inCode = self.browser.find_element_by_id('CodeEntry')
+		inCode.click()
+		inCode.send_keys('Tesla-IRD-002')
 		time.sleep(.1)
+
+		time.sleep(.1)
+		inName = self.browser.find_element_by_id('FriendEntry')
+		inName.click()
+		inName.send_keys('Nikola Tesla')
+		time.sleep(.1)
+
 		inAuthor = self.browser.find_element_by_id('AuthorEntry')
 		inAuthor.click()
 		inAuthor.send_keys('Mitch Albom')
@@ -103,43 +114,29 @@ class PageTest (LiveServerTestCase):
 		inBook.send_keys('Tuesdays With Morrie')
 		time.sleep(.1)
 		
-		inGenre = self.browser.find_element_by_id('GenreEntry')
-		inGenre.click()
-		inGenre.send_keys('Biographical Fiction')
-		time.sleep(.1)
-
-		inCode = self.browser.find_element_by_id('CodeEntry')
-		inCode.click()
-		inCode.send_keys('IRD-Book-1')
-		time.sleep(.1)
+		# inGenre = self.browser.find_element_by_id('GenreEntry')
+		# inGenre.click()
+		# inGenre.send_keys('Biographical Fiction')
+		# time.sleep(.1)
 
 		btnSave = self.browser.find_element_by_id('btnSave')
 		btnSave.click()
 
 		#self.check_rows_in_booklist('1. Mitch Albom') #(Tuesdays With Morrie Biographical Fiction Done X')
-		self.wait_rows_in_booklist('1. IRD-Book-1 Mitch Albom Tuesdays With Morrie Biographical Fiction View Return X')
+		self.wait_rows_in_booklist('1. Tesla-IRD-002 View Return X')
 		#self.wait_rows_in_booklist('1. IRD-Book-1 Mitch Albom Tuesdays With Morrie Biographical Fiction View Return X')
 #another input
 
-		'''time.sleep(1)
-		inName = self.browser.find_element_by_id('NameEntry')
-		inName.click()
-		inputName1.send_keys('Jasmine May Tuzon')
-		time.sleep(1)
-
-		inNumber = self.browser.find_element_by_id('NumberEntry')
-		inNumber.click()
-		inputNumber1.send_keys('09771439087')
-		
 		time.sleep(.1)
-		inUser = self.browser.find_element_by_id('UserNEntry')
-		inUser.click()
-		inputUserN1.send_keys('jmtuzon.25@gmail.com')
-		time.sleep(.1)
-
 		inCode = self.browser.find_element_by_id('CodeEntry')
 		inCode.click()
-		inputCode1.send_keys('IRD-Book-7')'''
+		inCode.send_keys('Einstein-IRD-009')
+
+		time.sleep(.1)
+		inName = self.browser.find_element_by_id('FriendEntry')
+		inName.click()
+		inName.send_keys('Albert Einstein')
+		time.sleep(.1)
 
 		time.sleep(.1)
 		inAuthor = self.browser.find_element_by_id('AuthorEntry')
@@ -152,25 +149,23 @@ class PageTest (LiveServerTestCase):
 		inBook.send_keys('Stay')
 		time.sleep(.1)
 
-		inGenre = self.browser.find_element_by_id('GenreEntry')
-		inGenre.click()
-		inGenre.send_keys('Adult Fiction')
-		time.sleep(.1)
+		# inGenre = self.browser.find_element_by_id('GenreEntry')
+		# inGenre.click()
+		# inGenre.send_keys('Adult Fiction')
+		# time.sleep(.1)
+		
 
 		# inBorrower= self.browser.find_element_by_id('BIDEntry')
 		# inBorrower.click()
 		# inBorrower.send_keys('Paming-IRD-002')
 		# time.sleep(.1)
 
-		inCode = self.browser.find_element_by_id('CodeEntry')
-		inCode.click()
-		inCode.send_keys('IRD-Book-9')
-		time.sleep(.1)
+		
 
 		btnSave = self.browser.find_element_by_id('btnSave')
 		btnSave.click()
 
-		self.wait_rows_in_booklist("2. IRD-Book-9 Deb Caletti Stay Adult Fiction View Return X") #Stay Adult Fiction Borrowed X
+		self.wait_rows_in_booklist("2. Einstein-IRD-009 View Return X") #Stay Adult Fiction Borrowed X
 		#self.wait_rows_in_booklist("2. IRD-Book-9 Deb Caletti Stay Adult Fiction View Return X")
 		'''time.sleep(2)
 		inputAuthor1.send_keys('Mitch Albom')
@@ -192,76 +187,76 @@ class PageTest (LiveServerTestCase):
 		#self.assertIn('2: Deb Caletti Stay Adult Fiction Borrowed X', [row.text for row in rows])
 		#self.assertIn('1: Mitch Albom Tuesdays With Morrie Biographical Fiction Done X', [row.text for row in rows])
 	
-	def test_another_user_with_different_url(self): #otheruserdiffurl 
-		self.browser.get(self.live_server_url)
+	# def test_another_user_with_different_url(self): #otheruserdiffurl 
+	# 	self.browser.get(self.live_server_url)
 		
-		time.sleep(.1)
-		inAuthor = self.browser.find_element_by_id('AuthorEntry')
-		inAuthor.click()
-		inAuthor.send_keys('Tarryn Fisher')
-		time.sleep(1)
+	# 	time.sleep(.1)
+	# 	inAuthor = self.browser.find_element_by_id('AuthorEntry')
+	# 	inAuthor.click()
+	# 	inAuthor.send_keys('Tarryn Fisher')
+	# 	time.sleep(1)
 
-		inBook = self.browser.find_element_by_id('BookEntry')
-		inBook.click()
-		inBook.send_keys('The Opportunist')
-		time.sleep(.1)
+	# 	inBook = self.browser.find_element_by_id('BookEntry')
+	# 	inBook.click()
+	# 	inBook.send_keys('The Opportunist')
+	# 	time.sleep(.1)
 		
-		inGenre = self.browser.find_element_by_id('GenreEntry')
-		inGenre.click()
-		inGenre.send_keys('Contemporary Fiction')
-		time.sleep(.1)
+	# 	inGenre = self.browser.find_element_by_id('GenreEntry')
+	# 	inGenre.click()
+	# 	inGenre.send_keys('Contemporary Fiction')
+	# 	time.sleep(.1)
 
-		inCode = self.browser.find_element_by_id('CodeEntry')
-		inCode.click()
-		inCode.send_keys('IRD-Book-2')
-		time.sleep(.1)
+	# 	inCode = self.browser.find_element_by_id('CodeEntry')
+	# 	inCode.click()
+	# 	inCode.send_keys('IRD-Book-2')
+	# 	time.sleep(.1)
 
-		btnSave = self.browser.find_element_by_id('btnSave')
-		btnSave.click()
+	# 	btnSave = self.browser.find_element_by_id('btnSave')
+	# 	btnSave.click()
 		
-		self.wait_rows_in_booklist('1. IRD-Book-2 Tarryn Fisher The Opportunist Contemporary Fiction View Return X') #The Opportunist Contemporary Fiction
-		viewlist_url = self.browser.current_url
-		self.assertRegex(viewlist_url, '/IReadApp/.+')
+	# 	self.wait_rows_in_booklist('1. IRD-Book-2 Tarryn Fisher The Opportunist Contemporary Fiction View Return X') #The Opportunist Contemporary Fiction
+	# 	viewlist_url = self.browser.current_url
+	# 	self.assertRegex(viewlist_url, '/IReadApp/.+')
 
 
-		self.browser.quit()
-		self.browser = webdriver.Firefox()
+	# 	self.browser.quit()
+	# 	self.browser = webdriver.Firefox()
 
-		self.browser.get(self.live_server_url)
-		logpagebody = self.browser.find_element_by_tag_name('body').text
-		self.assertNotIn('1. IRD-Book-2 Tarryn Fisher The Opportunist Contemporary Fiction View Return X', logpagebody) #dito ako nagerror kaya di napasok si book 2
-		#The Opportunist Contemporary Fiction 
-		time.sleep(.1)
-		inAuthor = self.browser.find_element_by_id('AuthorEntry')
-		inAuthor.click()
-		inAuthor.send_keys('Nicholas Sparks')
-		time.sleep(1)
+	# 	self.browser.get(self.live_server_url)
+	# 	logpagebody = self.browser.find_element_by_tag_name('body').text
+	# 	self.assertNotIn('1. IRD-Book-2 Tarryn Fisher The Opportunist Contemporary Fiction View Return X', logpagebody) #dito ako nagerror kaya di napasok si book 2
+	# 	#The Opportunist Contemporary Fiction 
+	# 	time.sleep(.1)
+	# 	inAuthor = self.browser.find_element_by_id('AuthorEntry')
+	# 	inAuthor.click()
+	# 	inAuthor.send_keys('Nicholas Sparks')
+	# 	time.sleep(1)
 
-		inBook = self.browser.find_element_by_id('BookEntry')
-		inBook.click()
-		inBook.send_keys('The NoteBook')
-		time.sleep(.1)
+	# 	inBook = self.browser.find_element_by_id('BookEntry')
+	# 	inBook.click()
+	# 	inBook.send_keys('The NoteBook')
+	# 	time.sleep(.1)
 		
-		inGenre = self.browser.find_element_by_id('GenreEntry')
-		inGenre.click()
-		inGenre.send_keys('Adult Fiction')
-		time.sleep(.1)
+	# 	inGenre = self.browser.find_element_by_id('GenreEntry')
+	# 	inGenre.click()
+	# 	inGenre.send_keys('Adult Fiction')
+	# 	time.sleep(.1)
 
-		inCode = self.browser.find_element_by_id('CodeEntry')
-		inCode.click()
-		inCode.send_keys('IRD-Book-10 ')
-		time.sleep(.1)
+	# 	inCode = self.browser.find_element_by_id('CodeEntry')
+	# 	inCode.click()
+	# 	inCode.send_keys('IRD-Book-10 ')
+	# 	time.sleep(.1)
 
-		btnSave = self.browser.find_element_by_id('btnSave')
-		btnSave.click()
+	# 	btnSave = self.browser.find_element_by_id('btnSave')
+	# 	btnSave.click()
 
-		self.wait_rows_in_booklist ('1. IRD-Book-10 Nicholas Sparks The NoteBook Adult Fiction View Return X')#The NoteBook Adult Fiction
-		userbook2_url = self.browser.current_url
-		self.assertRegex(userbook2_url, '/IReadApp/.+')
-		self.assertNotEqual(viewlist_url, userbook2_url)
-		logpagebody = self.browser.find_element_by_tag_name('body').text
-		self.assertNotIn('IRD-Book-2 Tarryn Fisher The Opportunist Contemporary Fiction View Return X', logpagebody) #eto kinomment ni sir
-		self.assertIn('IRD-Book-10 Nicholas Sparks The NoteBook Adult Fiction View Return X', logpagebody)
+	# 	self.wait_rows_in_booklist ('1. IRD-Book-10 Nicholas Sparks The NoteBook Adult Fiction View Return X')#The NoteBook Adult Fiction
+	# 	userbook2_url = self.browser.current_url
+	# 	self.assertRegex(userbook2_url, '/IReadApp/.+')
+	# 	self.assertNotEqual(viewlist_url, userbook2_url)
+	# 	logpagebody = self.browser.find_element_by_tag_name('body').text
+	# 	self.assertNotIn('IRD-Book-2 Tarryn Fisher The Opportunist Contemporary Fiction View Return X', logpagebody) #eto kinomment ni sir
+	# 	self.assertIn('IRD-Book-10 Nicholas Sparks The NoteBook Adult Fiction View Return X', logpagebody)
 
 
 

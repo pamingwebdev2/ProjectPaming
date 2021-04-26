@@ -28,25 +28,10 @@ def LogPage(request):
 	#	newItem = ''
 	#return render (request, 'logpage.html',{'NewAuthor':newItem,})
 
-	# if request.method == 'POST':
-	# 	Item.objects.create(binfo=request.POST['CodeEntry'], bauth=request.POST['AuthorEntry'], btitle=request.POST['BookEntry'], bgenre=request.POST['GenreEntry']) #eto yung refactored pero di na nagrun
-	# 	#return redirect('/')
-	# 	return redirect('/IReadApp/viewlist_url/') #nung tinanggalko to nagerror sila mitch # ihave regresion si sir wala
-	# #infos = Item.objects.all()
-	#return render (request, 'logpage.html', {'NewCode': infos})
-	return render (request, 'logpage.html')
-
-def ViewList(request):
+	if request.method == 'POST':
+		Item.objects.create(binfo=request.POST['CodeEntry']) #bauth=request.POST['AuthorEntry'], btitle=request.POST['BookEntry'], bgenre=request.POST['GenreEntry']) #eto yung refactored pero di na nagrun
+		return redirect('/')
+		#return redirect('/IReadApp/viewlist_url/') #nung tinanggalko to nagerror sila mitch # ihave regresion si sir wala
 	infos = Item.objects.all()
-	return render (request, 'loglistpage.html', {'NewCode': infos, 'NewAuthor':infos}) 
-
-def NewList(request):
-	Item.objects.create(binfo=request.POST.get('CodeEntry', 'NewCode'), bauth=request.POST.get('AuthorEntry','NewAuthor'), btitle=request.POST.get('BookEntry','NewTitle'), bgenre=request.POST.get('GenreEntry', 'NewGenre'))
-	return redirect('/IReadApp/viewlist_url/')
-
-
-# Create your views here.
-#'NewAuthor':}) #infos,'NewTitle': infos, 'NewGenre': infos})
-# ,bauth=request.POST['AuthorEntry'], btitle=request.POST['BookEntry'], bgenre=request.POST['GenreEntry']) #dito nanggagaling error sa test, norml pa functional ko 
-	#Author.objects.create(, btitle=request.POST['BookEntry'],)# bgenre=request.POST['GenreEntry'])
-	#auths = Author.objects.all() #regression, server 505
+	return render (request, 'logpage.html', {'NewCode': infos})
+	#eturn render (request, 'logpage.html')
