@@ -121,15 +121,21 @@
             padding-top: 70px;
         }
 
-        .sub, #log{
+        .sub, #log, .sub2{
             color:#e8ebe9;
             text-align: center;
             font-size: 5rem;
             letter-spacing: -2px;
             font-weight: lighter;
-            padding-bottom: 30px;
+            padding-bottom: 20px;
             font-family:'Gentium Book Basic', serif;
         }
+
+        .sub2{
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+
         .title{
             color: #c9a100;
             text-align: center;
@@ -639,7 +645,7 @@
 
                  <h1 class="title">BORROW a BOOK</h1>
 
-                    <p class="sub">Find a Friend</p>
+                    <p class="sub">Reader Log</p>
             </div>
 
                 <div class="User-Info">
@@ -655,8 +661,8 @@
                <!--  <label for="DateEntry">Book-ing Date</label><br>
                 <input type="text" name="DateEntry" id="DateEntry" class="DateEntry" placeholder="month/day/year" -->
                 
-                <label for="BIDEntry">Reader ID</label><br>
-                <input type="text" name="NewReadID" id="NewReadID" placeholder="User-IRD-ID" ><br>
+                <label for="BIDEntry">Reader Location</label><br>
+                <input type="text" name="NewReadID" id="NewReadID" ><br>
 
                 <label for="NameEntry">Name of Reader</label> <br>
                 <input type="text" name="NewReader" id="NewReader" class="NewReader" ><br>
@@ -673,14 +679,16 @@
 
                 <br><br><br>
                 
-                <p id="log">Read with a Friend</p>
+                <p id="log">Create IRD Borrower Code</p>
 
                 <div class="Book-Info">
 
                
-                <input type="text" name="CodeEntry" id="CodeEntry" placeholder="User-IRD-ID" required>
-                <input type="text" name="FriendEntry" id="FriendEntry" required placeholder="Name of Friend"> 
-                <br>
+                <input type="text" name="CodeEntry" id="CodeEntry" placeholder="User-IRD-ID" required> <br>
+
+                <p class="sub2">Log your First Book</p>
+
+                <input type="text" name="FriendEntry" id="FriendEntry" required placeholder="Name"> 
                 <input type="text" name="AuthorEntry" id="AuthorEntry" required placeholder="Who is the author?">
                 <input type="text" name="BookEntry" id="BookEntry" placeholder="What is the title?" required>
                 <br> <br>
@@ -712,8 +720,8 @@
             <table id="booklist" name='booklist'>
             	<tr>
 
-                    <th>Friend Code</th>
-            		<th>Friend's Name</th>
+                    <th>Code</th>
+            		<th>Name</th>
             		<th>Book Author</th>
             		<th>Book Title</th>
                     <th>B-Status</th>

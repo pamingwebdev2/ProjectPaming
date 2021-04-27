@@ -70,17 +70,29 @@ class LogPageTest(TestCase):
 
 class ORMTest (TestCase):
 
-	def test_and_retrieve(self): #def test_saving_retrieving_list(self):
+	def test_save_and_retrieve(self): #def test_saving_retrieving_list(self):
 		NewBorrower = Borrower()
 		NewBorrower.save()
 		infoItem1 = Item()
+		NewBorrower1 = Borrower ()
 		infoItem1.binfo = 'Reader Code 1'
+		infoItem1.author ='Author 1'
+		infoItem1.title = 'Title 1'
+		infoItem1.name = 'Name 1'
+		NewBorrower1.Reader = 'Reader 1'
+		NewBorrower1.Location = 'Location 1'
 		infoItem1.MainID = NewBorrower
 		infoItem1.save()
 		
 		infoItem2 = Item()
+		NewBorrower2 = Borrower ()
 		infoItem2.MainID = NewBorrower
 		infoItem2.binfo = 'Reader Code 2'
+		infoItem2.author ='Author 2'
+		infoItem2.title = 'Title 2'
+		infoItem2.name = 'Name 2'
+		NewBorrower2.Reader = 'Reader 2'
+		NewBorrower2.Location = 'Location 2'
 		infoItem2.save()
 		
 		savedInfos = Item.objects.all()
@@ -91,6 +103,16 @@ class ORMTest (TestCase):
 		savedInfo2 = savedInfos[1]
 		self.assertEqual(savedInfo1.binfo, 'Reader Code 1')
 		self.assertEqual(savedInfo2.binfo, 'Reader Code 2')
+		self.assertEqual(savedInfo1.author, 'Author 1')
+		self.assertEqual(savedInfo2.author, 'Author 2')
+		self.assertEqual(savedInfo1.title, 'Title 1')
+		self.assertEqual(savedInfo2.title, 'Title 2')
+		self.assertEqual(savedInfo1.name, 'Name 1')
+		self.assertEqual(savedInfo2.name, 'Name 2')
+		self.assertEqual(NewBorrower1.Reader, 'Reader 1')
+		self.assertEqual(NewBorrower2.Reader, 'Reader 2')
+		self.assertEqual(NewBorrower1.Location, 'Location 1')
+		self.assertEqual(NewBorrower2.Location, 'Location 2')
 		self.assertEqual(savedInfo1.MainID, NewBorrower)
 		self.assertEqual(savedInfo2.MainID, NewBorrower)
 
@@ -126,19 +148,31 @@ class ViewingTest(TestCase):
 		# response = self.client.get('/IReadApp/viewlist_url/')
 		self.assertTemplateUsed(response, 'loglistpage.html')
 
+
+	def test_pass_log_to_loglistpage(self):
+		dummyLog1 = Borrower.objects.create()
+		dummyLog2 = Borrower.objects.create()
+		passLog = Borrower.objects.create()
+		response = self.client.get(f'/IReadApp/{passLog.id}/')
+		self.assertEqual(response.context['mId'],passLog) 
+
+
 class CreateLogListTest(TestCase):
 
 	def test_saving_POST(self): #def test_save_POST_request(self):
 		#response = self.client.post('/', data={'AuthorEntry': 'NewAuthor',})
-		response = self.client.post('/IReadApp/newlist_url', data={'CodeEntry': 'NewCode'})
+		response = self.client.post('/IReadApp/newlist_url', data={'CodeEntry': 'NewCode', 'FriendEntry':'NewFriend', 'AuthorEntry':'NewAuthor', 'BookEntry':'NewTitle'})
 
 		self.assertEqual(Item.objects.count(), 1)
 		newItem = Item.objects.first()
 		self.assertEqual(newItem.binfo, 'NewCode')
+		self.assertEqual(newItem.author, 'NewAuthor')
+		self.assertEqual(newItem.title, 'NewTitle')
+		self.assertEqual(newItem.name, 'NewFriend')
 
 
 	def test_if_redirecting_when_POST(self): #def test_redirects_POST_request(self):
-		response = self.client.post('/IReadApp/newlist_url', data={'CodeEntry': 'NewCode',})
+		response = self.client.post('/IReadApp/newlist_url', data={'CodeEntry': 'NewCode', 'FriendEntry':'NewFriend', 'AuthorEntry':'NewAuthor', 'BookEntry':'NewTitle'})
 		#self.assertEqual(response.status_code, 302) #eto yung bagong insert
 		#self.assertEqual(response['location'],'/')
 		#self.assertEqual(response['location'],'/IReadApp/viewlist_url/')
@@ -150,10 +184,13 @@ class AddlogTest(TestCase):
 		DummyLog1 = Borrower.objects.create()
 		DummyLog2 = Borrower.objects.create()
 		existingLog = Borrower.objects.create()
-		self.client.post(f'IReadApp/{existingLog.id}/addItem', data={'CodeEntry': 'NewCode',})
+		self.client.post(f'/IReadApp/{existingLog.id}/addItem', data={'CodeEntry': 'New Log for existing', 'FriendEntry': 'New Name Log','AuthorEntry':'New Author Log', 'BookEntry':'New Book Log'})
 		self.assertEqual(Item.objects.count(),1)
 		newItem =Item.objects.first()
 		self.assertEqual(newItem.binfo,'New Log for existing')
+		self.assertEqual(newItem.author,'New Author Log')
+		self.assertEqual(newItem.title,'New Book Log')
+		self.assertEqual(newItem.name,'New Name Log')
 		self.assertEqual(newItem.MainID, existingLog)
 
 	def test_redirects_to_log_view(self):
@@ -161,8 +198,8 @@ class AddlogTest(TestCase):
 		DummyLog2 = Borrower.objects.create()
 		DummyLog3 = Borrower.objects.create()
 		existingLog = Borrower.objects.create()
-		response = self.client.post(f'IReadApp/{existingLog.id}/addItem', data={'CodeEntry': 'NewCode',})
-		self.assertRedirects(response, f'IReadApp/{existingLog.id}/')
+		response = self.client.post(f'/IReadApp/{existingLog.id}/addItem', data={'CodeEntry': 'NewCode', 'FriendEntry':'NewFriend', 'AuthorEntry':'New Author Log', 'BookEntry': 'New Book Log'})
+		self.assertRedirects(response, f'/IReadApp/{existingLog.id}/')
 
 
 

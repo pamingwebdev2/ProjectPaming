@@ -151,7 +151,7 @@
             text-align: center;
         }
 
-        .User-Info label{
+        .Book-Info label{
             color: white;
             text-align: center;
             font-family:'Montserrat', sans-serif;
@@ -639,12 +639,12 @@
 
                  <h1 class="title">BORROW a BOOK</h1>
 
-                    <p class="sub">Find a Friend</p>
+                  <!--   <p class="sub">Find a Friend</p> -->
             </div>
 
                 <div class="User-Info">
 
-                <form method="POST" id="fields" action="/IReadApp/newlist_url"> <!--Before addingthis i already have regression after putting i dont have na-->
+                <form method="POST" id="fields" action="/IReadApp/{{mId.id}}/addItem"> <!--Before addingthis i already have regression after putting i dont have na-->
                
 
              <!--    <label for="NumberEntry">Number</label><br>
@@ -655,12 +655,12 @@
                <!--  <label for="DateEntry">Book-ing Date</label><br>
                 <input type="text" name="DateEntry" id="DateEntry" class="DateEntry" placeholder="month/day/year" -->
                 
-                <label for="BIDEntry">Reader ID</label><br>
+              <!--   <label for="BIDEntry">Reader ID</label><br>
                 <input type="text" name="NewReadID" id="NewReadID" placeholder="User-IRD-ID" ><br>
 
                 <label for="NameEntry">Name of Reader</label> <br>
                 <input type="text" name="NewReader" id="NewReader" class="NewReader" ><br>
-
+ -->
                 <!-- <label for="SchoolEntry">School Affiliation</label><br>
                 <input type="text" name="SchoolEntry" id="SchoolEntry" placeholder ><br> -->
 
@@ -673,13 +673,14 @@
 
                 <br><br><br>
                 
-                <p id="log">Read with a Friend</p>
+                <p id="log">Log New Book and Friend</p>
 
                 <div class="Book-Info">
 
-               
-                <input type="text" name="CodeEntry" id="CodeEntry" placeholder="User-IRD-ID" required>
-                <input type="text" name="FriendEntry" id="FriendEntry" required placeholder="Name of Friend"> 
+                <label>Friend ID</label> <br>
+                <input type="text" name="CodeEntry" id="CodeEntry" placeholder="User-IRD-ID" required> <br>
+                <label>Friend Name</label> <br> 
+                <input type="text" name="FriendEntry" id="FriendEntry" required placeholder="Name"> 
                 <br>
                 <input type="text" name="AuthorEntry" id="AuthorEntry" required placeholder="Who is the author?">
                 <input type="text" name="BookEntry" id="BookEntry" placeholder="What is the title?" required>
@@ -712,19 +713,19 @@
             <table id="booklist" name='booklist'>
             	<tr>
 
-                    <th>Friend Code</th>
-            		<th>Friend's Name</th>
+                    <th>Code</th>
+            		<th>Name</th>
             		<th>Book Author</th>
             		<th>Book Title</th>
                     <th>B-Status</th>
             		
             	</tr>
-                {% for item in NewCode%}
+                {% for item in mId.item_set.all %}
                 <tr>
                     <td id="authorid">{{forloop.counter}}. {{item.binfo}}</td>
-                    <td>{{NewAuthor}}</td>
-                    <td>{{NewTitle}}</td>
-                    <td>{{NewGenre}}</td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.author}}</td>
+                    <td>{{item.title}}</td>
                     <td>
                         <a href=""><button name="view" id="view" value="view">View</button></a>
                         <a href=""><button name="return" id="return" value="return">Return</button></a>

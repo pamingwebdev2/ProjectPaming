@@ -39,11 +39,17 @@ def LogPage(request):
 def ViewList (request, MainID):
 	mId = Borrower.objects.get(id=MainID)
 	#infos = Item.objects.all()
-	infos = Item.objects.filter(MainID = mId)
-	return render (request, 'loglistpage.html', {'NewCode': infos})
+	#infos = Item.objects.filter(MainID = mId)
+	return render (request, 'loglistpage.html', {'mId': mId,'FriendEntry':'NewFriend', 'AuthorEntry':'NewAuthor', 'BookEntry':'NewTitle', 'NewReadID':'Location', 'NewReader':'Reader'})
 
 def NewList(request):
 	NewBorrower = Borrower.objects.create()
-	Item.objects.create(MainID=NewBorrower, binfo=request.POST['CodeEntry'])
+	Item.objects.create(MainID=NewBorrower, name=request.POST['FriendEntry'], binfo=request.POST['CodeEntry'], author=request.POST['AuthorEntry'], title=request.POST['BookEntry'])
 	#return redirect('/IReadApp/viewlist_url/')
 	return redirect(f'/IReadApp/{NewBorrower.id}/')
+
+def AddItemLog(request, MainID):
+	mId =Borrower.objects.get(id=MainID)
+	Item.objects.create(MainID=mId, name=request.POST['FriendEntry'], binfo=request.POST['CodeEntry'], author=request.POST['AuthorEntry'], title=request.POST['BookEntry'])
+	return redirect (f'/IReadApp/{mId.id}/')
+	#pass
