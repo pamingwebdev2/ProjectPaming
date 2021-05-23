@@ -1,0 +1,529 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Pahiram Advocay</title>
+        <!-- <link rel="stylesheet" href="devotion.css"> -->
+
+        <style>
+            @import 'https://fonts.googleapis.com/css?family=Montserrat:300, 400, 700&display=swap';
+@import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
+
+* {
+	padding: 0;
+	margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+	font-size: 10px;
+	font-family: 'Montserrat', sans-serif;
+	scroll-behavior: smooth;
+}
+
+body{
+    height: 100%;
+    /*background-image: url("../images/enemy.jpg");*/
+    background-color: #36402b;
+    background-size: cover;
+    background-attachment: fixed;
+
+}
+
+/* Navigation */
+
+.navbar{
+    color: white;
+    text-decoration: none;
+    margin-top: 20px;
+
+}
+
+.logoname{
+    display: inline-block;
+    box-sizing: border-box;
+
+
+}
+.home {
+    text-decoration: none;
+    color: white;
+    padding-left: 0;
+
+}
+#logo {
+    margin-left: 30px;
+    padding-top: 2px;
+    float: left;
+}
+
+#cgcf {
+    margin-top: 25px;
+    font-size: 2.7rem;
+    line-height: 30px;
+    font-weight: 550;
+    padding: 0;
+    margin-left: 0;
+    font-family:'Montserrat', sans-serif;
+}
+
+h1 {
+    text-align: center;
+}
+
+
+.navoption {
+    float: right;
+    box-sizing: border-box;
+    margin-left: 30px;
+    margin-top: 40px;
+    font-size: 1.7rem;
+    margin-right: 40px;
+
+}
+.option{
+    color: white;
+    padding-left: 15px;
+    padding-right: 20px;
+    text-decoration: none;
+
+}
+
+.option:hover{
+    text-decoration-line: line-through;
+}
+.option:active{
+    color: black;
+}
+/* End of Navigation */
+
+.all{
+    min-height: 100vh;
+
+ }
+/* Title */
+/* Back to top button */
+.top-link {
+    transition: all .25s ease-in-out;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    display: inline-flex;
+    margin: 0 3em 3em 0;
+    z-index: 1;
+
+
+}
+.bck{
+    border-radius: 50%;
+    opacity: .5;
+    z-index: 1;
+    filter: grayscale(1);
+}
+
+.bck:hover{
+    border-radius: 50%;
+    border-style: solid;
+    border-color: rgb(29, 28, 28);
+    opacity: 1;
+    border-width: 2px;
+}
+
+.subtit{
+    color: white;
+    text-align: center;
+    font-size: 6rem;
+    font-weight:bolder;
+    letter-spacing: 3px;
+    padding-top: 5px;
+    padding-bottom: 0px;
+}
+
+.titcon{
+
+    margin-top: 40px;
+}
+
+
+.titcon{
+    min-height: 65vh;
+
+ }
+.title{
+    color: white;
+    text-align: center;
+    font-size: 4rem;
+    font-weight: lighter;
+    letter-spacing: 3px;
+    padding-top: 20px;
+    padding-bottom: 5px;
+
+}
+
+
+.intext{
+    color: white;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.details{
+    padding-top: 10px;
+    padding-left: 36vw;
+    padding-right: 33.4vw;
+    object-position: center;
+}
+
+.icon{
+    height: 20px;
+    width: 20px;
+}
+
+.conimg{
+    float: left;
+}
+
+.para{
+    float: left;
+}
+
+.time p, .person p{
+        color: white;
+        font-size: 1.2rem;
+        display: flex;
+        float:right;
+        padding-top: 3px;
+        padding-left: 5px;
+        padding-right: 50px;
+}
+
+.time, .person{
+    object-position: center;
+}
+
+/* end of title */
+
+
+/* Text */
+
+.text{
+    padding-top: 45px;
+    background-color: whitesmoke;
+}
+
+.main{
+    margin: 0px 0px 0px 65px;
+    padding: 10px 0px 0px 65px;
+    font-size: 1.7rem;
+    line-height: 30px;
+    color:rgb(26, 26, 26);
+    font-family: 'Montserrat', sans-serif;
+}
+
+.namcon{
+    padding-top: 80px;
+    padding-left: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 20px;
+    object-position: center;
+    /* border-style: solid;
+    border-color: rgba(128, 128, 128, 0.26); */
+    width: 70vw;
+    border-radius: 5px;
+}
+
+.namimg img{
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+}
+
+.namimg img:hover{
+    height: 180px;
+    width: 180px;
+    border-radius: 50%;
+    transition: .3s ease;
+    border-style: solid;
+    border-color: black;
+    padding: 5px;
+}
+
+.namimg{
+    float: left;
+
+}
+
+.writer{
+    /* float: left; */
+    padding-top: 50px;
+    padding-bottom: 80px;
+}
+.who{
+    color: rgb(26, 26, 26);
+    font-size: 1.7rem;
+    display: flex;
+    padding-left: 20px;
+}
+
+.main span{
+    background-color: #394141;
+   padding: 10px;
+   border-radius: 5px;
+   color: white;
+}
+
+/* Footer */
+footer {
+    font-size: 1.3rem;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    position: relative;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    background-color: #394141;
+    color: white;
+    text-align: center;
+    }
+
+    .connect{
+        font-weight: bold;
+        font-size: 1.6rem;
+    }
+
+    .icons{
+        display: flex;
+        justify-content: center;
+        margin-top: 5px;
+        margin-bottom: 0;
+        padding-bottom: 0;
+
+    }
+
+    .fb{
+        margin-left: 3px;
+        margin-right: 7px;
+        filter: grayscale(1);
+        transition: .3s ease filter;
+    }
+
+    .insta{
+        margin-left: 3px;
+        margin-right: 7px;
+        filter: grayscale(1);
+        transition: .3s ease filter;
+    }
+
+    .mail{
+        margin-left: 3px;
+        margin-right: 7px;
+        filter: grayscale(1);
+        transition: .3s ease filter;
+    }
+
+    .mail:hover{
+        filter: grayscale(0);
+    }
+
+    .fb:hover{
+            filter: grayscale(0);
+    }
+
+    .insta:hover{
+            filter: grayscale(0);
+    }
+
+    #verse {
+        font-size: 1.4rem;
+        padding-top: 5px;
+        padding-bottom: 2px;
+        margin-bottom: 1px;
+    }
+
+    #copy{
+        padding-bottom: 10px;
+    }
+    .navoptionfoot {
+        text-align: center;
+        font-size: 1.7rem;
+        padding-top: 20px;
+        padding-bottom: 10px;
+    
+    }
+    .optionf{
+        color: grey;
+        padding-left: 15px;
+        padding-right: 20px;
+        text-decoration: none;
+    
+    }
+    
+    .optionf:hover{
+        /* text-decoration: underline; */
+        color: white;
+        transition: .5s ease;
+        font-size: 1.9rem;
+    }
+    .optionf:active{
+        color: black;
+    }
+
+    /* End of Footer */
+
+
+        </style>
+
+    </head>
+    
+    <body>
+       <!-- Nav Bar -->
+
+    <div class="navbar">
+
+        <div class="logoname"> 
+            <a href=""></a><img src="COLORED.png" alt="" width="100" height="100" id="logo">
+            <a href="" class="home">
+                <pre id="cgcf">Project Pahiram 
+read, love and learn
+</pre> 
+            </a>     
+        </div>
+
+        <div class="navoption">
+
+            <a href="" class="option">Borrow</a>
+            <a href="" class="option">Donate</a>
+          
+
+        </div>
+    </div>
+
+<!-- End of Nav Bar -->
+
+<!-- Devotion -->
+
+    <div class="all">
+
+        <div class="titcon">
+
+          
+
+            <div class="title">
+                
+                <p>Project Pahiram</p>
+
+            </div>
+
+            <div class="subtit">
+
+                <p>Our Advocacy</p>
+
+            </div>
+
+            <p class="intext">Pahiram a Book at Give a Libro</p>
+
+            <div class="details">
+
+                <div class="time">
+
+                    <div class="conimg"><img src="../images/time.png" alt="" class="icon"></div>
+                    <div class="para"><p>January 18, 2021</p></div>
+
+                </div>
+
+                <div class="person">
+
+                    <div class="conimg"><img src="../images/person.png" alt="" class="icon"></div>
+                   <div class="para"><p>Sis. Rica Marie Paming</p></div> 
+
+                </div>
+            </div>
+
+        </div>
+
+   
+        <a href="#" class="top-link hide" id="js-top"><img src="../images/top.png" alt="" width="50" class="bck"></a>
+
+        <div class="text">
+
+            
+            <div class="maintext">
+                <pre class="main">
+                    Our hearts are complicated to examine because we don't know how.
+
+                    However, the Word of the Lord gives emphasis on how our thoughts and words that comes out of our own mouth
+                    can be an instrument to check and monitor it. In the text of Matthew 15 :1 - 20, it testifies that the words 
+                    we utter, things we say and the thoughts that we are thinking are all by product of the condition of our hearts.
+
+                    <b>"For out of the heart comes evil thoughts."</b>- Matthew 15:19.
+
+                    The first enemy of the heart is guilt.  
+
+                    All of us are sinners, we made mistakes in our lives. Once we knew it, we carry a burden of guilt in a way 
+                    that we can't accept it and its like we owe a special debt that we need to pay. It is not easy to realize 
+                    guilt in our hearts even forgive ourselves for the mistakes that we made, especially huge mistakes.
+
+                    But the bible is telling us to cancel the guilt by giving emphasis in 1 John 1:9 
+                    
+                    <b>“If we confess, He will clean us”.</b>
+                    
+                    Despite how big it is. If you properly confess it to Him not just to him but also to the people whom we 
+                    made mistakes. Take note as long as we are guilty,  and we still carry the secrets,  doing it again is inevitable 
+                    the reason why proper confession is a must.  So, we will win in the battle agaisnt guilt - the fisrt enemy of the heart.
+
+                    Prayer: Thank you Lord for purifying our hearts, help us to remove the guilt in our hearts, and continue to stand in 
+                    the promise that you gave in the first book of John.
+
+                    Open up your heart in Christ.
+
+                   <span id="sis">- Sis. Rica Marie Paming. </span> 
+                    
+                </pre>
+                
+            </div>
+            <div class="namcon">
+
+                <div class="namimg">
+
+                    <a href="https://www.facebook.com/rica.marie25/" target="_blank"><img src="../images/me.png" alt=""></a>  
+
+                </div>
+
+                <div class="writer">
+
+                    <p class="who">
+                        <b>Sis. Rica Marie Paming</b>
+                    </p>
+                    <br>
+                    <p class="who"> 
+                        Sis. Rica Marie Paming is a reader. She is also the president 
+                        of Future Educators' Organization (19-21) and a reader advocate. 
+                    </p>
+
+                </div>
+            </div>
+            
+        </div>
+
+        </div>
+
+    </div>
+           
+        <footer class="container">
+
+            <p id="verse">“Books are a uniquely portable magic.” – Stephen King</p>
+            <p id="copy">Copyright &copy; 2021 Project Pahiram.</p>
+
+             <div class="navoptionfoot">
+
+                <a href="" class="optionf">Borrow</a>
+                <a href="" class="optionf">Donate</a>
+
+
+            </div>
+        </footer> 
+
+       
+    </body>
+</html>

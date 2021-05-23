@@ -1,13 +1,16 @@
+{%load static%}
 <html>
 
     <head>
 
-        <title> I-Read Log Book</title>
+        <title>Project Borrower</title>
 
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400&display=swap" rel="stylesheet">
-       <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
+        <link rel="stylesheet" type="text/css" href="/static/css/main.css/">
 
-       <style type="text/css">
+        <style type="text/css">
+            
+            
         @import 'https://fonts.googleapis.com/css?family=Montserrat:300, 400, 700&display=swap';
         @import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
@@ -181,7 +184,7 @@
             text-align: center;
         }
 
-        .notice{
+        .notice, #verse, #copy{
             color: white;
             text-align: center;
             font-family:'Montserrat', sans-serif;
@@ -204,7 +207,7 @@
 
         /* book info */
         .Book-Info {
-            min-height: 45vh;
+            min-height: 20vh;
             /* background-color: rgb(202, 173, 134); */
             /* display: flex; */
             flex-direction: column;
@@ -361,7 +364,7 @@
 
         /* Main */
         .main{
-            background-image: url(../images/Book3.jpg);
+            background-image: url(/static/images/Book3.jpg);
             background-size: cover;
             height: 70vh;
             background-attachment: fixed;
@@ -456,6 +459,14 @@
 
         #authorid{
             text-align: left;
+            background-color: rgb(124, 67, 27);
+        }
+
+        #authorid a {
+            color: white;
+            text-decoration-line: none;
+            font-weight: bold;
+
         }
 
         #return, #view{
@@ -606,9 +617,8 @@
             }
             /* End of Footer */
 
-       </style>
 
-
+        </style>
 
     </head>
 
@@ -617,9 +627,9 @@
          <div class="navbar">
 
                 <div class="logoname"> 
-                    <a href=""></a><img src="../images/COLORED.png" alt="" width="100" height="100" id="logo">
+                    <a href=""></a><img src='/static/images/COLORED.png/' alt="" width="100" height="100" id="logo">
                     <a href="" class="home">
-                    <pre id="cgcf"> I-Read Book Hub
+                    <pre id="cgcf"> Project Pahiram
 <span id="rll"> read, love and learn</span> 
         </pre> 
                     </a>     
@@ -627,76 +637,41 @@
 
                 <div class="navoption">
 
-                    <a href="" class="option">About</a>
-                    <a href="" class="option">Borrow</a>
-                    <a href="" class="option">Look</a>
-                    <a href="" class="option">Review</a>
-                    <a href="" class="option">Profile</a>
-
+                <a href="" class="option">About</a>
+               
                 </div>
             </div>
 
-                <!-- End of Nav Bar -->
-
-                <!-- Title -->
+          
         <div>
         <div class="TAO" id="TAO">
             <div class="borrow" id="borrow">
 
-                 <h1 class="title">BORROW a BOOK</h1>
+                 <h1 class="title">PAHIRAM a BOOK</h1>
 
                     <p class="sub">Reader Log</p>
             </div>
 
                 <div class="User-Info">
 
-                <form method="POST" id="fields" action="IReadApp/newlist_url"> <!--Before addingthis i already have regression after putting i dont have na-->
-               
-
-             <!--    <label for="NumberEntry">Number</label><br>
-                <input type="tel" name="NumberEntry" id="NumberEntry" class="NumberEntry" maxlength="11"><br> -->
-                
-                <!-- <label for="UserNEntry">Username</label><br>
-                <input type="email" name="UserNEntry" id="UserNEntry" class="UserNentry"><br> -->
-               <!--  <label for="DateEntry">Book-ing Date</label><br>
-                <input type="text" name="DateEntry" id="DateEntry" class="DateEntry" placeholder="month/day/year" -->
-                
-                <label for="BIDEntry">Reader Location</label><br>
-                <input type="text" name="NewReadID" id="NewReadID" ><br>
+                <form method="POST" id="fields" action="IReadApp/newlist_url"> 
 
                 <label for="NameEntry">Name of Reader</label> <br>
                 <input type="text" name="NewReader" id="NewReader" class="NewReader" ><br>
 
-                <!-- <label for="SchoolEntry">School Affiliation</label><br>
-                <input type="text" name="SchoolEntry" id="SchoolEntry" placeholder ><br> -->
+                <label for="Number"> Reader Number</label> <br>
+                <input type="text" name="Number" id="Number" class="Number" maxlength="11"><br>
 
-               <!--  <label for="BIDEntry">Reader ID</label><br>
-                <input type="text" name="BIDEntry" id="BIDEntry" placeholder="User-IRD-ID" ><br>
- -->
+                <label for="ReadLoc">Reader Location</label><br>
+                <input type="text" name="ReadLoc" id="ReadLoc" ><br>
 
+                <label for="School">School Affiliation</label> <br>
+                <input type="text" name="School" id="School" class="School" ><br>
 
                 </div>
 
-                <br><br><br>
-                
-                <p id="log">Create IRD Borrower Code</p>
-
                 <div class="Book-Info">
 
-               
-                <input type="text" name="CodeEntry" id="CodeEntry" placeholder="User-IRD-ID" required> <br>
-
-                <p class="sub2">Log your First Book</p>
-
-                <input type="text" name="FriendEntry" id="FriendEntry" required placeholder="Name"> 
-                <input type="text" name="AuthorEntry" id="AuthorEntry" required placeholder="Who is the author?">
-                <input type="text" name="BookEntry" id="BookEntry" placeholder="What is the title?" required>
-                <br> <br>
-                <!-- <input type="text" name="GenreEntry" id="GenreEntry" placeholder="What is the genre?" required> -->
-      
-                <br>
-
-                <a href=""><button name="rules" id="rules" value="rules">Book-ing Rules</button></a>
                 <input type="submit" name="btn-list" id="btnSave" value="Confirm" class="button">
 
                 </div>
@@ -705,54 +680,25 @@
 
             </form>
 
-            <div class="notice">
+             <<!-- div class="logstat">
 
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima voluptatem hic quam <br>
-                    non inventore excepturi molestias ad ratione itaque!</p>
-                    
-                 </div>
-            
-        </div>
-
-        <div class="logstat">
+             <p class="sub">Borrower Log</p>
 
        
             <table id="booklist" name='booklist'>
-            	<tr>
-
-                    <th>Code</th>
-            		<th>Name</th>
-            		<th>Book Author</th>
-            		<th>Book Title</th>
-                    <th>B-Status</th>
-            		
-            	</tr>
-                {% for item in NewCode%}
+                {% for item in Borrower %}
                 <tr>
-                    <td id="authorid">{{forloop.counter}}. {{item.binfo}}</td>
-                    <td>{{NewAuthor}}</td>
-                    <td>{{NewTitle}}</td>
-                    <td>{{NewGenre}}</td>
-                    <td>
-                        <a href=""><button name="view" id="view" value="view">View</button></a>
-                        <a href=""><button name="return" id="return" value="return">Return</button></a>
-                    <td id="remove" class=""><span>X</span></td> 
-                    </td>
+                    <td id="authorid"> <a href="http://localhost:8000/IReadApp/{{forloop.counter}}/">http://localhost:8000/IReadApp/{{forloop.counter}}/</td></a>
+                    <td>{{item.Reader}}</td>
+                    <td>{{item.Number}}</td>
+                    <td>{{item.Location}}</td>
+                    <td>{{item.School}}</td>
                 </tr>
                 {% endfor%}
-            	<!--<tr>
-                    <td>1: {{NewAuthor}}</td>
-            		<td>{{NewBook}}</td>
-            		<td>{{NewGenre}}</td>
-            		<td>{{NewRemarks}}</td>
-            		<td id="remove"><span>X</span></td>
-            	</tr>-->
 
             </table>
 
-        </div>
-
-
+        </div> -->
 
 
             <div class="chapter">
@@ -780,9 +726,7 @@
             
         </div>
 
-        <!-- End of Verses -->
-
-        <!-- Main Verse -->
+    
         <div class="main">
             <div class="mainver">
 
@@ -796,30 +740,19 @@
 
         <footer class="container">
 
-            <p class="connect"> Continue to follow us in your social media accounts.</p>
-
-            <div class="icons">
-
-                <a href=""> <img class="fb" src="../images/facebook-new.png" alt="" width="30" height="30"></a>
-                <a href=""> <img class="insta" src="../images/insta.png" alt="" width="30" height="30"></a>
-                <a href=""> <img class="mail" src="../images/email.png" alt="" width="30" height="30"></a>
-
-            </div>
 
             <p id="verse">“Books are a uniquely portable magic.” – Stephen King</p>
-            <p id="copy">Copyright &copy; 2021 I-Read Book Hub.</p>
+            <p id="copy">Copyright &copy; 2021 Project Pahiram.</p>
 
             <div class="navoptionfoot">
 
                 <a href="" class="optionf">About</a>
                 <a href="" class="optionf">Borrow</a>
-                <a href="" class="optionf">Look</a>
-                <a href="" class="optionf">Review</a>
-                <a href="" class="option">Profile</a>
+                <a href="" class="option">Create</a>
 
             </div>
         </footer>
-        <!-- End of footer -->
+
 
 
     </body>

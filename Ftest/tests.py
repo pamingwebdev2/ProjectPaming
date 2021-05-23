@@ -41,28 +41,21 @@ class PageTest (LiveServerTestCase):
 
 
 	def test_start_a_list_for_one_user(self): #start_list_one_user
-		self.browser.get('http://localhost:8000')
-		#self.browser.get(self.live_server_url)
-		self.assertIn('I-Read Log Book', self.browser.title)
-		headerText = self.browser.find_element_by_tag_name('h1').text
-		self.assertIn('BORROW a BOOK', headerText)
+		#self.browser.get('http://localhost:8000')
+		self.browser.get(self.live_server_url)
+		# self.assertIn('I-Read Log Book', self.browser.title)
+		# headerText = self.browser.find_element_by_tag_name('h1').text
+		# self.assertIn('PAHIRAM a BOOK', headerText)
 		
-		inputAuthor1 = self.browser.find_element_by_id('AuthorEntry')
-		inputBook1 = self.browser.find_element_by_id('BookEntry')
-		inputFriend1 = self.browser.find_element_by_id('FriendEntry')
-		inputCode1 = self.browser.find_element_by_id ('CodeEntry')
-		btnSave = self.browser.find_element_by_id('btnSave')
-		
-		inputName1 =self.browser.find_element_by_id('NewReader')
-		# inputNumber1 = self.browser.find_element_by_id('NumberEntry')
-		inputUserID1 = self.browser.find_element_by_id('NewReadID')
+		# inputUserID1 = self.browser.find_element_by_id('ReadID')
+		# inputName1 =self.browser.find_element_by_id('NewReader')
+		# # inputNumber1 = self.browser.find_element_by_id('NumberEntry')
+		# inputNumber1 = self.browser.find_element_by_id('Number')
+		# inputLocation1 = self.browser.find_element_by_id('ReadLoc')
+		# inputSchool1 = self.browser.find_element_by_id('School')
+		# btnSave = self.browser.find_element_by_id('btnSave')
 		# inputSchool = self.browser.find_element_by_id('SchoolEntry')
 
-		self.assertEqual(inputFriend1.get_attribute('placeholder'),'Name')
-		self.assertEqual(inputAuthor1.get_attribute('placeholder'),'Who is the author?')
-		self.assertEqual(inputBook1.get_attribute('placeholder'),'What is the title?')
-		#self.assertEqual(inputUserID1.get_attribute('placeholder'),'User-IRD-ID')
-		self.assertEqual(inputCode1.get_attribute('placeholder'),'User-IRD-ID')
 		
 
 		# inNumber = self.browser.find_element_by_id('NumberEntry')
@@ -76,66 +69,103 @@ class PageTest (LiveServerTestCase):
 		# time.sleep(.1)
 
 		time.sleep(.1)
-		inBorrower = self.browser.find_element_by_id('NewReadID')
-		inBorrower.click()
-		inBorrower.send_keys('Dasmarinas')
+		inBId = self.browser.find_element_by_id('ReadID')
+		inBId.click()
+		inBId.send_keys('Tesla-IRD-002')
 
 
 		time.sleep(.1)
 		inName = self.browser.find_element_by_id('NewReader')
 		inName.click()
-		inName.send_keys('Rica Marie Paming')
+		inName.send_keys('Nikola Tesla')
 		time.sleep(.1)
+
+
+		time.sleep(.1)
+		inNum = self.browser.find_element_by_id('Number')
+		inNum.click()
+		inNum.send_keys('09123456789')
+
+
+		time.sleep(.1)
+		inLoc = self.browser.find_element_by_id('ReadLoc')
+		inLoc.click()
+		inLoc.send_keys('Dasmarinas')
+
+		time.sleep(.1)
+		inSchl = self.browser.find_element_by_id('School')
+		inSchl.click()
+		inSchl.send_keys('PHSD-M')
+
+		btnSave = self.browser.find_element_by_id('btnSave')
+		btnSave.click()
+
+
+
 		
 		# time.sleep(.1)
 		# inSchool = self.browser.find_element_by_id('SchoolEntry')
 		# inSchool.click()
 		# inSchool.send_keys('TUPC')
 		
-		time.sleep(.1)
-		inCode = self.browser.find_element_by_id('CodeEntry')
-		inCode.click()
-		inCode.send_keys('Tesla-IRD-002')
-		time.sleep(.1)
-
-		time.sleep(.1)
-		inName = self.browser.find_element_by_id('FriendEntry')
-		inName.click()
-		inName.send_keys('Nikola Tesla')
-		time.sleep(.1)
-
-		inAuthor = self.browser.find_element_by_id('AuthorEntry')
-		inAuthor.click()
-		inAuthor.send_keys('Mitch Albom')
-		time.sleep(1)
-
-		inBook = self.browser.find_element_by_id('BookEntry')
-		inBook.click()
-		inBook.send_keys('Tuesdays With Morrie')
-		time.sleep(.1)
-		
-		# inGenre = self.browser.find_element_by_id('GenreEntry')
-		# inGenre.click()
-		# inGenre.send_keys('Biographical Fiction')
+		# time.sleep(.1)
+		# inCode = self.browser.find_element_by_id('CodeEntry')
+		# inCode.click()
+		# inCode.send_keys('Tesla-IRD-002')
 		# time.sleep(.1)
 
-		btnSave = self.browser.find_element_by_id('btnSave')
-		btnSave.click()
+		# time.sleep(.1)
+		# inName = self.browser.find_element_by_id('FriendEntry')
+		# inName.click()
+		# inName.send_keys('Nikola Tesla')
+		# time.sleep(.1)
 
-		#self.check_rows_in_booklist('1. Mitch Albom') #(Tuesdays With Morrie Biographical Fiction Done X')
-		self.wait_rows_in_booklist('1. Tesla-IRD-002 Nikola Tesla Mitch Albom Tuesdays With Morrie View Return X')
+		# inAuthor = self.browser.find_element_by_id('AuthorEntry')
+		# inAuthor.click()
+		# inAuthor.send_keys('Mitch Albom')
+		# time.sleep(1)
+
+		# inBook = self.browser.find_element_by_id('BookEntry')
+		# inBook.click()
+		# inBook.send_keys('Tuesdays With Morrie')
+		# time.sleep(.1)
+		
+		# # inGenre = self.browser.find_element_by_id('GenreEntry')
+		# # inGenre.click()
+		# # inGenre.send_keys('Biographical Fiction')
+		# # time.sleep(.1)
+
+		# btnSave = self.browser.find_element_by_id('btnSave')
+		# btnSave.click()
+
+		# #self.check_rows_in_booklist('1. Mitch Albom') #(Tuesdays With Morrie Biographical Fiction Done X')
+		# self.wait_rows_in_booklist('1. Tesla-IRD-002 Nikola Tesla 09123456789 Dasmarinas PHSD-M')
 		#self.wait_rows_in_booklist('1. IRD-Book-1 Mitch Albom Tuesdays With Morrie Biographical Fiction View Return X')
+
+
 #another input
+
+		inputAuthor1 = self.browser.find_element_by_id('AuthorEntry')
+		inputBook1 = self.browser.find_element_by_id('BookEntry')
+		# inputFriend1 = self.browser.find_element_by_id('FriendEntry')
+		inputCode1 = self.browser.find_element_by_id ('CodeEntry')
+		btnSave = self.browser.find_element_by_id('btnSave')
+
+		# self.assertEqual(inputFriend1.get_attribute('placeholder'),'Name')
+		self.assertEqual(inputAuthor1.get_attribute('placeholder'),'Who is the author?')
+		self.assertEqual(inputBook1.get_attribute('placeholder'),'What is the title?')
+		#self.assertEqual(inputUserID1.get_attribute('placeholder'),'User-IRD-ID')
+		self.assertEqual(inputCode1.get_attribute('placeholder'),'Book-IRD-ID')
 
 		time.sleep(.1)
 		inCode = self.browser.find_element_by_id('CodeEntry')
 		inCode.click()
-		inCode.send_keys('Einstein-IRD-009')
+		inCode.send_keys('Stay-IRD-009')
 
 		time.sleep(.1)
 		inName = self.browser.find_element_by_id('FriendEntry')
 		inName.click()
-		inName.send_keys('Albert Einstein')
+		inName.send_keys('Fiction')
 		time.sleep(.1)
 
 		time.sleep(.1)
@@ -165,7 +195,7 @@ class PageTest (LiveServerTestCase):
 		btnSave = self.browser.find_element_by_id('btnSave')
 		btnSave.click()
 
-		self.wait_rows_in_booklist("2. Einstein-IRD-009 Albert Einstein Deb Caletti Stay View Return X") #Stay Adult Fiction Borrowed X
+		self.wait_rows_in_booklist("1. Stay-IRD-009 Fiction Deb Caletti Stay View Return X") #Stay Adult Fiction Borrowed X
 		#self.wait_rows_in_booklist("2. IRD-Book-9 Deb Caletti Stay Adult Fiction View Return X")
 		'''time.sleep(2)
 		inputAuthor1.send_keys('Mitch Albom')
@@ -188,76 +218,175 @@ class PageTest (LiveServerTestCase):
 		#self.assertIn('1: Mitch Albom Tuesdays With Morrie Biographical Fiction Done X', [row.text for row in rows])
 	
 	def test_different_url_for_diff_user(self):
-		self.browser.get('http://localhost:8000')
-		#self.browser.get(self.live_server_url)
+		#self.browser.get('http://localhost:8000')
+		self.browser.get(self.live_server_url)
+
+		# time.sleep(.1)
+		# inBorrower = self.browser.find_element_by_id('NewReadID')
+		# inBorrower.click()
+		# inBorrower.send_keys('Dasmarinas')
 
 
-		time.sleep(.1)
-		inCode = self.browser.find_element_by_id('CodeEntry')
-		inCode.click()
-		inCode.send_keys('Currie-IRD-003')
-		time.sleep(.1)
+		# time.sleep(.1)
+		# inName = self.browser.find_element_by_id('NewReader')
+		# inName.click()
+		# inName.send_keys('Nikola Tesla')
+		# time.sleep(.1)
+
+
+		# time.sleep(.1)
+		# inCode = self.browser.find_element_by_id('CodeEntry')
+		# inCode.click()
+		# inCode.send_keys('Currie-IRD-003')
+		# time.sleep(.1)
 
 		
-		inName = self.browser.find_element_by_id('FriendEntry')
+		# inName = self.browser.find_element_by_id('FriendEntry')
+		# inName.click()
+		# inName.send_keys('Marie Currie')
+		# time.sleep(.1)
+
+		# inAuthor = self.browser.find_element_by_id('AuthorEntry')
+		# inAuthor.click()
+		# inAuthor.send_keys('Colleen Hoover')
+		# time.sleep(1)
+
+		# inBook = self.browser.find_element_by_id('BookEntry')
+		# inBook.click()
+		# inBook.send_keys('November 9')
+		# time.sleep(.1)
+
+		time.sleep(.1)
+		inBId = self.browser.find_element_by_id('ReadID')
+		inBId.click()
+		inBId.send_keys('Currie-IRD-003')
+
+
+		time.sleep(.1)
+		inName = self.browser.find_element_by_id('NewReader')
 		inName.click()
 		inName.send_keys('Marie Currie')
 		time.sleep(.1)
 
-		inAuthor = self.browser.find_element_by_id('AuthorEntry')
-		inAuthor.click()
-		inAuthor.send_keys('Colleen Hoover')
-		time.sleep(1)
 
-		inBook = self.browser.find_element_by_id('BookEntry')
-		inBook.click()
-		inBook.send_keys('November 9')
 		time.sleep(.1)
+		inNum = self.browser.find_element_by_id('Number')
+		inNum.click()
+		inNum.send_keys('09123456789')
+
+
+		time.sleep(.1)
+		inLoc = self.browser.find_element_by_id('ReadLoc')
+		inLoc.click()
+		inLoc.send_keys('Bacoor')
+
+		time.sleep(.1)
+		inSchl = self.browser.find_element_by_id('School')
+		inSchl.click()
+		inSchl.send_keys('DLSU-D')
 
 		btnSave = self.browser.find_element_by_id('btnSave')
 		btnSave.click()
-		self.wait_rows_in_booklist("1. Currie-IRD-003 Marie Currie Colleen Hoover November 9 View Return X")
+
+		#self.wait_rows_in_booklist("1. Currie-IRD-003 Marie Currie Colleen Hoover November 9 View Return X")
+		#self.wait_rows_in_booklist('1. Currie-IRD-003 Marie Currie 09123456789 Bacoor DLSU-D')
+
+
 		viewlist_url = self.browser.current_url
 		self.assertRegex(viewlist_url, '/IReadApp/.+')
 
+
 		self.browser.quit()
 		self.browser = webdriver.Firefox()
-		self.browser.get('http://localhost:8000')
-		#self.browser.get(self.live_server_url)
+		#self.browser.get('http://localhost:8000')
+		self.browser.get(self.live_server_url)
 		pageBody = self.browser.find_element_by_tag_name('body').text
-		self.assertNotIn("1. Currie-IRD-003 Marie Currie Colleen Hoover November 9 View Return X", pageBody)
+		# self.assertNotIn("1. Currie-IRD-003 Marie Currie Colleen Hoover November 9 View Return X", pageBody)
+		# self.assertNotIn('1. Currie-IRD-003 Marie Currie 09123456789 Bacoor DLSU-D', pageBody)
+
+
+		# time.sleep(.1)
+		# inBorrower = self.browser.find_element_by_id('NewReadID')
+		# inBorrower.click()
+		# inBorrower.send_keys('Dasmarinas')
+
+
+		# time.sleep(.1)
+		# inName = self.browser.find_element_by_id('NewReader')
+		# inName.click()
+		# inName.send_keys('Nikola Tesla')
+		# time.sleep(.1)
+
+		# time.sleep(.1)
+		# inCode = self.browser.find_element_by_id('CodeEntry')
+		# inCode.click()
+		# inCode.send_keys('Newton-IRD-005')
+		# time.sleep(.1)
+
+		# inName = self.browser.find_element_by_id('FriendEntry')
+		# inName.click()
+		# inName.send_keys('Isaac Newton')
+		# time.sleep(.1)
+
+		# inAuthor = self.browser.find_element_by_id('AuthorEntry')
+		# inAuthor.click()
+		# inAuthor.send_keys('Tarryn Fisher')
+		# time.sleep(1)
+
+		# inBook = self.browser.find_element_by_id('BookEntry')
+		# inBook.click()
+		# inBook.send_keys('The Opportunist')
+		# time.sleep(.1)
+
+		# btnSave = self.browser.find_element_by_id('btnSave')
+		# btnSave.click()
+		time.sleep(.1)
+		inBId = self.browser.find_element_by_id('ReadID')
+		inBId.click()
+		inBId.send_keys('Descartes-IRD-004')
+
 
 		time.sleep(.1)
-		inCode = self.browser.find_element_by_id('CodeEntry')
-		inCode.click()
-		inCode.send_keys('Newton-IRD-005')
-		time.sleep(.1)
-
-		inName = self.browser.find_element_by_id('FriendEntry')
+		inName = self.browser.find_element_by_id('NewReader')
 		inName.click()
-		inName.send_keys('Isaac Newton')
+		inName.send_keys('Rene Descartes')
 		time.sleep(.1)
 
-		inAuthor = self.browser.find_element_by_id('AuthorEntry')
-		inAuthor.click()
-		inAuthor.send_keys('Tarryn Fisher')
-		time.sleep(1)
 
-		inBook = self.browser.find_element_by_id('BookEntry')
-		inBook.click()
-		inBook.send_keys('The Opportunist')
 		time.sleep(.1)
+		inNum = self.browser.find_element_by_id('Number')
+		inNum.click()
+		inNum.send_keys('09123456789')
+
+
+		time.sleep(.1)
+		inLoc = self.browser.find_element_by_id('ReadLoc')
+		inLoc.click()
+		inLoc.send_keys('Imus')
+
+		time.sleep(.1)
+		inSchl = self.browser.find_element_by_id('School')
+		inSchl.click()
+		inSchl.send_keys('INHS')
 
 		btnSave = self.browser.find_element_by_id('btnSave')
 		btnSave.click()
-		self.wait_rows_in_booklist("1. Newton-IRD-005 Isaac Newton Tarryn Fisher The Opportunist View Return X")
+
+
+		# self.wait_rows_in_booklist("1. Newton-IRD-005 Isaac Newton Tarryn Fisher The Opportunist View Return X")
+		# self.wait_rows_in_booklist('1. Descartes-IRD-003 Rene Descartes 09123456789 Imus INHS')
+
 
 		user2_url =self.browser.current_url
 		self.assertRegex(user2_url, '/IReadApp/.+')
 		self.assertNotEqual(viewlist_url, user2_url)
 		pageBody = self.browser.find_element_by_tag_name('body').text
-		self.assertNotIn(" Currie-IRD-003 Marie Currie Colleen Hoover November 9 View Return X", pageBody)
-		self.assertIn(" Newton-IRD-005 Isaac Newton Tarryn Fisher The Opportunist View Return X", pageBody)
+		# self.assertNotIn(" Currie-IRD-003 Marie Currie Colleen Hoover November 9 View Return X", pageBody)
+		# self.assertIn(" Newton-IRD-005 Isaac Newton Tarryn Fisher The Opportunist View Return X", pageBody)
+		# self.assertNotIn('Currie-IRD-003 Marie Currie 09123456789 Bacoor DLSU-D', pageBody)
+		# self.assertIn('Descartes-IRD-003 Rene Descartes 09123456789 Imus INHS', pageBody)
+		
+
 
 
 

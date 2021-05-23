@@ -1,0 +1,551 @@
+<!doctype html>
+<html>
+    <head>
+        <title> Welcome to P-Pahiram</title>
+        <!-- <link rel="stylesheet" href="home.css"> -->
+
+        <style>
+@import 'https://fonts.googleapis.com/css?family=Montserrat:300, 400, 700&display=swap';
+@import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+
+* {
+	padding: 0;
+	margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+	font-size: 10px;
+	font-family: 'Montserrat', sans-serif;
+	scroll-behavior: smooth;
+}
+
+body{
+    height: 100%;
+    /*background-image: url("../images/cgcf2.jpg");*/
+    background-color: #36402b;
+    background-size: cover;
+    background-attachment: fixed;
+    
+}
+
+/* Navigation */
+
+.navbar{
+    color: white;
+    text-decoration: none;
+    margin-top: 20px;
+
+}
+
+.logoname{
+    display: inline-block;
+    box-sizing: border-box;
+
+
+}
+.home {
+    text-decoration: none;
+    color: white;
+    padding-left: 0;
+
+}
+#logo {
+    margin-left: 30px;
+    padding-top: 2px;
+    float: left;
+}
+
+#cgcf {
+    margin-top: 25px;
+    font-size: 2.7rem;
+    line-height: 30px;
+    font-weight: 550;
+    padding: 0;
+    margin-left: 0;
+    font-family:'Montserrat', sans-serif;
+}
+
+h1 {
+    text-align: center;
+}
+
+
+.navoption {
+    float: right;
+    box-sizing: border-box;
+    margin-left: 30px;
+    margin-top: 40px;
+    font-size: 1.7rem;
+    margin-right: 40px;
+    
+}
+.option{
+    color: white;
+    padding-left: 15px;
+    padding-right: 20px;
+    text-decoration: none;
+    
+}
+
+.option:hover{
+    text-decoration-line: line-through;
+}
+.option:active{
+    color: black;
+}
+/* End of Navigation */
+
+/* Welcome */
+.welcome {
+	height: 100vh;
+	width: 100%;
+	max-width: 1080px;
+	margin: 0 auto;
+	display: flex;
+	justify-content: center;
+    align-items: center;
+    text-align: center;
+    
+}
+.welcome .welcs {
+	flex: 1;
+    padding: 20px;
+}
+
+.welcome .welcs h1 {
+	font-size: 80px;
+	position: relative;
+	color: transparent;
+	animation: text_revealing 0s ease forwards;
+	animation-delay: 1s;
+	display: inline-block;
+    text-align: center ;
+
+}
+.welcome .welcs h1:nth-child(1) {
+	animation-delay: 1s;
+}
+
+.welcome .welcs h1:nth-child(2) {
+	animation-delay: 2s;
+}
+
+.welcome .welcs h1:nth-child(3) {
+	animation-delay: 3s;
+}
+
+.welcome .welcs h1 span {
+	content: '';
+	position: absolute;
+	height: 100%;
+	width: 0;
+	left: 0;
+	top: 0;
+	background-color: #767334;
+	animation: revealing 1s ease forwards;
+	animation-delay: .5s;
+}
+
+@keyframes text_revealing {
+	100% {
+		color: white;
+	}
+}
+@keyframes revealing {
+	50% {
+		width: 100%;
+		left: 0;
+	}
+	100% {
+		left: 100%;
+		width: 0%;
+	}
+}
+
+/* End of Welcome */
+
+/* Back to top button */
+.top-link {
+    transition: all .25s ease-in-out;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    display: inline-flex;
+    margin: 0 3em 3em 0;
+    z-index: 1;
+
+
+}
+
+.bck{
+    border-radius: 50%;
+    opacity: .5;
+    z-index: 1;
+    filter: grayscale(1);
+}
+
+.bck:hover{
+    border-radius: 50%;
+    border-style: solid;
+    border-color: rgb(29, 28, 28);
+    opacity: 1;
+    border-width: 2px;
+}
+
+
+/* end of back to top button */
+
+
+/* House Verse */
+.vlord{
+    background-color:whitesmoke ;
+    padding: 0;
+    margin: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 20vh;  
+}
+
+.house {
+    color: #282b2b;
+    font-family: 'Permanent Marker', cursive;
+    /* 'Satisfy', cursive; */
+    box-sizing: border-box;
+    padding-top: 30px;
+    text-align: center;
+    font-size: 3.6rem;
+    /* font-weight: 500; */
+}
+
+
+.delighted{
+    padding: 0;
+    margin: 0;
+}
+
+.delight{
+    background-image: url(../images/word2.jpg);
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    padding: 0;
+    margin: 0;
+    left: 0;
+    right: 0;
+    width: 98.7vw;
+    height: 100vh;    
+}
+
+.content{
+    box-sizing: border-box;
+    padding-top: 18%;
+}
+
+.label{
+    text-align: center;
+    font-size: 4rem;
+    font-weight: 500;
+    
+}
+
+.button {
+    text-align: center;
+    color: #394141;
+}
+
+#read {
+    color: #394141;
+    line-height: 2.5rem;
+    font-weight: 300;
+    letter-spacing: .05rem;
+    font-size:2.7rem;
+    border: solid #dcfcdc;
+    padding: 10px 30px;
+    display: inline-block;
+    margin-top: 17px;
+    margin-bottom: 40px;
+    text-decoration: none;
+    border-radius: 10px;
+}
+
+#read:link{
+    color: #394141;
+
+}
+
+#read:visited{
+    color: #394141;
+}
+
+#read:hover{
+    color: #dcfcdc;
+    background-color: #394141;
+    border: solid #394141;
+    padding: 13px 33px;
+    margin-top: 14px;
+    margin-bottom: 40px;
+    /* text-decoration-line: line-through; */
+    transition: .5s ease;
+    font-size: 3rem;
+    border-style: solid;
+    border-color: white;
+    border-width: 2px;
+    box-shadow: 1em 1em 2em .25em rgba(0,0,0,.2);
+}
+
+#read:active{
+    color: black;
+    text-decoration-line: line-through;
+}
+
+/* Delighted */
+
+/* Sermon-links */
+
+.sermlink{
+    background-color: #eae3c9;
+    padding: 0;
+    margin: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 50vh; 
+}
+
+#logserm{
+    margin-left: 30px;
+    margin-right: 10px;
+    margin-top: 10px;
+    padding-top: 2px;
+    float: left;
+    height: 60px;
+    width: 60px;
+}
+
+.name{
+    color: #394141;
+    font-size: 3rem;
+    font-weight: 530;
+    padding-top: 22px
+    /* margin-left: 50px; */
+
+}
+.iconvid {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.vidlink {
+    /* border-radius: 30x; */
+    margin: 15px 20px 10px 20px;
+    width: 320px;
+    height: 170px;
+}
+
+.vidlink  {
+    border-radius: 20px;
+}
+
+.vidlink:hover{
+    width: 360px;
+    height: 210px; 
+    border-style: solid;
+    border-radius: 20px;
+    padding: 5px;
+    border-color: #394141;
+    transition: .3s ease-in;
+    box-shadow: 1em 1em 2em .25em rgba(0,0,0,.2);
+    
+}
+
+.vidlink:active{
+  filter: grayscale(1); 
+}
+
+
+/* End of Sermon link */
+
+/* Footer */
+footer {
+    font-size: 1.3rem;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    position: relative;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    background-color: #394141;
+    color: white;
+    text-align: center;
+    }
+    
+    .connect{
+        font-weight: bold;
+        font-size: 1.6rem;
+    }
+    
+    .icons{
+        display: flex;
+        justify-content: center;
+        margin-top: 5px;
+        margin-bottom: 0;
+        padding-bottom: 0;
+    
+    }
+    
+    .fb{
+        margin-left: 3px;
+        margin-right: 7px;
+        filter: grayscale(1);
+        transition: .3s ease filter;
+    }
+    
+    .insta{
+        margin-left: 3px;
+        margin-right: 7px;
+        filter: grayscale(1);
+        transition: .3s ease filter;
+    }
+    
+    .mail{
+        margin-left: 3px;
+        margin-right: 7px;
+        filter: grayscale(1);
+        transition: .3s ease filter;
+    }
+    
+    .mail:hover{
+        filter: grayscale(0);
+    }
+    
+    .fb:hover{
+            filter: grayscale(0);
+    }
+    
+    .insta:hover{
+            filter: grayscale(0);
+    }
+    
+    #verse {
+        font-size: 1.4rem;
+        padding-top: 5px;
+        padding-bottom: 2px;
+        margin-bottom: 1px;
+    }
+
+    #copy{
+        padding-bottom: 10px;
+    }
+    .navoptionfoot {
+        text-align: center;
+        font-size: 1.7rem;
+        padding-top: 20px;
+        padding-bottom: 10px;
+    
+    }
+    .optionf{
+        color: grey;
+        padding-left: 15px;
+        padding-right: 20px;
+        text-decoration: none;
+    
+    }
+    
+    .optionf:hover{
+        /* text-decoration: underline; */
+        color: white;
+        transition: .5s ease;
+        font-size: 1.9rem;
+    }
+    .optionf:active{
+        color: black;
+    }
+    /* End of Footer */
+
+        </style>
+
+    </head>
+    
+    <body>
+<!-- Nav Bar -->
+
+        <div class="navbar">
+
+            <div class="logoname"> 
+                <a href=""></a><img src="COLORED.png" alt="" width="100" height="100" id="logo">
+                <a href="" class="home">
+                    <pre id="cgcf">Project Pahiram 
+read, love and learn
+</pre> 
+                </a>     
+            </div>
+
+            <div class="navoption">
+
+                <a href="" class="option">Borrow</a>
+                <a href="" class="option">Donate</a>
+
+
+            </div>
+<!-- End of Nav Bar -->
+
+<!-- Welcome  -->
+        <div class="welcome">
+
+            <div class="welcs">
+
+                <h1>This is Project Pahiram<span></span></h1>
+                
+
+            </div>
+
+        </div>
+<!-- End of Welcome -->
+
+<a href="#" class="top-link hide" id="js-top"><img src="../images/top.png" alt="" width="50" class="bck"></a>
+
+<!-- Verse serve the lord -->
+<div class="vlord">
+
+    <p class="house"> "A book is a dream that you hold in your hand" - Neil Gaiman</p>
+
+</div>
+
+<!-- End of Verse serve the lord -->
+
+<!-- Delighted -->
+        <div class="delight">
+
+            <div class="content">
+                <p class="label">Be Delighted in Words</p>
+                <div class="button"><a href="devotion.html" id="read">Our Advocacy</a></div>
+
+            </div>               
+
+        </div>
+
+<!--End of Delighted  -->
+
+        <footer class="container">
+
+              <p id="verse">“Books are a uniquely portable magic.” – Stephen King</p>
+            <p id="copy">Copyright &copy; 2021 Project Pahiram</p>
+
+             <div class="navoptionfoot">
+
+                <a href="ministry.html" class="optionf">Borrow</a>
+                <a href="preach.html" class="optionf">Donate</a>
+       
+
+            </div>
+        </footer>
+    
+    </body>
+</html>
