@@ -26,7 +26,7 @@ class BorrTrans(models.Model):
 	DateBorr = models.DateTimeField(auto_now_add=True, null=True)
 	DueDate = models.DateTimeField(auto_now_add=True, null=True)
 	DateRet = models.DateTimeField(auto_now_add=True, null=True)
-	Remarks = models.TextField(default="")
+	Remarks = models.TextField(default="On Process")
 	class meta:
 		db_table="Transaction"
 
@@ -47,7 +47,7 @@ class DonTrans(models.Model):
 	DateTrans= models.DateTimeField(auto_now_add=True, null=True) #kailanmagaabot 
 	Message = models.TextField(default="")
 	Categories = models.TextField(default="")
-	Status = models.TextField(default="")
+	Status = models.TextField(default="Pending")
 	class meta:
 		db_table="Donation"
 
@@ -55,6 +55,5 @@ class Penalty (models.Model):
 	borrId = models.ForeignKey(Borrower, default=None, on_delete=models.CASCADE)
 	Amount =models.IntegerField(default="")
 	Mode = models.TextField(default="")
-	Query = models.TextField(default="")
-	# DatePaid = models.DateField(default="")
+	DatePaid= models.DateTimeField(auto_now_add=True, null=True) #kailanmagaabot 
 

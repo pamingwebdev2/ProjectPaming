@@ -2,7 +2,7 @@
 
     <head>
 
-        <title> I-Read Log Book</title>
+        <title>Project Give</title>
 
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400&display=swap" rel="stylesheet">
        <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
@@ -638,27 +638,31 @@
                  <h1 class="title">PAHIRAM a BOOK</h1>
 
                     <p class="sub">Sponsor Info</p>
-            <table>
+             <table>
                 <tr>
-                    <td>Sponsor</td>
+                 <td>Your Link:</td>
+                    <td>Reader:</td>
                     <td>Number:</td>
                     <td>Location:</td>
-                    <td>Affiliations:</td>
+                    <td>School:</td>
                 </tr>
                 <tr>
-                    <td>{{sId.SpoName.upper}}</td>
-                    <td>{{sId.SpoNumber.upper}}</td>
-                    <td>{{sId.SpoLocation.upper}}</td>
-                    <td>{{sId.SpoAffil.upper}}</td>
+                    
+                    <td>localhost:8000/IReadApp/{{mId.id}}</td>
+                    <td>{{mId.Reader.upper}}</td>
+                    <td>{{mId.Number.upper}}</td>
+                    <td>{{mId.Location.upper}}</td>
+                    <td>{{mId.School.upper}}</td>
                 </tr>
 
             </table>
+
 
             </div>
 
                 <div class="User-Info">
 
-                <form method="POST" id="fields" action="/IReadApp/{{sId.id}}/addDon"> <!--Before addingthis i already have regression after putting i dont have na-->
+                <form method="POST" id="fields" action="/IReadApp/{{mId.id}}/addDon"> <!--Before addingthis i already have regression after putting i dont have na-->
                
 
              <!--    <label for="NumberEntry">Number</label><br>
@@ -696,20 +700,23 @@
  -->
                 <!-- Gawing date yung librarian -->
                 <label>Donated Books Quantity</label> <br> 
-                <input type="Number" name="Quantity" id="Quantity" > <br>
+                <input type="Number" name="Quantity" id="Quantity" min="1"> <br>
 
                 <label>Mode</label> <br>
-                <input type="text" name="Mode" id="Mode" required placeholder="Delivery/Meet-Up"> <br>
+                <input type="text" name="Mode" id="Mode" required placeholder="Delivery/Meet-Up/etc."> <br>
                
          <!--        <label>Desired Date of Transaction</label> <br>
                 <input type="date" name="DateTrans" id="DateTrans" >
                 <br> -->
+                <label>Categories</label> <br>
+                <input type="text" name="Categories" id="Categories"> <br>
 
                 <label>Message</label> <br>
                 <input type="text" name="Message" id="Message" > <br>
 
+<!-- 
                 <label>Status</label> <br>
-                <input type="text" name="Status" id="Status">
+                <input type="text" name="Status" id="Status"> -->
       
                 <br>
 
@@ -726,35 +733,27 @@
         </div>
 
         <div class="logstat">
-
+            <p id="log">Donation Log</p>
        
-            <table id="booklist" name='booklist'>
-            	<tr>
+            
+            <table id="booklist" name="booklist">
+                <tr>
 
-            		<th>Mode</th>
-            		<th>Quantity</th>
-            		<th>Message</th>
+                    <th>Quantity</th>
+                    <th>Categories</th>
                     <th>Status</th>
-            		
-            	</tr>
+                    
+                </tr>
                 {% for dontrans in sId.dontrans_set.all %}
                 <tr>
-                    <td>{{forloop.counter}}. {{dontrans.Mode}} </td>
-                    <td>{{dontrans.Quantity}}</td>
-                    <td>{{dontrans.Message}}</td>
+                    <td>{{forloop.counter}}. {{dontrans.Quantity}}</td>
+                    <td>{{dontrans.Categories}}</td>
                     <td>{{dontrans.Status}}</td>
                   
                 </tr>
                 {% endfor%}
-            	<!--<tr>
-                    <td>1: {{NewAuthor}}</td>
-            		<td>{{NewBook}}</td>
-            		<td>{{NewGenre}}</td>
-            		<td>{{NewRemarks}}</td>
-            		<td id="remove"><span>X</span></td>
-            	</tr>-->
-
             </table>
+
 
     
         </div>

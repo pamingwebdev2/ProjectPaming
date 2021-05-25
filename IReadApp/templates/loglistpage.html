@@ -655,6 +655,8 @@
 
             </table>
 
+
+
             </div>
 
                 <div class="User-Info">
@@ -683,6 +685,10 @@
                 <input type="date" name="BorrDate" id="BorrDate" >
                 <br>
 
+                <label>DueDate</label> <br>
+                <input type="date" name="DueDate" id="DueDate" >
+                <br>
+
       
                 <br>
 
@@ -706,25 +712,35 @@
 
         <div class="logstat">
 
+            <p id="log">Borrow Log</p>
+
        
             <table id="booklist" name='booklist'>
             	<tr>
 
-                    <th>Code</th>
             		<th>Category</th>
-            		<th>Book Author</th>
             		<th>Book Title</th>
-                    <th>B-Status</th>
+                    <th>Date Borrowed</th>
+                    <th>Due Date</th>
+                    <th>Date Returned</th>
+                    <th>Remarks</th>
+
             		
             	</tr>
                 {% for item in mId.item_set.all %}
                 <tr>
                     <td>{{forloop.counter}}. {{item.name}}</td>
-                    <td>{{item.author}}</td>
                     <td>{{item.title}}</td>
-                    <td>
+                     <td>{{item.DateBorr}}</td>
+                      <td>{{item.DueDate}}</td>
+                      <td>{{item.Remarks}}</td>
+                      <td>{{item.DateRet}}</td>
+                 <!--    <td>
                         <a href=""><button name="view" id="view" value="view">View</button></a>
                     </td>
+                    <td id="remove">
+                        <a href="">Return</a>
+                    </td> -->
                 </tr>
                 {% endfor%}
 
