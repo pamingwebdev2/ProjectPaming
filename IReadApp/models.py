@@ -24,7 +24,7 @@ class BorrTrans(models.Model):
 	borrId = models.ManyToManyField(Borrower, default=None) #many to many
 	bookId = models.ManyToManyField(Item, default=None) #many to many
 	DateBorr = models.DateTimeField(auto_now_add=True, null=True)
-	DueDate = models.DateTimeField(auto_now_add=True, null=True)
+	DueDate = models.TextField(default="")
 	DateRet = models.DateTimeField(auto_now_add=True, null=True)
 	Remarks = models.TextField(default="On Process")
 	class meta:

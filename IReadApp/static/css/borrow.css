@@ -346,7 +346,7 @@
 
         /* Main */
         .main{
-            background-image: url(/static/images/Book3.jpg/);
+            background-image: url(/static/images/Book3.jpg);
             background-size: cover;
             height: 70vh;
             background-attachment: fixed;

@@ -245,6 +245,10 @@
             transition: .5s ease;
             letter-spacing: 2px;
         }
+        #Binfo input:hover::placeholder{
+            transition: .5s ease;
+            letter-spacing: 2px;
+        }
 
         #Genre1:focus{
             border-style: solid;
