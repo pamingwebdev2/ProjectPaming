@@ -118,7 +118,7 @@
             font-size: 5rem;
             letter-spacing: -2px;
             font-weight: lighter;
-            padding-bottom: 20px;
+            padding-bottom: 30px;
             font-family:'Gentium Book Basic', serif;
         }
 
@@ -136,10 +136,6 @@
             font-weight: lighter;
 
         }
-
-        /* End of Title */
-
-        /* borrow info */
 
 
         .User-Info{

@@ -16,38 +16,8 @@ def NewList(request):
 
 def AddItemLog(request, MainID): #dagdagbo
 	mId =Borrower.objects.get(id=MainID)
-	Item.objects.create(MainID=mId, name=request.POST['FriendEntry'], author=request.POST['AuthorEntry'], title=request.POST['BookEntry'])
+	Item.objects.create(MainID=mId, binfo=request.POST['CodeEntry'], name=request.POST['Category'], author=request.POST['AuthorEntry'], title=request.POST['BookEntry'])
 	return redirect (f'/IReadApp/{mId.id}/')
-
-
-# def AddItemLog(request, borrId,): #dagdagbo
-# 	mId =Borrower.objects.get(id=borrId)
-# 	bookId= Item.objects.create(name=request.POST['FriendEntry'], author=request.POST['AuthorEntry'], title=request.POST['BookEntry'])
-# 	bId = Item.objects.get(id=bookIzzd)
-# 	BorrTrans.objects.create(borrId=mId, bookId=bId, DateBorr=request.POST['BorrDate'])
-# 	return redirect (f'/IReadApp/{mId.id}/')
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 def DataManip(request):
@@ -82,7 +52,7 @@ def DataManip(request):
 	res = ""
 
 	#filter
-	qs = Item.objects.filter(Remarks= 'Borrowed')
+	qs = Borrower.objects.filter(Remarks= 'Borrowed')
 	res += "Found: %s results<br>" %len(qs)
 
 	#sort

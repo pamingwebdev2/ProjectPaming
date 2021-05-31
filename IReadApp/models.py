@@ -12,7 +12,7 @@ class Borrower(models.Model):
 
 
 class Item(models.Model):
-	binfo = models.TextField(default="") 
+	binfo = models.TextField(default="") #isbn to
 	author = models.TextField(default="")
 	title = models.TextField(default="")
 	name = models.TextField(default="")
@@ -56,4 +56,7 @@ class Penalty (models.Model):
 	Amount =models.IntegerField(default="")
 	Mode = models.TextField(default="")
 	DatePaid= models.DateTimeField(auto_now_add=True, null=True) #kailanmagaabot 
+
+	class meta:
+		db_table="Penalty"
 

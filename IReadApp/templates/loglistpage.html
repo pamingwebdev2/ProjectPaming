@@ -6,8 +6,44 @@
         <title>Project Borrow</title>
 
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400&display=swap" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="/static/css/main.css">
-        
+        <link rel="stylesheet" type="text/css" href="/static/css/main.css/">
+
+        <style type="text/css">
+
+        .click{
+
+        padding: 60px;
+        text-align: center;
+        }
+
+            
+        #pahiram, #donate, #penalty, #reg{
+                font-family: 'Montserrat', sans-serif;
+                width: 200px;
+                height: 50px;
+                border-color: #6e6046;
+                background:rgb(124, 67, 27);
+                color: white;
+                box-shadow: -3px 6px 4px #222;
+                border-radius: 10px;
+                font-size: 2.3rem;
+                padding-bottom: 0px;
+                margin-right: 5px;
+                margin-left: 5px;
+               
+        }
+
+        .Book-Info{
+            color: white;
+            text-align: center;
+            font-family:'Montserrat', sans-serif;
+            font-size: 23px;
+            font-weight: bold;
+            margin-bottom: 0px; 
+        }
+        </style>
+
+
     </head>
 
     <body>
@@ -15,31 +51,31 @@
          <div class="navbar">
 
                 <div class="logoname"> 
-                    <a href=""></a><img src='/static/images/COLORED.png'alt="" width="100" height="100" id="logo">
+                    <a href=""></a><img src='/static/images/COLORED.png/'alt="" width="100" height="100" id="logo">
                     <a href="" class="home">
                     <pre id="cgcf"> Project Pahiram
 <span id="rll"> read, love and learn</span> 
         </pre> 
                     </a>     
                 </div>
-
+<!-- 
                 <div class="navoption">
 
                     <a href="" class="option">About</a>
-                   <!--  <a href="" class="option">Borrow</a> -->
+                    <a href="" class="option">Borrow</a>
                     <a href="http://localhost:8000/" class="option">Create</a>
                    
-                </div>
+                </div> -->
             </div>
 
                 <!-- End of Nav Bar -->
 
                 <!-- Title -->
-        <div>
+        
         <div class="TAO" id="TAO">
             <div class="borrow" id="borrow">
 
-                 <h1 class="title">PAHIRAM a BOOK</h1>
+                 <h1 class="title">PROJECT PAHIRAM</h1>
 
                     <p class="sub">Borrower Info</p>
             <table>
@@ -52,7 +88,7 @@
                 </tr>
                 <tr>
                     
-                    <td>localhost:8000/IReadApp/{{mId.id}}</td>
+                    <td>pahiram.ph/IReadApp/{{mId.id}}</td>
                     <td>{{mId.Reader.upper}}</td>
                     <td>{{mId.Number.upper}}</td>
                     <td>{{mId.Location.upper}}</td>
@@ -62,37 +98,42 @@
             </table>
 
 
-
-            </div>
-
-                <div class="User-Info">
-
-                <form method="POST" id="fields" action="/IReadApp/{{mId.id}}/addItem"> 
+        </div>
+    </div>
 
 
-                </div>
+        <div class="click">
 
-                <br><br><br>
+        <p class="sub">Choose 1 Transaction</p>
+
+        <button id="pahiram" value="borrow">Borrow</button>
+
+        <button id="donate" value="donate">Donate</button>
+
+        <button id="penalty" value="penalty">Check</button>
+
+        <a href="#"><button name="rules" id="reg" value="rules">Rules</button></a>
+
+
+        </div>
+
+        
+<div class="borrowing">
                 
-                <p id="log">Log New Book and Friend</p>
+                <p id="log">PAHIRAM a BOOK</p>
 
-                <div class="Book-Info" style="
-            color: white;
-            text-align: center;
-            font-family:'Montserrat', sans-serif;
-            font-size: 23px;
-            font-weight: bold;
-            margin-bottom: 0px; ">
+        <div class="Book-Info">
 
-                <label>Book Category</label> <br> 
-                <input type="text" name="FriendEntry" id="FriendEntry" required> 
+            <form method="POST" id="fields" action="/IReadApp/{{mId.id}}/addItem"> 
+
+                <input type="text" name="CodeEntry" id="CodeEntry" placeholder="ISBN"> 
+            
+                <input type="text" name="Category" id="Category" placeholder="Category"> <br>
+ 
+                <input type="text" name="AuthorEntry" id="AuthorEntry" required placeholder="Book Author">
+
+                <input type="text" name="BookEntry" id="BookEntry" placeholder="Book Title" required>
                 <br>
-                <label>Book Author</label> <br>
-                <input type="text" name="AuthorEntry" id="AuthorEntry" required placeholder="Who is the author?"> <br>
-                <label>Book Title</label> <br>
-                <input type="text" name="BookEntry" id="BookEntry" placeholder="What is the title?" required>
-                <br>
-
                 <label>Date Borrowed</label> <br>
                 <input type="date" name="BorrDate" id="BorrDate" onchange="dueFunc()">
                 <br>
@@ -104,41 +145,43 @@
       
                 <br>
 
-                <a href=""><button name="rules" id="rules" value="rules">Book-ing Rules</button></a>
+            
                 <input type="submit" name="btn-list" id="btnSave" value="Confirm" class="button">
 
-                </div>
+              
                 
                 {% csrf_token %}
 
-            </form>
 
-            <div class="notice">
+
+            </form>
+              
+        </div>
+
+        <div class="notice">
 
                 <p>Kindly read and strictly follow the rules and regulations, <br>
                 fail to do so will result to deletion of records and banning of the user.</p>
                     
-                 </div>
-            
         </div>
 
-        <div class="logstat">
+         <div class="logstat">
 
             <p id="log">Borrow Log</p>
 
        
             <table id="booklist" name='booklist'>
-            	<tr>
+                <tr>
 
-            		<th>Category</th>
-            		<th>Book Title</th>
+                    <th>Category</th>
+                    <th>Book Title</th>
                     <th>Date Borrowed</th>
                     <th>Due Date</th>
                     <th>Date Returned</th>
                     <th>Remarks</th>
 
-            		
-            	</tr>
+                    
+                </tr>
                 {% for item in mId.item_set.all %}
                 <tr>
                     <td>{{forloop.counter}}. {{item.name}}</td>
@@ -147,21 +190,80 @@
                       <td>{{item.DueDate}}</td>
                       <td>{{item.Remarks}}</td>
                       <td>{{item.DateRet}}</td>
-                 <!--    <td>
-                        <a href=""><button name="view" id="view" value="view">View</button></a>
-                    </td>
-                    <td id="remove">
-                        <a href="">Return</a>
-                    </td> -->
                 </tr>
                 {% endfor%}
 
             </table>
 
+         </div>
+
+</div>
+<!-- 
+<div class="donating">
+    
+     <div class="Book-Info">
+
+                <form method="POST" id="fields" action="/IReadApp/{{mId.id}}/addDon"> 
+
+                <br><br>
+                
+                <p id="log">GIVE a LIBRO</p>
+
+                <div class="Book-Info">
+
+                <label>Donated Books Quantity</label> <br> 
+                <input type="Number" name="Quantity" id="Quantity" min="1"> <br>
+
+                <label>Mode</label> <br>
+                <input type="text" name="Mode" id="Mode" required placeholder="Delivery/Meet-Up/etc."> <br>
+               
+                <label>Categories</label> <br>
+                <input type="text" name="Categories" id="Categories"> <br>
+
+                <label>Message</label> <br>
+                <input type="text" name="Message" id="Message" > <br>
+      
+                <br>
+
+
+                <input type="submit" name="btn-list" id="btnSave" value="Confirm" class="button">
+
+                </div>
+                
+                {% csrf_token %}
+
+            </form>
+
+            
         </div>
 
+        <div class="logstat">
 
+            <p id="log">Donation Log</p>
+           
+                
+                <table id="booklist" name="booklist">
+                    <tr>
+                        <th>Type</th>
+                        <th>Quantity</th>
+                        <th>Categories</th>
+                        <th>Status</th>
+                        
+                    </tr>
+                    {% for dontrans in mId.dontrans_set.all %}
+                    <tr>
 
+                        <td>{{forloop.counter}}. Books</td>
+                        <th>{{dontrans.Quantity}}</td>
+                        <td>{{dontrans.Categories}}</td>
+                        <td>{{dontrans.Status}}</td>
+                      
+                    </tr>
+                    {% endfor%}
+                </table>
+
+        </div>
+</div>       -->
 
             <div class="chapter">
 

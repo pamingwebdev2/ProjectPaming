@@ -111,7 +111,7 @@ class AddlogTest(TestCase):
 		DummyLog1 = Borrower.objects.create()
 		DummyLog2 = Borrower.objects.create()
 		existingLog = Borrower.objects.create()
-		self.client.post(f'/IReadApp/{existingLog.id}/addItem', data={'FriendEntry': 'New Name Log','AuthorEntry':'New Author Log', 'BookEntry':'New Book Log'})
+		self.client.post(f'/IReadApp/{existingLog.id}/addItem', data={'Category': 'New Name Log','AuthorEntry':'New Author Log', 'BookEntry':'New Book Log'})
 		self.assertEqual(Item.objects.count(),1)
 		newItem =Item.objects.first()
 		self.assertEqual(newItem.binfo,'New Log for existing')
@@ -125,7 +125,7 @@ class AddlogTest(TestCase):
 		DummyLog2 = Borrower.objects.create()
 		DummyLog3 = Borrower.objects.create()
 		existingLog = Borrower.objects.create()
-		response = self.client.post(f'/IReadApp/{existingLog.id}/addItem', data={'FriendEntry':'NewFriend', 'AuthorEntry':'New Author Log', 'BookEntry': 'New Book Log'})
+		response = self.client.post(f'/IReadApp/{existingLog.id}/addItem', data={'Category':'NewFriend', 'AuthorEntry':'New Author Log', 'BookEntry': 'New Book Log'})
 		self.assertRedirects(response, f'/IReadApp/{existingLog.id}/')
 
 
