@@ -3,3 +3,5 @@ geckodriver.log
 __pycache__
 *.pyc
 *.pyc/*.cmake/*.DS_Store/.user
+static
+db.sqlite3-journal
