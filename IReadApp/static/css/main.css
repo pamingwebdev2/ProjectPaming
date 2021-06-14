@@ -605,4 +605,35 @@
             }
             /* End of Footer */
 
+            .click{
 
+            padding: 60px;
+            text-align: center;
+            }
+
+                
+            #pahiram, #donate, #penalty, #reg{
+                    font-family: 'Montserrat', sans-serif;
+                    width: 200px;
+                    height: 50px;
+                    border-color: #6e6046;
+                    background:rgb(124, 67, 27);
+                    color: white;
+                    box-shadow: -3px 6px 4px #222;
+                    border-radius: 10px;
+                    font-size: 2.3rem;
+                    padding-bottom: 0px;
+                    margin-right: 5px;
+                    margin-left: 5px;
+                   
+            }
+
+            .Book-Info{
+                color: white;
+                text-align: center;
+                font-family:'Montserrat', sans-serif;
+                font-size: 23px;
+                font-weight: bold;
+                margin-bottom: 0px; 
+            }
+            

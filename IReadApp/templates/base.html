@@ -1,7 +1,5 @@
-{% extends 'base.html' %}
 {%load static%}
-{% block content %}
-<!-- <html>
+<html>
 
     <head>
 
@@ -9,6 +7,75 @@
 
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400&display=swap" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="/static/css/main.css">
+
+        <style type="text/css">
+            .click{
+
+            padding: 60px;
+            text-align: center;
+            }
+
+                
+            #pahiram, #donate, #penalty, #reg, #ret{
+                    font-family: 'Montserrat', sans-serif;
+                    width: 200px;
+                    height: 50px;
+                    border-color: #6e6046;
+                    background:rgb(124, 67, 27);
+                    color: white;
+                    box-shadow: -3px 6px 4px #222;
+                    border-radius: 10px;
+                    font-size: 2.3rem;
+                    padding-bottom: 0px;
+                    margin-right: 5px;
+                    margin-left: 5px;
+                   
+            }
+
+            .Book-Info{
+                color: white;
+                text-align: center;
+                font-family:'Montserrat', sans-serif;
+                font-size: 23px;
+                font-weight: bold;
+                margin-bottom: 0px; 
+            }
+
+            .Book-Info select {
+            background-color: #fff;
+            box-shadow: -3px 6px 4px #222;
+            align-items: center;
+            margin: 25px 10px 20px 10px;
+            width: 350px;
+            height: 45px;
+            border: none;
+            outline: none;
+            padding: 0 5px;
+            font-size: 16px;
+            border-radius: 5px;
+            font-family:'Montserrat', sans-serif;
+            text-align: center;
+        }
+
+         #meetup, #delivery, .courier input, .through input {
+            background-color: #fff;
+            box-shadow: -3px 6px 4px #222;
+            align-items: center;
+            margin: 25px 10px 20px 10px;
+            width: 20px;
+            height: 20px;
+            border: none;
+            outline: none;
+            padding: 0 5px;
+            font-size: 16px;
+            border-radius: 5px;
+            font-family:'Montserrat', sans-serif;
+            text-align: center;
+        }
+
+
+
+        </style>
 
 
     </head>
@@ -28,13 +95,19 @@
 
                 <div class="navoption">
 
-                <a href="" class="option">About</a>
-               
-                </div>
-            </div> -->
+                <a href="donatepage" class="option">Donate</a>
+                <a href="borrpage" class="option">Borrow</a>
+                <a href="bookingpage" class="option">Status</a>
+                <a href="booklistpage" class="option">List</a>
 
+                <!-- <a href="" class="option"></a> -->
+
+                </div>
+            </div>
+{% block content %}
+{% endblock content %}
           
-        <div>
+        <!-- <div>
         <div class="TAO" id="TAO">
             <div class="borrow" id="borrow">
 
@@ -50,7 +123,7 @@
                 <label for="NameEntry">Name of Reader</label> <br>
                 <input type="text" name="NewReader" id="NewReader" class="NewReader" ><br>
 
-                <label for="Number"> Reader Contact Number</label> <br>
+                <label for="Number"> Reader Number</label> <br>
                 <input type="text" name="Number" id="Number" class="Number" maxlength="11"><br>
 
                 <label for="ReadLoc">Reader Location</label><br>
@@ -70,7 +143,7 @@
                 {% csrf_token %}
 
             </form>
-
+ -->
              <<!-- div class="logstat">
 
              <p class="sub">Borrower Log</p>
@@ -92,7 +165,7 @@
         </div> -->
 
 
-          <!--   <div class="chapter">
+            <div class="chapter">
 
             <div class="deut">
 
@@ -135,21 +208,20 @@
             <p id="verse">“Books are a uniquely portable magic.” – Stephen King</p>
             <p id="copy">Copyright &copy; 2021 Project Pahiram.</p>
 
-            <div class="navoptionfoot">
+        <!--     <div class="navoptionfoot">
 
                 <a href="" class="optionf">About</a>
                 <a href="" class="optionf">Borrow</a>
                 <a href="" class="option">Create</a>
 
-            </div>
-        </footer> -->
+            </div> -->
+        </footer>
 
 
-<!-- 
+
     </body>
 
 
 
 
-    </html> -->
-{% endblock %}
+    </html>

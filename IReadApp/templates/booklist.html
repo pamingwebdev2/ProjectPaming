@@ -1,0 +1,163 @@
+{% extends 'base.html' %}
+{%load static%}
+{% block content %}
+<!-- <html>
+
+    <head>
+
+        <title>Project Borrow</title>
+
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400&display=swap" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="/static/css/main.css">
+
+
+    </head>
+
+    <body>
+
+         <div class="navbar">
+
+                <div class="logoname"> 
+                    <a href=""></a><img src='/static/images/COLORED.png'alt="" width="100" height="100" id="logo">
+                    <a href="" class="home">
+                    <pre id="cgcf"> Project Pahiram
+<span id="rll"> read, love and learn</span> 
+        </pre> 
+                    </a>     
+                </div>
+
+                <div class="navoption">
+
+                    <a href="" class="option">About</a>
+                    <a href="" class="option">Borrow</a>
+                    <a href="http://localhost:8000/" class="option">Create</a>
+                   
+                </div>
+            </div> -->
+
+                <!-- End of Nav Bar -->
+
+                <!-- Title -->
+        
+     <!--    <div class="TAO" id="TAO">
+            <div class="borrow" id="borrow">
+
+                 <h1 class="title">PROJECT PAHIRAM</h1>
+
+                    <p class="sub">Borrower Info</p>
+            <table>
+                <tr>
+                 <td>Your Link:</td>
+                    <td>Reader:</td>
+                    <td>Number:</td>
+                    <td>Location:</td>
+                    <td>School:</td>
+                </tr>
+                <tr>
+                    
+                    <td>pahiram.ph/IReadApp/{{mId.id}}</td>
+                    <td>{{mId.Reader.upper}}</td>
+                    <td>{{mId.Number.upper}}</td>
+                    <td>{{mId.Location.upper}}</td>
+                    <td>{{mId.School.upper}}</td>
+                </tr>
+
+            </table>
+
+
+        </div>
+    </div>
+
+
+        <div class="click">
+
+        <p class="sub">Choose 1 Transaction</p> -->
+
+        <!-- <button id="pahiram" value="borrow">Borrow</button> -->
+
+     <!--    <button id="donate" value="donate">Donate</button>
+
+        <button id="penalty" value="penalty">Status</button>
+
+        <a href=""><button name="rules" id="reg" value="rules">Rules</button></a>
+
+
+        </div>
+ -->
+        
+<div class="borrowing">
+                
+                <p id="log">LISTA a BOOK</p>
+
+        <div class="Book-Info">
+
+            <form method="POST" id="fields" action=""> 
+
+                <input type="text" name="CodeEntry" id="CodeEntry" placeholder="ISBN" required> 
+            
+                <input type="text" name="Category" id="Category" placeholder="Category" required=""> <br>
+ 
+                <input type="text" name="AuthorEntry" id="AuthorEntry" required placeholder="Book Author">
+
+                <input type="text" name="BookEntry" id="BookEntry" placeholder="Book Title" required>
+                <br>
+
+            
+                <input type="submit" name="btn-list" id="btnSave" value="Confirm" class="button">
+
+              
+                
+                {% csrf_token %}
+
+
+
+            </form>
+              
+        </div>
+
+        <!-- <div class="notice">
+
+                <p>Kindly read and strictly follow the rules and regulations, <br>
+                fail to do so will result to deletion of records and banning of the user.</p>
+                    
+        </div>
+ -->
+         <div class="logstat">
+
+            <p id="log">Book List</p>
+
+       
+            <table id="booklist" name='booklist'>
+                <tr>
+                    <th>ISBN</th>
+                    <th>Book Title</th>
+                    <th>Book Author</th>
+                    <th>Book Category</th> 
+                </tr>
+                <!-- {% for item in mId.item_set.all %} -->
+                <!-- {% for item in item_set.all %}
+                <tr>
+                    <td>{{forloop.counter}}.{{item.binfo}}</td>
+                    <td>{{item.title}}</td>
+                    <td>{{item.author}}</td>
+                    <td>{item.name}}</td>
+                
+                </tr>
+                {% endfor%} 
+                {% endfor%}-->
+
+            </table>
+
+         </div>
+
+</div>
+
+
+
+<!--     </body>
+
+
+
+
+    </html> -->
+{% endblock %}

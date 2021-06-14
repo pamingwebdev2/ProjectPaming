@@ -19,6 +19,20 @@ def AddItemLog(request, MainID): #dagdagbo
 	Item.objects.create(MainID=mId, binfo=request.POST['CodeEntry'], name=request.POST['Category'], author=request.POST['AuthorEntry'], title=request.POST['BookEntry'])
 	return redirect (f'/IReadApp/{mId.id}/')
 
+#--------------------------------------------------------
+def DonatePage(request):
+	return render (request, 'donationpage.html')
+
+def BookList(request):
+	return render (request, 'booklist.html')
+
+def BookingPage(request):
+	return render (request, 'penalty-page.html')
+
+def BorrPage(request):
+	return render (request, 'loglistpage.html')
+#--------------------------------------------------------
+
 
 def DataManip(request):
 

@@ -1,0 +1,281 @@
+{% extends 'base.html' %}
+{%load static%}
+{% block content %}
+<<!-- html>
+
+    <head>
+
+        <title>Project Give</title>
+
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400&display=swap" rel="stylesheet">
+
+    </head>
+
+    <body> -->
+<!-- 
+         <div class="navbar">
+
+                <div class="logoname"> 
+                    <a href=""></a><img src="COLORED.png" alt="" width="100" height="100" id="logo">
+                    <a href="" class="home">
+                    <pre id="cgcf"> Project Pahiram
+<span id="rll"> read, love and learn</span> 
+        </pre> 
+                </div>
+
+              
+        </div> -->
+
+                <!-- End of Nav Bar -->
+
+                <!-- Title -->
+      
+        <div class="TAO" id="TAO">
+            <div class="borrow" id="borrow">
+
+                 <h1 class="title">BOOK-ING STATUS</h1>
+
+                    <p class="sub">Borrower Info</p>
+             <table>
+                <tr>
+                 <td>Your Link:</td>
+                    <td>Reader:</td>
+                    <td>Number:</td>
+                    <td>Location:</td>
+                    <td>School:</td>
+                </tr>
+                <tr>
+                    
+                    <td>localhost:8000/IReadApp/{{mId.id}}</td>
+                    <td>{{mId.Reader.upper}}</td>
+                    <td>{{mId.Number.upper}}</td>
+                    <td>{{mId.Location.upper}}</td>
+                    <td>{{mId.School.upper}}</td>
+                </tr>
+
+            </table>
+
+            <div class="click">
+
+               <!--  <p class="sub">Choose 1 Transaction</p>
+        
+                <button id="pahiram" value="borrow">Borrow</button>
+        
+                <button id="donate" value="donate">Donate</button> -->
+
+            </div>
+             <div class="notice">
+
+                <p style="font-size: 2.5rem;">You already spent</p><p class="ditoinsertdays"></p><p style="font-size: 2.5rem;">days with the book, count your days. Happy Reading</p>
+            </div>
+
+
+            <div class="click">
+            <button id="ret" onclick="dispretFunc()">RETURN</button>
+            </div>
+
+                <div class="Book-Info" id="retshow" hidden>
+                <form>
+
+                <label>Date Return</label> <br>
+                <input type="date" name="DateRet" id="DateRet">
+
+                <br><input type="submit" name="btn-list" id="btnSave" value="Confirm" class="button">
+
+                </form>
+                </div>
+        
+            <br>
+            </div>
+
+                <div class="logstat">
+                    <p id="log">Booked Log</p>
+
+                    
+                    <table id="booklist" name="booklist">
+                        <tr>
+
+                            <th>Title</th>
+                            <th>Date Borrowed</th>
+                            <th>Due Date</th>
+                            <th>Date Returned</th>
+                            <th>Penalty</th>
+                            
+                        </tr>
+                      <!--   {% for dontrans in mId.item_set.all %}
+                        {% for dontrans in mId.borrtrans_set.all %}
+                        <tr>
+                            <td>{{forloop.counter}}. {{item.title}}</td>
+                            <td>{{forloop.counter}}. {{borrtrans.dateborr}}</td>
+                            <td>{{borrtrans.duedate}}</td>
+                            <td>{{borrtrans.dateret}}</td>
+                            <td></td>
+                        </tr>
+                        {% endfor%}
+                        {% endfor%} -->
+
+
+                       
+                    </table>
+
+                </div>
+
+
+                </div>
+                
+                <p id="log">Log your Payment</p>
+
+            <form method="POST" id="fields" action=""> 
+                <div class="Book-Info">
+
+                    <label>Amount</label> <br>
+                    <input type="text" name="Amount" id="Amount" required> <br>
+<!-- 
+                    <label>Mode</label> <br>
+                    <input type="text" name="PMode" id="PMode" required placeholder="Delivery/Meet-Up/etc."> <br> -->
+
+
+                    <label>Mode</label> <br>
+                    <input type="radio" id="meetup" name="PMode"  onclick="modefunc()">
+                    <label>Meet Up</label><br>
+                    <div id="meet" style="display:none">     
+                        <label>Location:</label> <br>
+                        <input type="text" id="loc">                   
+                    </div>
+
+                    <input type="radio" id="delivery" name="PMode"  onclick="modefunc()">
+                    <label>E-Wallet</label><br>
+                    <div id="del" style="display:none" class="through">
+                        <label>Details:</label><br>
+                        <input type="radio" name="cour" id="gcash">
+                        <label>Paymaya</label>
+                        <input type="radio" name="cour" id="paymaya">                
+                        <label>GCash</label>
+                        <input type="radio" name="cour" id="ninja">               
+                        <label>BPI</label><br>
+                     
+                    </div>
+
+           <!--          <label>Details</label> <br>
+                    <input type="text" name="Details" id="Details"> <br> -->
+
+                    <label>Date Paid</label> <br>
+                    <input type="date" name="DPaid" id="DPaid" onchange="pystsFunc()" required> <br>
+
+                    <label>Payment Status</label> <br>
+                    <input type="text" name="PaySts" id="PaySts" readonly required> <br>
+
+                <br>
+
+
+                <input type="submit" name="btn-list" id="btnSave" value="Confirm" class="button">
+
+                </div>
+                
+                {% csrf_token %}
+
+            </form>
+
+            
+        <!-- </div>
+
+            <div class="chapter">
+
+            <div class="deut">
+
+                <p class="verse1">
+                    "Books are good company, in sad times and happy times, <br>
+                    for books are people – people who have managed to <br>
+                    stay alive by hiding between the covers of a book.”<br>
+                </p>
+                <p class="text1"> – E.B. White</p>
+
+            </div>
+            <div class="mala">
+
+                <p class="verse2">
+                    “In the case of good books, the point is <br>
+                     not to see how many of them you can get through, <br>
+                     but rather how many can get through to you.”
+                </p>
+                <p class="text2">- Mortimer J. Adler</p>
+
+            </div>
+            
+        </div> -->
+
+        <!-- End of Verses -->
+
+        <!-- Main Verse -->
+      <!--   <div class="main">
+            <div class="mainver">
+
+                <p>“That perfect tranquility of life, which is <br>
+                    nowhere to be found but in retreat, <br>
+                    a faithful friend and a good library.” <br></p>
+                <p id="cor">– Aphra Behn</p>
+
+            </div>
+        </div>
+
+        <footer class="container"> -->
+
+           <!--  <p id="verse">“Books are a uniquely portable magic.” – Stephen King</p>
+            <p id="copy">Copyright &copy; Project Pahiram.</p>
+
+            <div class="navoptionfoot">
+
+                <a href="" class="optionf">About</a>
+                <a href="" class="optionf">Borrow</a>
+                <a href="" class="optionf">Create</a>
+              
+
+            </div>
+        </footer> -->
+        <!-- End of footer -->
+
+    <script>
+        function modefunc(){
+            if (document.getElementById('meetup').checked == true){
+                document.getElementById("meet").style.display = 'block';
+                document.getElementById("del").style.display = 'none';
+            }
+            if (document.getElementById('delivery').checked == true){
+                document.getElementById("del").style.display = 'block';
+                document.getElementById("meet").style.display = 'none';
+            }
+        }  
+    
+        function pystsFunc(){
+            var sts = new Date(document.getElementById("DPaid").value);
+
+            if (sts.value == sts.value){
+                document.getElementById('PaySts').value = "Pending Payment";
+            }
+
+
+        }
+
+        // function dispret(){
+        // document.getElementById('retshow').style.display = "block";}
+
+        function dispretFunc() {
+
+            var ret = document.getElementById("retshow");
+              if (ret.style.display === "none") {
+                ret.style.display = "block";
+              } else {
+                ret.style.display = "none";
+              }
+            } 
+        
+    </script>
+
+
+    <!-- </body>
+
+
+
+
+    </html> -->
+{% endblock %}

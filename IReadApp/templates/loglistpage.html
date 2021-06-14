@@ -1,5 +1,7 @@
+{% extends 'base.html' %}
 {%load static%}
-<html>
+{% block content %}
+<!-- <html>
 
     <head>
 
@@ -7,41 +9,6 @@
 
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400&display=swap" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="/static/css/main.css">
-
-        <style type="text/css">
-
-        .click{
-
-        padding: 60px;
-        text-align: center;
-        }
-
-            
-        #pahiram, #donate, #penalty, #reg{
-                font-family: 'Montserrat', sans-serif;
-                width: 200px;
-                height: 50px;
-                border-color: #6e6046;
-                background:rgb(124, 67, 27);
-                color: white;
-                box-shadow: -3px 6px 4px #222;
-                border-radius: 10px;
-                font-size: 2.3rem;
-                padding-bottom: 0px;
-                margin-right: 5px;
-                margin-left: 5px;
-               
-        }
-
-        .Book-Info{
-            color: white;
-            text-align: center;
-            font-family:'Montserrat', sans-serif;
-            font-size: 23px;
-            font-weight: bold;
-            margin-bottom: 0px; 
-        }
-        </style>
 
 
     </head>
@@ -58,15 +25,15 @@
         </pre> 
                     </a>     
                 </div>
-<!-- 
+
                 <div class="navoption">
 
                     <a href="" class="option">About</a>
                     <a href="" class="option">Borrow</a>
                     <a href="http://localhost:8000/" class="option">Create</a>
                    
-                </div> -->
-            </div>
+                </div>
+            </div> -->
 
                 <!-- End of Nav Bar -->
 
@@ -104,18 +71,47 @@
 
         <div class="click">
 
-        <p class="sub">Choose 1 Transaction</p>
+  <!--       <p class="sub">Choose 1 Transaction</p> -->
 
-        <button id="pahiram" value="borrow">Borrow</button>
+       <!--  <a href="donatepage"><button id="donate" value="donate">Donate</button></a> -->
 
-        <button id="donate" value="donate">Donate</button>
+        <!-- <a href=""><button id="penalty" value="penalty">Status</button></a> -->
 
-        <button id="penalty" value="penalty">Check</button>
+        <button name="rules" id="reg" value="rules">Rules</button></a>
+        <!-- -------------------------------- -->
 
-        <a href="#"><button name="rules" id="reg" value="rules">Rules</button></a>
+        <dialog id="rules">
+            <p>The Borrower</p>
+                <p>
+                    For everyone who wants to borrow, you must be a member.  <br>
+                    Kindly fill up the borrower form to be a member. <br>
+                    Books must be handled with care. <br>
+                    Be mindful of other borrower. <br>
+                </p>
 
+            <p>The Sponsor</p>
+                <p>
+                    Books to donate can be donated as anonymous.<br>
+                    Kindly fill up the donation form to donate a book.<br>
+                    Books can either be any category.<br>
+                    Books that are devastatingly damaged <br>
+                    and not suitable for kids will not be accepted<br>
+                </p>
+            <p>The Book</p>
+                <p>
+                    One borrowed book at a time. <br>
+                    Each borrower have one (1) month to enjoy it. <br>
+                    Failure to return it on or before time will be subjected <br>
+                    to deletion of record and banning of the person. 
+                </p>   
+            <button id="hide">Close</button>         
+        </dialog>
 
         </div>
+
+
+
+<!-- -------------------------------- -->
 
         
 <div class="borrowing">
@@ -126,33 +122,44 @@
 
             <form method="POST" id="fields" action="/IReadApp/{{mId.id}}/addItem"> 
 
-                <input type="text" name="CodeEntry" id="CodeEntry" placeholder="ISBN"> 
-            
-                <input type="text" name="Category" id="Category" placeholder="Category"> <br>
- 
-                <input type="text" name="AuthorEntry" id="AuthorEntry" required placeholder="Book Author">
+               <!--  <label>Book Title</label> <br>
+                <input type="text" name="BookEntry" id="BookEntry"required> -->
+                <!-- naka for item_set.all po ito dahil magtemplate error sya di po muna -->
+                <select name="BookEntry" id="BookEntry" required>
+                    <option>Book 1</option>
+                    <option>Book 2</option>
+                </select>
 
-                <input type="text" name="BookEntry" id="BookEntry" placeholder="Book Title" required>
+                <button id="add" style="height: 40px; width: 30px; font-size: 1.5rem; ">+</button>
+         
                 <br>
                 <label>Date Borrowed</label> <br>
-                <input type="date" name="BorrDate" id="BorrDate" onchange="dueFunc()">
+                <input type="date" name="BorrDate" id="BorrDate" onchange="dueFunc()" required>
                 <br>
 
                 <label>DueDate</label> <br>
-                <input type="text" name="DueDate" id="DueDate" readonly="" value="">
+                <input type="text" name="DueDate" id="DueDate" readonly="" value="" required>
                 <br>
 
-      
+                <label>Date Return</label> <br>
+                <input type="date" name="DateRet" onchange="dueFunc()"  id="DateRet">
                 <br>
 
-            
+                <label>Penalty</label> <br>
+                <input type="text" name="Penalty" id="Pen" readonly="" value="">
+                <br>
+
+                <label>Remarks</label> <br>
+                <input type="text" name="DateRem" id="Rem" readonly="" value="">
+                <br>
+
+                <br>
+                
+               <!--  <input type="submit" name="btn-list" id="btnSave" value="Rules" class="button"> -->
+
                 <input type="submit" name="btn-list" id="btnSave" value="Confirm" class="button">
-
-              
                 
                 {% csrf_token %}
-
-
 
             </form>
               
@@ -173,99 +180,38 @@
             <table id="booklist" name='booklist'>
                 <tr>
 
-                    <th>Category</th>
                     <th>Book Title</th>
-                    <th>Date Borrowed</th>
+                 <!--    <th>Date Borrowed</th> -->
                     <th>Due Date</th>
-                    <th>Date Returned</th>
+                <!--     <th>Date Returned</th> -->
                     <th>Remarks</th>
+                    <!-- <td><button style="font-size: 2.5rem; background-color: white;" >RETURN</button></td> -->
 
                     
                 </tr>
                 {% for item in mId.item_set.all %}
+                {% for item in mId.borrtrans_set.all %}
                 <tr>
-                    <td>{{forloop.counter}}. {{item.name}}</td>
-                    <td>{{item.title}}</td>
-                     <td>{{item.DateBorr}}</td>
-                      <td>{{item.DueDate}}</td>
-                      <td>{{item.Remarks}}</td>
-                      <td>{{item.DateRet}}</td>
+                    <td>{{forloop.counter}}.{{item.title}}</td>
+                    <!--  <td>{{item.DateBorr}}</td> -->
+                    <td>{{item.DueDate}}</td>
+                    <td>{{item.Remarks}}</td>
+                   <!--    <td>{{item.DateRet}}</td> -->
                 </tr>
+                {% endfor%}
                 {% endfor%}
 
             </table>
 
          </div>
 
+     <!--     <div class="click">
+         <button id="reg">RETURN</button>
+         </div> -->
+
 </div>
-<!-- 
-<div class="donating">
-    
-     <div class="Book-Info">
 
-                <form method="POST" id="fields" action="/IReadApp/{{mId.id}}/addDon"> 
-
-                <br><br>
-                
-                <p id="log">GIVE a LIBRO</p>
-
-                <div class="Book-Info">
-
-                <label>Donated Books Quantity</label> <br> 
-                <input type="Number" name="Quantity" id="Quantity" min="1"> <br>
-
-                <label>Mode</label> <br>
-                <input type="text" name="Mode" id="Mode" required placeholder="Delivery/Meet-Up/etc."> <br>
-               
-                <label>Categories</label> <br>
-                <input type="text" name="Categories" id="Categories"> <br>
-
-                <label>Message</label> <br>
-                <input type="text" name="Message" id="Message" > <br>
-      
-                <br>
-
-
-                <input type="submit" name="btn-list" id="btnSave" value="Confirm" class="button">
-
-                </div>
-                
-                {% csrf_token %}
-
-            </form>
-
-            
-        </div>
-
-        <div class="logstat">
-
-            <p id="log">Donation Log</p>
-           
-                
-                <table id="booklist" name="booklist">
-                    <tr>
-                        <th>Type</th>
-                        <th>Quantity</th>
-                        <th>Categories</th>
-                        <th>Status</th>
-                        
-                    </tr>
-                    {% for dontrans in mId.dontrans_set.all %}
-                    <tr>
-
-                        <td>{{forloop.counter}}. Books</td>
-                        <th>{{dontrans.Quantity}}</td>
-                        <td>{{dontrans.Categories}}</td>
-                        <td>{{dontrans.Status}}</td>
-                      
-                    </tr>
-                    {% endfor%}
-                </table>
-
-        </div>
-</div>       -->
-
-            <div class="chapter">
+            <!-- <div class="chapter">
 
             <div class="deut">
 
@@ -290,10 +236,10 @@
             
         </div>
 
-        <!-- End of Verses -->
+        End of Verses -->
 
         <!-- Main Verse -->
-        <div class="main">
+       <!--  <div class="main">
             <div class="mainver">
 
                 <p>“That perfect tranquility of life, which is <br>
@@ -317,7 +263,7 @@
               
 
             </div>
-        </footer>
+        </footer> -->
         <!-- End of footer -->
 
 
@@ -328,15 +274,54 @@
         function dueFunc(){
             var due = new Date(document.getElementById("BorrDate").value);
             due.setDate(due.getDate() + 30);
-            document.getElementById("DueDate").value = due.toDateString();
+            document.getElementById("DueDate").value = due.toDateString();   
+    
+            if (due.value == due.value){
+                document.getElementById('Rem').value = "Borrowed";
+            }
+
+            var returned = new Date(document.getElementById('DateRet').value);
+            var dborrowed = new Date(document.getElementById("BorrDate").value);
+
+            var first = new Date(dborrowed); 
+            var ffirst = parseInt((first.getTime() + 2592000000)  / 1000);
+            var second = new Date(returned); 
+            var ssecond = parseInt(second.getTime() / 1000);     
+
+            var diff = ssecond - ffirst;
+
+            var one_day_epoch = 24*60*60 ;  
+            var day = diff/one_day_epoch;
+
+            if (ssecond > ffirst){
+                var pen = 100;
+                var money = day * pen;
+                document.getElementById('Pen').value = money;
+            } 
+            else{
+                document.getElementById('Pen').value = "No Penalty";
+            }   
         }
-        
+
+        var a = document.getElementById('reg');
+        a.addEventListener('click', function opn(){
+        document.getElementById('rules').open = true;
+
+        var d = document.getElementById('hide');
+        d.addEventListener('click', z);
+
+        function z(){
+        rules.close();
+        }
+        });
 
     </script>
+        
 
-    </body>
+<!--     </body>
 
 
 
 
-    </html>
+    </html> -->
+{% endblock %}

@@ -15,7 +15,7 @@ class Item(models.Model):
 	binfo = models.TextField(default="") #isbn to
 	author = models.TextField(default="")
 	title = models.TextField(default="")
-	name = models.TextField(default="")
+	name = models.TextField(default="") #category to
 	class meta:
 		db_table="Books"
 
@@ -44,10 +44,11 @@ class DonTrans(models.Model):
 	# DateCon= models.DateField(default="")#kailan nag fill up ng donation form
 	Quantity = models.IntegerField(default="") #Ilangbooks
 	Mode = models.TextField(default="") #delivery/meetup #1or2
-	DateTrans= models.DateTimeField(auto_now_add=True, null=True) #kailanmagaabot 
+	Channel = models.TextField(default="") #bagongdagdag #kungmeetwhere #kungdeliveryanongcourier
+	DateTrans= models.DateTimeField(auto_now_add=True, null=True) #whennagregngdonationform
 	Message = models.TextField(default="")
-	Categories = models.TextField(default="")
-	Status = models.TextField(default="Pending")
+	Categories = models.TextField(default="") #separatebycomma
+	Status = models.TextField(default="Pending") #receivedorpending
 	class meta:
 		db_table="Donation"
 
@@ -55,7 +56,9 @@ class Penalty (models.Model):
 	borrId = models.ForeignKey(Borrower, default=None, on_delete=models.CASCADE)
 	Amount =models.IntegerField(default="")
 	Mode = models.TextField(default="")
-	DatePaid= models.DateTimeField(auto_now_add=True, null=True) #kailanmagaabot 
+	Details = models.TextField(default="") #kungcashlocsaan #gcashnumber
+	DatePaid= models.DateTimeField(auto_now_add=True, null=True) #kailannagbayad
+	Checking =models.TextField(default="On Process") #Paid #OnProcess
 
 	class meta:
 		db_table="Penalty"
