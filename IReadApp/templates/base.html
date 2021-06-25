@@ -81,12 +81,12 @@
     </head>
 
     <body>
-
+<!-- 
          <div class="navbar">
 
                 <div class="logoname"> 
                     <a href=""></a><img src='/static/images/COLORED.png' alt="" width="100" height="100" id="logo">
-                    <a href="" class="home">
+                    <a href="{% url 'logpage' %}" class="home">
                     <pre id="cgcf"> Project Pahiram
 <span id="rll"> read, love and learn</span> 
         </pre> 
@@ -95,15 +95,13 @@
 
                 <div class="navoption">
 
-                <a href="donatepage" class="option">Donate</a>
-                <a href="borrpage" class="option">Borrow</a>
-                <a href="bookingpage" class="option">Status</a>
-                <a href="booklistpage" class="option">List</a>
-
-                <!-- <a href="" class="option"></a> -->
+                <a href="/IReadApp/{{mId.id}}/donatepage/" class="option">Donate</a>
+                <a href="/IReadApp/{{mId.id}}/" class="option">Borrow</a>
+                <a href="/IReadApp/{{mId.id}}/bookingpage" class="option">Status</a>
+                <a href="{% url 'booklistpage' %}" class="option">List</a>
 
                 </div>
-            </div>
+            </div> -->
 {% block content %}
 {% endblock content %}
           

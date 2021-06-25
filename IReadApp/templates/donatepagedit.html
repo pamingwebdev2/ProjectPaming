@@ -24,7 +24,7 @@
 <span id="rll"> read, love and learn</span> 
         </pre> 
                     </a>     
-                </div>
+               <!--  </div>
 
                 <div class="navoption">
 
@@ -33,16 +33,16 @@
                 <a href="/IReadApp/{{mId.id}}/bookingpage" class="option">Status</a>
                 <a href="{% url 'booklistpage' %}" class="option">List</a>
 
-                <!-- <a href="" class="option"></a> -->
+                <a href="" class="option"></a>
 
-                </div>
+                </div> -->
             </div>
 
                 <!-- End of Nav Bar -->
 
                 <!-- Title -->
      
-        <div class="TAO" id="TAO">
+       <!--  <div class="TAO" id="TAO">
             <div class="borrow" id="borrow">
 
                  <h1 class="title">GIVE a LIBRO</h1>
@@ -68,7 +68,7 @@
             </table>
 
 
-            </div>
+            </div> -->
 
             <!-- <div class="click">
 
@@ -81,36 +81,36 @@
             </div> -->
             <br><br><br>
 
-            <form method="POST" id="fields" action="/IReadApp/{{mId.id}}/adddonate"> 
+            <form method="POST" id="fields" action="statuschange/{{dontrans.id}}"> 
                
-                <p id="log">Log your Donation</p>
+                <p id="log">Update Status Donation</p>
 
                 <div class="Book-Info">
 
                 <label>Donated Books Quantity</label> <br> 
-                <input type="Number" name="Quantity" id="Quantity" min="1" required> <br>
+                <input type="Number" name="Quantity" id="Quantity" min="1" required readonly="" value="{{dontrans.Quantity}}"> <br>
 
                 <label>Categories</label> <br>
-                <input type="text" name="Categories" id="Categories" required> <br>
+                <input type="text" name="Categories" id="Categories" required readonly="" value="{{dontrans.Categories}}"> <br>
 
 <!-- -------------------- -->
                 <label>Mode</label> <br>
-                <input type="radio" id="meetup" name="key"  onclick="modefunc()" value="meet"> <!--mode=key-->
+                <input type="radio" id="meetup" name="key"  onclick="modefunc()" value=meet readonly=""> <!--mode=key-->
                 <label>Meet Up</label><br>
                 <div id="meet" style="display:none">     
                     <label>Location:</label> <br>
-                    <input type="text" id="loc" name="cour">                   
+                    <input type="text" id="loc" name="cour" value="{{dontrans.Channel}}" readonly="">                   
                 </div>
 
-                <input type="radio" id="delivery" name="key"  onclick="modefunc()" value="delivery">
+                <input type="radio" id="delivery" name="key"  onclick="modefunc()" value="delivery" readonly="">
                 <label>Delivery</label><br>
                 <div id="del" style="display:none" class="courier">
                     <label>Courier:</label><br>
-                    <input type="radio" name="cour" id="speedy" value="speedy">
+                    <input type="radio" name="cour" id="speedy" value="{{dontrans.Channel}}" readonly="">
                     <label>MrSpeedy</label>
-                    <input type="radio" name="cour" id="grab" value="grab">   
+                    <input type="radio" name="cour" id="grab" value="{{dontrans.Channel}}" readonly="">   
                     <label>GrabExpress</label>
-                    <input type="radio" name="cour" id="ninja" value="ninja">               
+                    <input type="radio" name="cour" id="ninja" value="{{dontrans.Channel}}" readonly="">               
                     <label>Ninjas Van</label><br>
                  
                 </div>
@@ -121,10 +121,10 @@
                 <input type="date" name="DateTrans" id="DateTrans" required onchange="donstsFunc()"> <br>
                              
                 <label>Message</label> <br>
-                <input type="text" name="Message" id="Message" > <br>
+                <input type="text" name="Message" id="Message" readonly="" value="{{dontrans.Message}}"> <br>
 
                 <label>Donation Status</label> <br>
-                <input type="text" name="DonSts" id="DonSts" required readonly=""> <br>
+                <input type="text" name="DonSts" id="DonSts" required value="{{dontrans.Status}}"> <br>
 
 
 <!-- 
@@ -145,7 +145,7 @@
             
         </div>
 
-        <div class="logstat">
+       <!--  <div class="logstat">
             <p id="log">Donation Log</p>
        
             
@@ -164,8 +164,8 @@
                     <td>{{dontrans.Quantity}}</td>
                     <td>{{dontrans.Categories}}</td>
                     <td>{{dontrans.Status}}</td>
-                    <td style="width: 20px;"><a href="updatedon/{{dontrans.id}}" style="color: black;">Update</a></td>
-                    <td style="width: 20px;"><a href="deletedon/{{dontrans.id}}" style="color: black;">Delete</a></td>
+                    <td style="width: 20px;"><a href="" style="color: black;">Update</a></td>
+                    <td style="width: 20px;"><a href="" style="color: black;">Delete</a></td>
                   
                 </tr>
                 {% endfor%}
@@ -173,7 +173,7 @@
 
 
     
-        </div>
+        </div> -->
 
         <script>
 
@@ -192,7 +192,7 @@
             var sts = new Date(document.getElementById("DateTrans").value);
 
             if (sts.value == sts.value){
-                document.getElementById('DonSts').value = "On Process";
+                document.getElementById('DonSts').value = "Received";
             }
 
 

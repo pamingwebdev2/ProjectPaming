@@ -26,16 +26,16 @@
                     </a>     
                 </div>
 
-                <div class="navoption">
+               <!--  <div class="navoption">
 
                 <a href="/IReadApp/{{mId.id}}/donatepage/" class="option">Donate</a>
                 <a href="/IReadApp/{{mId.id}}/" class="option">Borrow</a>
                 <a href="/IReadApp/{{mId.id}}/bookingpage" class="option">Status</a>
                 <a href="{% url 'booklistpage' %}" class="option">List</a>
 
-                <!-- <a href="" class="option"></a> -->
+                <a href="" class="option"></a>
 
-                </div>
+                </div> -->
             </div>
 
                 <!-- End of Nav Bar -->
@@ -94,15 +94,15 @@
 
         <div class="Book-Info">
 
-            <form method="POST" id="fields" action="{% url 'addbooklist' %}"> 
+            <form method="POST" id="fields" action="bookchange/{{item.id}}"> 
 
-                <input type="text" name="CodeEntry" id="CodeEntry" placeholder="ISBN" required> 
+                <input type="text" name="CodeEntry" id="CodeEntry" placeholder="ISBN" required value="{{item.binfo}}"> 
             
-                <input type="text" name="Category" id="Category" placeholder="Category" required=""> <br>
+                <input type="text" name="Category" id="Category" placeholder="Category" required="" value="{{item.name}}"> <br>
  
-                <input type="text" name="AuthorEntry" id="AuthorEntry" required placeholder="Book Author">
+                <input type="text" name="AuthorEntry" id="AuthorEntry" required placeholder="Book Author" value="{{item.author}}">
 
-                <input type="text" name="BookEntry" id="BookEntry" placeholder="Book Title" required>
+                <input type="text" name="BookEntry" id="BookEntry" placeholder="Book Title" required value="{{item.title}}">
                 <br>
 
             
@@ -125,7 +125,7 @@
                     
         </div>
  -->
-         <div class="logstat">
+         <!-- <div class="logstat">
 
             <p id="log">Book List</p>
 
@@ -143,13 +143,13 @@
                     <td>{{item.title}}</td>
                     <td>{{item.author}}</td>
                     <td>{{item.name}}</td>
-                    <td style="width: 20px;"><a href="updatebook/{{item.id}}" style="color: black;">Update</a></td>
-                    <td style="width: 20px;"><a href="deletebook/{{item.id}}" style="color: black;">Delete</a></td>
+                    <td style="width: 20px;"><a href="" style="color: black;">Update</a></td>
+                    <td style="width: 20px;"><a href="" style="color: black;">Delete</a></td>
                 
                 </tr>
                 {% endfor%}
 
-            </table>
+            </table> -->
 
          </div>
 

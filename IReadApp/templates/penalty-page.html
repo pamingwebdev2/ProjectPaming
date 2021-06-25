@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {%load static%}
 {% block content %}
-<<!-- html>
+<!-- html>
 
     <head>
 
@@ -12,19 +12,29 @@
     </head>
 
     <body> -->
-<!-- 
-         <div class="navbar">
+
+          <div class="navbar">
 
                 <div class="logoname"> 
-                    <a href=""></a><img src="COLORED.png" alt="" width="100" height="100" id="logo">
-                    <a href="" class="home">
+                    <a href=""></a><img src='/static/images/COLORED.png' alt="" width="100" height="100" id="logo">
+                    <a href="{% url 'logpage' %}" class="home">
                     <pre id="cgcf"> Project Pahiram
 <span id="rll"> read, love and learn</span> 
         </pre> 
+                    </a>     
                 </div>
 
-              
-        </div> -->
+                <div class="navoption">
+
+                <a href="/IReadApp/{{mId.id}}/donatepage/" class="option">Donate</a>
+                <a href="/IReadApp/{{mId.id}}/" class="option">Borrow</a>
+                <a href="/IReadApp/{{mId.id}}/bookingpage" class="option">Status</a>
+                <a href="{% url 'booklistpage' %}" class="option">List</a>
+
+                <!-- <a href="" class="option"></a> -->
+
+                </div>
+            </div>
 
                 <!-- End of Nav Bar -->
 
@@ -46,7 +56,7 @@
                 </tr>
                 <tr>
                     
-                    <td>localhost:8000/IReadApp/{{mId.id}}</td>
+                    <td>pahiram.ph/IReadApp/{{mId.id}}</td>
                     <td>{{mId.Reader.upper}}</td>
                     <td>{{mId.Number.upper}}</td>
                     <td>{{mId.Location.upper}}</td>
@@ -66,7 +76,7 @@
             </div>
              <div class="notice">
 
-                <p style="font-size: 2.5rem;">You already spent</p><p class="ditoinsertdays"></p><p style="font-size: 2.5rem;">days with the book, count your days. Happy Reading</p>
+                <p style="font-size: 2.5rem;">You already spent a couple of days <br> with the book you are currently borrowing, count your days. Happy Reading</p>
             </div>
 
 
@@ -102,17 +112,17 @@
                             <th>Penalty</th>
                             
                         </tr>
-                      <!--   {% for dontrans in mId.item_set.all %}
-                        {% for dontrans in mId.borrtrans_set.all %}
+                        {% for borrtrans in BorrTrans %}
                         <tr>
                             <td>{{forloop.counter}}. {{item.title}}</td>
-                            <td>{{forloop.counter}}. {{borrtrans.dateborr}}</td>
-                            <td>{{borrtrans.duedate}}</td>
-                            <td>{{borrtrans.dateret}}</td>
-                            <td></td>
+                            <td>{{forloop.counter}}. {{borrtrans.DateBorr}}</td>
+                            <td>{{borrtrans.DueDate}}</td>
+                            <td>{{borrtrans.DateRet}}</td>
+                            <td>{{borrtrans.PenEstimate}}</td>
+
                         </tr>
                         {% endfor%}
-                        {% endfor%} -->
+                        
 
 
                        
@@ -125,33 +135,33 @@
                 
                 <p id="log">Log your Payment</p>
 
-            <form method="POST" id="fields" action=""> 
+            <form method="POST" id="fields" action="/IReadApp/{{mId.id}}/addbooking"> 
                 <div class="Book-Info">
 
                     <label>Amount</label> <br>
-                    <input type="text" name="Amount" id="Amount" required> <br>
+                    <input type="number" name="Amount" id="Amount" required> <br>
 <!-- 
                     <label>Mode</label> <br>
                     <input type="text" name="PMode" id="PMode" required placeholder="Delivery/Meet-Up/etc."> <br> -->
 
 
                     <label>Mode</label> <br>
-                    <input type="radio" id="meetup" name="PMode"  onclick="modefunc()">
+                    <input type="radio" id="meetup" name="PMode"  onclick="modefunc()" value="meet">
                     <label>Meet Up</label><br>
                     <div id="meet" style="display:none">     
                         <label>Location:</label> <br>
-                        <input type="text" id="loc">                   
+                        <input type="text" id="loc" name="details">                   
                     </div>
 
-                    <input type="radio" id="delivery" name="PMode"  onclick="modefunc()">
+                    <input type="radio" id="delivery" name="PMode"  onclick="modefunc()" value="ewallet">
                     <label>E-Wallet</label><br>
                     <div id="del" style="display:none" class="through">
                         <label>Details:</label><br>
-                        <input type="radio" name="cour" id="gcash">
+                        <input type="radio" name="details" id="paymaya" value="paymaya">
                         <label>Paymaya</label>
-                        <input type="radio" name="cour" id="paymaya">                
+                        <input type="radio" name="details" id="gcash" value="gcash">                
                         <label>GCash</label>
-                        <input type="radio" name="cour" id="ninja">               
+                        <input type="radio" name="details" id="bpi" value="bpi">               
                         <label>BPI</label><br>
                      
                     </div>
@@ -176,6 +186,29 @@
 
             </form>
 
+
+        <div class="logstat">
+            <p id="log">Payment History</p>
+       
+            
+            <table id="booklist" name="booklist">
+                <tr>
+
+                    <th>Date Paid</th>
+                    <th>Amount</th>
+                    <th>Payment Status</th>
+                    
+                </tr>
+                {% for penalty in mId.penalty_set.all %}
+                <tr>
+                    <td style="text-align: left;">{{forloop.counter}}. {{penalty.DatePaid}}</td>
+                    <td>{{penalty.Amount}}</td>
+                    <td>{{penalty.Checking}}</td>
+                  
+                </tr>
+                {% endfor%}
+            </table>
+        </div>
             
         <!-- </div>
 

@@ -13,13 +13,13 @@
 
     </head>
 
-    <body>
+    <body>-->
 
-         <div class="navbar">
+          <div class="navbar">
 
                 <div class="logoname"> 
-                    <a href=""></a><img src='/static/images/COLORED.png'alt="" width="100" height="100" id="logo">
-                    <a href="" class="home">
+                    <a href=""></a><img src='/static/images/COLORED.png' alt="" width="100" height="100" id="logo">
+                    <a href="{% url 'logpage' %}" class="home">
                     <pre id="cgcf"> Project Pahiram
 <span id="rll"> read, love and learn</span> 
         </pre> 
@@ -28,12 +28,15 @@
 
                 <div class="navoption">
 
-                    <a href="" class="option">About</a>
-                    <a href="" class="option">Borrow</a>
-                    <a href="http://localhost:8000/" class="option">Create</a>
-                   
+                <a href="/IReadApp/{{mId.id}}/donatepage/" class="option">Donate</a>
+                <a href="/IReadApp/{{mId.id}}/" class="option">Borrow</a>
+                <a href="/IReadApp/{{mId.id}}/bookingpage" class="option">Status</a>
+                <a href="{% url 'booklistpage' %}" class="option">List</a>
+
+                <!-- <a href="" class="option"></a> -->
+
                 </div>
-            </div> -->
+            </div>
 
                 <!-- End of Nav Bar -->
 
@@ -42,7 +45,7 @@
         <div class="TAO" id="TAO">
             <div class="borrow" id="borrow">
 
-                 <h1 class="title">PROJECT PAHIRAM</h1>
+                 <h1 class="title">PAHIRAM a BOOK</h1>
 
                     <p class="sub">Borrower Info</p>
             <table>
@@ -68,48 +71,42 @@
         </div>
     </div>
 
-
+  <!-- -------------------------------- -->
         <div class="click">
 
-  <!--       <p class="sub">Choose 1 Transaction</p> -->
+        <!-- <button name="rules" id="reg" value="rules">Rules</button> -->
+      
 
-       <!--  <a href="donatepage"><button id="donate" value="donate">Donate</button></a> -->
-
-        <!-- <a href=""><button id="penalty" value="penalty">Status</button></a> -->
-
-        <button name="rules" id="reg" value="rules">Rules</button></a>
-        <!-- -------------------------------- -->
-
-        <dialog id="rules">
-            <p>The Borrower</p>
+        <div id="rules" class="therul">
+            
+            <p style="font-size: 4rem;">RULES</p><br>
+            <p>The Borrower</p> <br>
                 <p>
                     For everyone who wants to borrow, you must be a member.  <br>
-                    Kindly fill up the borrower form to be a member. <br>
+                    Kindly fill up the Reader Log form to be a member. <br>
                     Books must be handled with care. <br>
                     Be mindful of other borrower. <br>
-                </p>
+                </p><br>
 
-            <p>The Sponsor</p>
+            <p>The Sponsor</p><br>
                 <p>
-                    Books to donate can be donated as anonymous.<br>
-                    Kindly fill up the donation form to donate a book.<br>
+                    <!-- Books to donate can be donated as anonymous.<br> -->
+                    <!-- Kindly fill up the donation form to donate a book.<br> -->
                     Books can either be any category.<br>
                     Books that are devastatingly damaged <br>
                     and not suitable for kids will not be accepted<br>
-                </p>
-            <p>The Book</p>
+                </p><br>
+            <p>The Book</p><br>
                 <p>
                     One borrowed book at a time. <br>
                     Each borrower have one (1) month to enjoy it. <br>
                     Failure to return it on or before time will be subjected <br>
-                    to deletion of record and banning of the person. 
+                    to penalties. 
                 </p>   
-            <button id="hide">Close</button>         
-        </dialog>
-
+            <!-- <button id="hide">Close</button>          -->
         </div>
 
-
+        </div>
 
 <!-- -------------------------------- -->
 
@@ -125,12 +122,16 @@
                <!--  <label>Book Title</label> <br>
                 <input type="text" name="BookEntry" id="BookEntry"required> -->
                 <!-- naka for item_set.all po ito dahil magtemplate error sya di po muna -->
+
                 <select name="BookEntry" id="BookEntry" required>
-                    <option>Book 1</option>
-                    <option>Book 2</option>
+                {% for item in Item %}
+                    <option value="{{item.title}}">{{item.title}}</option>
+                {% endfor %}
+                    <!-- <option>Book 2</option> -->
+            <!--         <option><a href="https://www.google.com/">add book...</a></option> -->
                 </select>
 
-                <button id="add" style="height: 40px; width: 30px; font-size: 1.5rem; ">+</button>
+                <!-- <button id="add" style="height: 40px; width: 30px; font-size: 1.5rem;">+</button> -->
          
                 <br>
                 <label>Date Borrowed</label> <br>
@@ -165,12 +166,12 @@
               
         </div>
 
-        <div class="notice">
+        <!-- <div class="notice">
 
                 <p>Kindly read and strictly follow the rules and regulations, <br>
                 fail to do so will result to deletion of records and banning of the user.</p>
                     
-        </div>
+        </div> -->
 
          <div class="logstat">
 
@@ -187,20 +188,29 @@
                     <th>Remarks</th>
                     <!-- <td><button style="font-size: 2.5rem; background-color: white;" >RETURN</button></td> -->
 
+                    {% for item in BorrTrans%}
+                    <tr>
+                        <td>{{forloop.counter}}.{{item.title}}</td>
+                        <td>{{item.DateBorr}}</td>
+                        <td>{{item.Remarks}}</td>
+                        <!-- <td style="width: 20px;"><a href="" style="color: black;">Update</a></td>
+                        <td style="width: 20px;"><a href="" style="color: black;">Delete</a></td> -->
+                    </tr>
+                    {% endfor%}
                     
-                </tr>
+<!--                 </tr>
                 {% for item in mId.item_set.all %}
                 {% for item in mId.borrtrans_set.all %}
                 <tr>
                     <td>{{forloop.counter}}.{{item.title}}</td>
-                    <!--  <td>{{item.DateBorr}}</td> -->
+                     <td>{{item.DateBorr}}</td>
                     <td>{{item.DueDate}}</td>
                     <td>{{item.Remarks}}</td>
-                   <!--    <td>{{item.DateRet}}</td> -->
+                      <td>{{item.DateRet}}</td>
                 </tr>
                 {% endfor%}
                 {% endfor%}
-
+ -->
             </table>
 
          </div>
@@ -303,17 +313,17 @@
             }   
         }
 
-        var a = document.getElementById('reg');
-        a.addEventListener('click', function opn(){
-        document.getElementById('rules').open = true;
+        // var a = document.getElementById('reg');
+        // a.addEventListener('click', function opn(){
+        // document.getElementById('rules').open = true;
 
-        var d = document.getElementById('hide');
-        d.addEventListener('click', z);
+        // var d = document.getElementById('hide');
+        // d.addEventListener('click', z);
 
-        function z(){
-        rules.close();
-        }
-        });
+        // function z(){
+        // rules.close();
+        // }
+        // });
 
     </script>
         

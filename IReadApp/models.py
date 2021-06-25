@@ -27,6 +27,7 @@ class BorrTrans(models.Model):
 	DueDate = models.TextField(default="")
 	DateRet = models.DateTimeField(auto_now_add=True, null=True)
 	Remarks = models.TextField(default="On Process")
+	PenEstimate = models.TextField(default="")
 	class meta:
 		db_table="Transaction"
 

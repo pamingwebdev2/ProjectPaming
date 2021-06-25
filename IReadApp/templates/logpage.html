@@ -13,13 +13,13 @@
 
     </head>
 
-    <body>
+    <body>-->
 
-         <div class="navbar">
+        <div class="navbar">
 
                 <div class="logoname"> 
                     <a href=""></a><img src='/static/images/COLORED.png' alt="" width="100" height="100" id="logo">
-                    <a href="" class="home">
+                    <a href="{% url 'logpage' %}" class="home">
                     <pre id="cgcf"> Project Pahiram
 <span id="rll"> read, love and learn</span> 
         </pre> 
@@ -28,17 +28,21 @@
 
                 <div class="navoption">
 
-                <a href="" class="option">About</a>
-               
-                </div>
-            </div> -->
+                <!-- <a href="/IReadApp/{{mId.id}}/donatepage/" class="option">Donate</a>
+                <a href="/IReadApp/{{mId.id}}/" class="option">Borrow</a>
+                <a href="/IReadApp/{{mId.id}}/bookingpage" class="option">Status</a> -->
+                <a href="{% url 'booklistpage' %}" class="option">List</a>
 
+                <!-- <a href="" class="option"></a> -->
+
+                </div>
+            </div>
           
         <div>
         <div class="TAO" id="TAO">
             <div class="borrow" id="borrow">
 
-                 <h1 class="title">PAHIRAM a BOOK</h1>
+                 <h1 class="title">PROJECT PAHIRAM</h1>
 
                     <p class="sub">Reader Log</p>
             </div>
@@ -71,15 +75,15 @@
 
             </form>
 
-             <<!-- div class="logstat">
+           <!--   <div class="logstat">
 
-             <p class="sub">Borrower Log</p>
+             <p class="sub">Project Pahiram Borrower Log</p>
 
        
             <table id="booklist" name='booklist'>
                 {% for item in Borrower %}
                 <tr>
-                    <td id="authorid"> <a href="http://localhost:8000/IReadApp/{{forloop.counter}}/">http://localhost:8000/IReadApp/{{forloop.counter}}/</td></a>
+                    <td id="authorid"> <a href="http://pahiram.ph/IReadApp/{{forloop.counter}}/">http://pahiram.ph/IReadApp/{{forloop.counter}}/</td></a>
                     <td>{{item.Reader}}</td>
                     <td>{{item.Number}}</td>
                     <td>{{item.Location}}</td>
